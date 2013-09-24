@@ -3,12 +3,23 @@
 Template Name: LIS Detail
 */
 
+$lis_config = get_option('lis_config');
+
 $request_uri = $_SERVER["REQUEST_URI"];
 $request_parts = explode('/', $request_uri);
 $resource_id = end($request_parts);
 
-?>
+$lis_service_url = $lis_config['service_url'];
+$lis_service_request = $lis_service_url . 'api/resource/search/?q=id:"main.resource.' .$resource_id . '"';
 
+$response = @file_get_contents($lis_service_request);
+
+if ($response){
+    $response_json = json_decode($response);
+    $resource = $response_json->diaServerResponse[0]->response->docs[0];
+}
+
+?>
 
 <?php get_header(); ?>
 
@@ -29,7 +40,7 @@ $resource_id = end($request_parts);
 
             <section id="conteudo">
                 <header class="row-fluid border-bottom">
-                    <h1 class="h1-header">Más Recientes</h1>
+                    <h1 class="h1-header">Detalhes</h1>
                     <div class="pull-right">
                         <a href="#" class="ico-feeds"></a>
                         <form action="">
@@ -50,15 +61,17 @@ $resource_id = end($request_parts);
                 <div class="row-fluid">
                     <article class="conteudo-loop">
                         <div class="row-fluid">
-                            <h2 class="h2-loop-tit">Estratégia governamental para internalização de fármacos e medicamentos em doenças negligenciadas</h2>
+                            <h2 class="h2-loop-tit"><?php echo $resource->title; ?></h2>
                         </div>
                             <div class="conteudo-loop-rates">
                                 <div class="star" data-score="1"></div>
                             </div>
                             <span class="row-fluid margintop05">
-                                <a href="http://tpqb.eq.ufrj.br/download/farmacos-e-medicamentos-em-doencas-negligenciadas.pdf">http://tpqb.eq.ufrj.br/download/farmacos-e-medicamentos-em-doencas-negligenciadas.pdf</a>   
+                                <a href="<?php echo $resource->link; ?>"><?php echo $resource->link; ?></a>   
                             </span>
-                            <p class="row-fluid">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sit amet neque ut massa egestas accumsan. Mauris bibendum nibh non metus gravida, vehicula tristique odio tincidunt. Nunc at sem vel nisl semper laoreet. Donec lacinia, massa eget fermentum aliquam, est leo ultricies urna, nec pharetra diam nibh eu sapien. Duis vel risus auctor, posuere odio nec, egestas ipsum. Mauris eget est quam. Donec in nunc quis nisl feugiat fringilla.</p>
+                            <p class="row-fluid">
+                                <?php echo $resource->abstract; ?>
+                            </p>
 
                             <div id="conteudo-loop-data" class="row-fluid margintop05">
                                 <span class="conteudo-loop-data-tit">Sugerido em:</span>

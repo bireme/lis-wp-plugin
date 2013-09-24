@@ -2,7 +2,18 @@
 /*
 Template Name: LIS Home
 */
+
+$lis_config = get_option('lis_config');
+$lis_service_url = $lis_config['service_url'];
+$lis_service_request = $lis_service_url . 'api/resource/search/?q=' .$query . '';
+
+$response = @file_get_contents($lis_service_request);
+if ($response){
+    $response_json = json_decode($response);
+    $resource_list = $response_json->diaServerResponse[0]->response->docs;
+}
 ?>
+
 <?php get_header();?>
 	<div id="content" class="row-fluid">
 		<div class="ajusta2">
@@ -40,87 +51,35 @@ Template Name: LIS Home
 					</div>
 				</header>
 				<div class="row-fluid">
-					<article class="conteudo-loop">
-						<div class="row-fluid">
-							<h2 class="h2-loop-tit">Estratégia governamental para internalização de fármacos e medicamentos em doenças negligenciadas</h2>
-						</div>
-						<div class="conteudo-loop-rates">
-							<div class="star" data-score="1"></div>
-						</div>
-						<span class="row-fluid margintop05">
-							<a href="http://tpqb.eq.ufrj.br/download/farmacos-e-medicamentos-em-doencas-negligenciadas.pdf">http://tpqb.eq.ufrj.br/download/farmacos-e-medicamentos-em-doencas-negligenciadas.pdf</a>	
-						</span>
-						<p class="row-fluid">
-							A tese aborda seis doenças negligenciadas, elencadas como prioritárias pelo Ministério da Saúde ...<br />
-							<span class="more"><a href="../record.html">Ver mais...</a></span>
-						</p>
-						<div id="conteudo-loop-data" class="row-fluid margintop05">
-							<span class="conteudo-loop-data-tit">Sugerido em:</span>
-							22/05/2013
-						</div>
-						<div id="conteudo-loop-idiomas" class="row-fluid">
-							<span class="conteudo-loop-idiomas-tit">Idiomas disponíveis:</span>
-							Português, English, Español
-						</div>
-						<div id="conteudo-loop-tags" class="row-fluid margintop10">
-							<i class="ico-tags"></i>
-							Chagas, Dengue, Hanseníase, Leishmaniose, Malária
-						</div>
-					</article>
-					<article class="conteudo-loop">
-						<div class="row-fluid">
-							<h2 class="h2-loop-tit">Maecenas tincidunt quam purus, non luctus dolor convallis quis</h2>
-						</div>
-						<div class="conteudo-loop-rates">
-							<div class="star" data-score="1"></div>
-						</div>
-						<span class="row-fluid margintop05">
-							<a href="http://tpqb.eq.ufrj.br/download/farmacos-e-medicamentos-em-doencas-negligenciadas.pdf">http://tpqb.eq.ufrj.br/download/farmacos-e-medicamentos-em-doencas-negligenciadas.pdf</a>	
-						</span>
-						<p class="row-fluid">
-							Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae ...<br />
-							<span class="more"><a href="../record.html">Ver mais...</a></span>
-						</p>
-						<div id="conteudo-loop-data" class="row-fluid margintop05">
-							<span class="conteudo-loop-data-tit">Sugerido em:</span>
-							22/05/2013
-						</div>
-						<div id="conteudo-loop-idiomas" class="row-fluid">
-							<span class="conteudo-loop-idiomas-tit">Idiomas disponíveis:</span>
-							Português, English, Español
-						</div>
-						<div id="conteudo-loop-tags" class="row-fluid margintop10">
-							<i class="ico-tags"></i>
-							Donec est justo, Dapibus, Nulla dictum, Etiam suscipit
-						</div>
-					</article>
-					<article class="conteudo-loop">
-						<div class="row-fluid">
-							<h2 class="h2-loop-tit">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae</h2>
-						</div>
-						<div class="conteudo-loop-rates">
-							<div class="star" data-score="1"></div>
-						</div>
-						<span class="row-fluid margintop05">
-							<a href="http://tpqb.eq.ufrj.br/download/farmacos-e-medicamentos-em-doencas-negligenciadas.pdf">http://tpqb.eq.ufrj.br/download/farmacos-e-medicamentos-em-doencas-negligenciadas.pdf</a>	
-						</span>
-						<p class="row-fluid">
-							Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae ...<br />
-							<span class="more"><a href="../record.html">Ver mais...</a></span>
-						</p>
-						<div id="conteudo-loop-data" class="row-fluid margintop05">
-							<span class="conteudo-loop-data-tit">Sugerido em:</span>
-							22/05/2013
-						</div>
-						<div id="conteudo-loop-idiomas" class="row-fluid">
-							<span class="conteudo-loop-idiomas-tit">Idiomas disponíveis:</span>
-							Português, English, Español
-						</div>
-						<div id="conteudo-loop-tags" class="row-fluid margintop10">
-							<i class="ico-tags"></i>
-							Donec est justo, Dapibus, Nulla dictum, Etiam suscipit
-						</div>
-					</article>
+                    <?php foreach ( $resource_list as $resource) { ?>
+					    <article class="conteudo-loop">
+    						<div class="row-fluid">
+    							<h2 class="h2-loop-tit"><?php echo $resource->title; ?></h2>
+    						</div>
+    						<div class="conteudo-loop-rates">
+    							<div class="star" data-score="1"></div>
+    						</div>
+    						<span class="row-fluid margintop05">
+    							<a href="<?php echo $resource->link; ?>"><?php echo $resource->link; ?></a>	
+    						</span>
+    						<p class="row-fluid">
+    							<?php echo $resource->abstract; ?>
+    							<span class="more"><a href="resource/<?php echo $resource->django_id; ?>">Ver mais...</a></span>
+    						</p>
+    						<div id="conteudo-loop-data" class="row-fluid margintop05">
+    							<span class="conteudo-loop-data-tit">Sugerido em:</span>
+    							22/05/2013
+    						</div>
+    						<div id="conteudo-loop-idiomas" class="row-fluid">
+    							<span class="conteudo-loop-idiomas-tit">Idiomas disponíveis:</span>
+    							Português, English, Español
+    						</div>
+    						<div id="conteudo-loop-tags" class="row-fluid margintop10">
+    							<i class="ico-tags"></i>
+    							Chagas, Dengue, Hanseníase, Leishmaniose, Malária
+    						</div>
+    					</article>
+                    <?php } ?>
 				</div>
 			</section>
 			<aside id="sidebar">
