@@ -22,6 +22,9 @@ if(LIS_SYMBOLIC_LINK == true) {
 define('LIS_PLUGIN_DIR',   plugin_basename( LIS_PLUGIN_PATH ) );
 define('LIS_PLUGIN_URL',   plugin_dir_url(__FILE__) );
 
+
+require_once(LIS_PLUGIN_PATH . '/settings.php');
+
 function lis_theme_redirect() {
     global $wp;
     $pagename = $wp->query_vars["pagename"];
@@ -57,7 +60,7 @@ function lis_load_translation(){
 
 function lis_add_admin_menu() {
 
-    add_submenu_page( 'options-general.php', __('LIS Page Settings', 'lis'), __('LIS Page', 'lis'), 'manage_options', 'lis',
+    add_submenu_page( 'options-general.php', __('LIS Settings', 'lis'), __('LIS', 'lis'), 'manage_options', 'lis',
                       'lis_page_admin');
 
     //call register settings function
