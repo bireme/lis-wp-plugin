@@ -26,13 +26,9 @@ if ($response){
 <div id="content" class="row-fluid">
         <div class="ajusta2">
             <div class="row-fluid">
-                <section class="header-search">
-                    <form role="search" method="get" id="searchform" action="http://localhost/lis">
-                        <input value="" name="s" class="input-search" id="s" type="text" placeholder="Pesquisar...">
-                        <input id="searchsubmit" value="" type="submit" class="b-search">
-                    </form>
-                </section>
-
+                <a href="<?php echo home_url(); ?>">Página inicial</a> > <a href="<?php echo home_url('lis/'); ?>">Localizador de informação em saúde </a> > Recurso
+            </div>        
+            <div class="row-fluid">
                 <div class="pull-right">
                     <a href="enviar-colaboracion" class="header-colabore">Indique um site</a>
                 </div>
@@ -41,22 +37,6 @@ if ($response){
             <section id="conteudo">
                 <header class="row-fluid border-bottom">
                     <h1 class="h1-header">Detalhes</h1>
-                    <div class="pull-right">
-                        <a href="#" class="ico-feeds"></a>
-                        <form action="">
-                            <select name="txtRegistros" id="txtRegistros" class="select-input-home">
-                                <option value="10 Registros">10 registros</option>
-                                <option value="20 Registros">20 registros</option>
-                                <option value="50 Registros">50 registros</option>
-                            </select>
-
-                            <select name="txtOrder" id="txtOrder" class="select-input-home">
-                                <option value="">Ordenar por</option>
-                                <option value="Mais Recentes">Mais Recentes</option>
-                                <option value="Mais Lidas">Mais Lidas</option>
-                            </select>
-                        </form>
-                    </div>
                 </header>
                 <div class="row-fluid">
                     <article class="conteudo-loop">

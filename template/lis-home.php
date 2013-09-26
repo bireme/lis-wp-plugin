@@ -5,7 +5,10 @@ Template Name: LIS Home
 
 $lis_config = get_option('lis_config');
 $lis_service_url = $lis_config['service_url'];
-$lis_service_request = $lis_service_url . 'api/resource/search/?q=' .$query . '';
+
+$query = $_GET['s'];
+
+$lis_service_request = $lis_service_url . 'api/resource/search/?q=' . urlencode($query);
 
 $response = @file_get_contents($lis_service_request);
 if ($response){
@@ -17,38 +20,34 @@ if ($response){
 <?php get_header();?>
 	<div id="content" class="row-fluid">
 		<div class="ajusta2">
+            <div class="row-fluid">
+                <a href="<?php echo home_url(); ?>">Página inicial</a> > Localizador de informação em saúde 
+            </div>
 			<div class="row-fluid">
-				<section class="header-search">
-					<form role="search" method="get" id="searchform" action="<?php echo get_option('home'); ?>">
-						<input value="" name="s" class="input-search" id="s" type="text" placeholder="Pesquisar...">
-	          			<input id="searchsubmit" value="" type="submit" class="b-search">
-					</form>
-				</section>
+                    <div class="pull-left">
+                        <a href="#" class="ico-feeds"></a>
+                        <form action="">
+                            <select name="txtRegistros" id="txtRegistros" class="select-input-home">
+                                <option value="10 Registros">10 registros</option>`
+                                <option value="20 Registros">20 registros</option>
+                                <option value="50 Registros">50 registros</option>
+                            </select>
 
-				<div class="pull-right">
-					<a href="enviar-colaboracion" class="header-colabore">Indique um site</a>
-				</div>
+                            <select name="txtOrder" id="txtOrder" class="select-input-home">
+                                <option value="">Ordenar por</option>
+                                <option value="Mais Recentes">Mais Recentes</option>
+                                <option value="Mais Lidas">Mais Lidas</option>
+                            </select>
+                        </form>
+                    </div>
+				    <div class="pull-right">
+    					<a href="enviar-colaboracion" class="header-colabore">Indique um site</a>
+	   			    </div>   
 			</div>
 				
 			<section id="conteudo">
 				<header class="row-fluid border-bottom">
 					<h1 class="h1-header">Más Recientes</h1>
-					<div class="pull-right">
-						<a href="#" class="ico-feeds"></a>
-						<form action="">
-							<select name="txtRegistros" id="txtRegistros" class="select-input-home">
-								<option value="10 Registros">10 registros</option>`
-								<option value="20 Registros">20 registros</option>
-								<option value="50 Registros">50 registros</option>
-							</select>
-
-							<select name="txtOrder" id="txtOrder" class="select-input-home">
-								<option value="">Ordenar por</option>
-								<option value="Mais Recentes">Mais Recentes</option>
-								<option value="Mais Lidas">Mais Lidas</option>
-							</select>
-						</form>
-					</div>
 				</header>
 				<div class="row-fluid">
                     <?php foreach ( $resource_list as $resource) { ?>
@@ -63,7 +62,7 @@ if ($response){
     							<a href="<?php echo $resource->link; ?>"><?php echo $resource->link; ?></a>	
     						</span>
     						<p class="row-fluid">
-    							<?php echo $resource->abstract; ?>
+    							<?php echo $resource->abstract; ?><br/>
     							<span class="more"><a href="resource/<?php echo $resource->django_id; ?>">Ver mais...</a></span>
     						</p>
     						<div id="conteudo-loop-data" class="row-fluid margintop05">
