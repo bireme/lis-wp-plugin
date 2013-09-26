@@ -7,8 +7,12 @@ $lis_config = get_option('lis_config');
 $lis_service_url = $lis_config['service_url'];
 
 $query = $_GET['s'];
+$page = ( isset($_GET['page']) ? $_GET['page'] : 1 );
+$count = 20;
 
-$lis_service_request = $lis_service_url . 'api/resource/search/?q=' . urlencode($query);
+$start = ($page * $count) - $count;
+
+$lis_service_request = $lis_service_url . 'api/resource/search/?q=' . urlencode($query) . '&start=' . $start;
 
 $response = @file_get_contents($lis_service_request);
 if ($response){
@@ -80,6 +84,12 @@ if ($response){
     					</article>
                     <?php } ?>
 				</div>
+                <div class="row-fluid">
+                    <ul class="pager">
+                        <li  <?php if ($page == 1) echo ' class="disabled" ';?>><a href="<?php if ($page > 1) echo '?s=' . $query . '&page=' . strval($page-1); ?>" ><?php _e('Previous','lis'); ?></a></li>
+                        <li><a href="<?php echo '?s=' . $query . '&page=' . strval($page+1); ?>"><?php _e('Next','lis'); ?></a></li>
+                    </ul>
+                </div>
 			</section>
 			<aside id="sidebar">
 				<section class="row-fluid marginbottom25 widget_categories">

@@ -152,3 +152,31 @@ input[type=radio]{float:left; margin:3px 5px 0 0;}
 .footer{width:100%; float:left; background:rgb(211,211,211); border-top:1px solid rgb(75,95,120); margin-top:50px;}
 .footer-logo{width:61px; height:62px; float:left; background-position:0 -222px; margin:2px 15px 0 0;}
 .footer-logo-texto{float:left; line-height:18px; color:rgb(0,0,0);}
+
+/* PAGINATION */
+.pager {
+    margin: 20px 0;
+    text-align: center;
+    list-style: none;
+}
+
+.pager li {
+    display: inline;
+    line-height: 20px;
+    margin-right: 20px;
+}
+.pager li > a, .pager li > span {
+    display: inline-block;
+    padding: 5px 14px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+.pager .disabled > a, .pager .disabled > a:hover, .pager .disabled > a:focus, .pager .disabled > span {
+    color: #999999;
+    cursor: default;
+    background-color: #fff;
+    text-decoration: none;
+}
