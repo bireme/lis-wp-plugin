@@ -5,6 +5,7 @@ Template Name: LIS Home
 
 $lis_config = get_option('lis_config');
 $lis_service_url = $lis_config['service_url'];
+$lis_initial_filter = $lis_config['initial_filter'];
 
 $query = $_GET['s'];
 $page = ( isset($_GET['page']) ? $_GET['page'] : 1 );
@@ -12,7 +13,7 @@ $count = 20;
 
 $start = ($page * $count) - $count;
 
-$lis_service_request = $lis_service_url . 'api/resource/search/?q=' . urlencode($query) . '&start=' . $start;
+$lis_service_request = $lis_service_url . 'api/resource/search/?q=' . urlencode($query) . '&fq=' . $lis_initial_filter . '&start=' . $start;
 
 $response = @file_get_contents($lis_service_request);
 if ($response){
