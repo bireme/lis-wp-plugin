@@ -37,6 +37,9 @@ function lis_theme_redirect() {
         }else{
             $template = LIS_PLUGIN_PATH . '/template/lis-resource.php';
         }
+        // force status to 200 - OK
+        status_header(200);
+
         // redirect to page and finish execution
         include($template);
         die();
@@ -121,6 +124,9 @@ function lis_register_sidebars(){
     register_sidebar( $args );
 }
 
+function lis_page_title(){
+    return 'LIS | ';
+}    
 
 add_action( 'init', 'lis_load_translation' );
 add_action( 'admin_menu', 'lis_add_admin_menu');
@@ -129,6 +135,7 @@ add_action( 'wp_head', 'lis_google_analytics_code');
 add_action( 'template_redirect', 'lis_theme_redirect');
 add_action( 'widgets_init', 'lis_register_sidebars' );
 
+add_filter( 'wp_title', 'lis_page_title' );
 add_filter( 'get_search_form', 'lis_search_form' );
 
 ?>
