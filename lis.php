@@ -96,9 +96,25 @@ function lis_google_analytics_code(){
     } //endif
 }
 
+function lis_search_form( $form ) {
+    global $wp;
+    $pagename = $wp->query_vars["pagename"];
+
+
+    if ($pagename == 'lis' || $pagename == 'lis/resource') {
+        $form = preg_replace('/action="([^"]*)"(.*)/','action="' . home_url('lis/') . '"',$form);
+    }
+
+    return $form;
+}
+
+
 add_action( 'init', 'lis_load_translation' );
 add_action( 'admin_menu', 'lis_add_admin_menu');
 add_action( 'plugins_loaded','lis_init' );
 add_action( 'wp_head', 'lis_google_analytics_code');
 add_action( 'template_redirect', 'lis_theme_redirect');
+
+add_filter( 'get_search_form', 'lis_search_form' );
+
 ?>
