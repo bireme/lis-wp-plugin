@@ -108,12 +108,26 @@ function lis_search_form( $form ) {
     return $form;
 }
 
+function lis_register_sidebars(){
+    $args = array(
+        'name' => __('LIS sidebar', 'lis'),
+        'id'   => 'lis-home',
+        'description' => 'LIS Area',
+        'before_widget' => '<section id="%1$s" class="row-fluid widget %2$s">',
+        'after_widget'  => '</section>',        
+        'before_title'  => '<h2 class="widgettitle">',
+        'after_title'   => '</h2>',
+    );
+    register_sidebar( $args );
+}
+
 
 add_action( 'init', 'lis_load_translation' );
 add_action( 'admin_menu', 'lis_add_admin_menu');
 add_action( 'plugins_loaded','lis_init' );
 add_action( 'wp_head', 'lis_google_analytics_code');
 add_action( 'template_redirect', 'lis_theme_redirect');
+add_action( 'widgets_init', 'lis_register_sidebars' );
 
 add_filter( 'get_search_form', 'lis_search_form' );
 

@@ -14,8 +14,6 @@ $start = ($page * $count) - $count;
 
 $lis_service_request = $lis_service_url . 'api/resource/search/?q=' . urlencode($query) . '&start=' . $start;
 
-print $lis_service_request;
-
 $response = @file_get_contents($lis_service_request);
 if ($response){
     $response_json = json_decode($response);
@@ -107,7 +105,7 @@ if ($response){
                         <?php } ?>
 					</ul>
 				</section>
-				<?php get_sidebar();?>
+				<?php dynamic_sidebar('lis-home');?>
 			</aside>
 
 		</div>

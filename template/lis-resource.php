@@ -142,7 +142,6 @@ if ($response){
                             </footer>
                         </article>
                     </div>
-
             </section>
 
         </div>
