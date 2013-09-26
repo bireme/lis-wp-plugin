@@ -14,10 +14,13 @@ $start = ($page * $count) - $count;
 
 $lis_service_request = $lis_service_url . 'api/resource/search/?q=' . urlencode($query) . '&start=' . $start;
 
+print $lis_service_request;
+
 $response = @file_get_contents($lis_service_request);
 if ($response){
     $response_json = json_decode($response);
     $resource_list = $response_json->diaServerResponse[0]->response->docs;
+    $topic_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->tags;
 }
 ?>
 
@@ -97,16 +100,11 @@ if ($response){
 						<h1 class="h1-header"><?php _e('Subjects','lis'); ?></h1>
 					</header>
 					<ul>
-						<li class="cat-item"><a href="http://localhost/lis/category/educacao/">Educação</a><span class="cat-item-count">3</span>
-						</li>
-						<li class="cat-item"><a href="http://localhost/lis/category/gestao-em-saude/">Gestão em Saúde</a><span class="cat-item-count">1</span>
-						</li>
-						<li class="cat-item"><a href="http://localhost/lis/category/politica/">Política</a><span class="cat-item-count">3</span>
-						</li>
-						<li class="cat-item"><a href="http://localhost/lis/category/saude/">Saúde</a><span class="cat-item-count">2</span>
-						</li>
-						<li class="cat-item"><a href="http://localhost/lis/category/servicos-de-saude/">Serviços de Saúde</a><span class="cat-item-count">1</span>
-						</li>
+                        <?php foreach ( $topic_list as $topic) { ?>
+                            <li class="cat-item">
+                                <a href="#"><?php echo $topic[0] ?></a><span class="cat-item-count"><?php echo $topic[1] ?></span>
+                            </li>
+                        <?php } ?>
 					</ul>
 				</section>
 				<?php get_sidebar();?>

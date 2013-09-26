@@ -145,26 +145,6 @@ if ($response){
 
             </section>
 
-            <aside id="sidebar">
-                <section class="row-fluid marginbottom25 widget_categories">
-                    <header class="row-fluid border-bottom marginbottom15">
-                        <h1 class="h1-header"><?php _e('Subjects','lis'); ?></h1>
-                    </header>
-                    <ul>
-                        <li class="cat-item"><a href="http://localhost/lis/category/educacao/">Educação</a><span class="cat-item-count">3</span>
-                        </li>
-                        <li class="cat-item"><a href="http://localhost/lis/category/gestao-em-saude/">Gestão em Saúde</a><span class="cat-item-count">1</span>
-                        </li>
-                        <li class="cat-item"><a href="http://localhost/lis/category/politica/">Política</a><span class="cat-item-count">3</span>
-                        </li>
-                        <li class="cat-item"><a href="http://localhost/lis/category/saude/">Saúde</a><span class="cat-item-count">2</span>
-                        </li>
-                        <li class="cat-item"><a href="http://localhost/lis/category/servicos-de-saude/">Serviços de Saúde</a><span class="cat-item-count">1</span>
-                        </li>
-                    </ul>
-                </section>
-            </aside>
-
         </div>
     </div>
     <script>
