@@ -21,33 +21,33 @@ if ($response){
 	<div id="content" class="row-fluid">
 		<div class="ajusta2">
             <div class="row-fluid">
-                <a href="<?php echo home_url(); ?>">Página inicial</a> > Localizador de informação em saúde 
+                <a href="<?php echo home_url(); ?>"><?php _e('Home','lis'); ?></a> > <?php _e('Health Information Locator', 'lis') ?>
             </div>
 			<div class="row-fluid">
                     <div class="pull-left">
                         <a href="#" class="ico-feeds"></a>
                         <form action="">
                             <select name="txtRegistros" id="txtRegistros" class="select-input-home">
-                                <option value="10 Registros">10 registros</option>`
-                                <option value="20 Registros">20 registros</option>
-                                <option value="50 Registros">50 registros</option>
+                                <option value="10 Registros">10 <?php _e('resources', 'lis'); ?></option>`
+                                <option value="20 Registros">20 <?php _e('resources', 'lis'); ?></option>
+                                <option value="50 Registros">50 <?php _e('resources', 'lis'); ?></option>
                             </select>
 
                             <select name="txtOrder" id="txtOrder" class="select-input-home">
-                                <option value="">Ordenar por</option>
-                                <option value="Mais Recentes">Mais Recentes</option>
-                                <option value="Mais Lidas">Mais Lidas</option>
+                                <option value=""><?php _e('Order by', 'lis'); ?></option>
+                                <option value="Mais Recentes"><?php _e('More relevant','lis'); ?></option>
+                                <option value="Mais Lidas"><?php _e('Most recent','lis'); ?></option>
                             </select>
                         </form>
                     </div>
 				    <div class="pull-right">
-    					<a href="enviar-colaboracion" class="header-colabore">Indique um site</a>
+    					<a href="enviar-colaboracion" class="header-colabore"><?php _e('Suggest a site','lis'); ?></a>
 	   			    </div>   
 			</div>
 				
 			<section id="conteudo">
 				<header class="row-fluid border-bottom">
-					<h1 class="h1-header">Más Recientes</h1>
+					<h1 class="h1-header"><?php _e('Most recent','lis'); ?></h1>
 				</header>
 				<div class="row-fluid">
                     <?php foreach ( $resource_list as $resource) { ?>
@@ -63,14 +63,14 @@ if ($response){
     						</span>
     						<p class="row-fluid">
     							<?php echo $resource->abstract; ?><br/>
-    							<span class="more"><a href="resource/<?php echo $resource->django_id; ?>">Ver mais...</a></span>
+    							<span class="more"><a href="resource/<?php echo $resource->django_id; ?>"><?php _e('See more details','lis'); ?>...</a></span>
     						</p>
     						<div id="conteudo-loop-data" class="row-fluid margintop05">
-    							<span class="conteudo-loop-data-tit">Sugerido em:</span>
+    							<span class="conteudo-loop-data-tit"><?php _e('Resource added in','lis'); ?>:</span>
     							22/05/2013
     						</div>
     						<div id="conteudo-loop-idiomas" class="row-fluid">
-    							<span class="conteudo-loop-idiomas-tit">Idiomas disponíveis:</span>
+    							<span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','lis'); ?>:</span>
     							Português, English, Español
     						</div>
     						<div id="conteudo-loop-tags" class="row-fluid margintop10">
@@ -84,7 +84,7 @@ if ($response){
 			<aside id="sidebar">
 				<section class="row-fluid marginbottom25 widget_categories">
 					<header class="row-fluid border-bottom marginbottom15">
-						<h1 class="h1-header">Categorias</h1>
+						<h1 class="h1-header"><?php _e('Subjects','lis'); ?></h1>
 					</header>
 					<ul>
 						<li class="cat-item"><a href="http://localhost/lis/category/educacao/">Educação</a><span class="cat-item-count">3</span>

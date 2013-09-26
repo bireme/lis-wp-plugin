@@ -26,17 +26,19 @@ if ($response){
 <div id="content" class="row-fluid">
         <div class="ajusta2">
             <div class="row-fluid">
-                <a href="<?php echo home_url(); ?>">Página inicial</a> > <a href="<?php echo home_url('lis/'); ?>">Localizador de informação em saúde </a> > Recurso
+                <a href="<?php echo home_url(); ?>"><?php _e('Home','lis'); ?></a> > 
+                <a href="<?php echo home_url('lis/'); ?>"><?php _e('Health Information Locator', 'lis') ?> </a> > 
+                <?php _e('Resource','lis'); ?>
             </div>        
             <div class="row-fluid">
                 <div class="pull-right">
-                    <a href="enviar-colaboracion" class="header-colabore">Indique um site</a>
+                    <a href="enviar-colaboracion" class="header-colabore"><?php _e('Suggest a site','lis'); ?></a>
                 </div>
             </div>
 
             <section id="conteudo">
                 <header class="row-fluid border-bottom">
-                    <h1 class="h1-header">Detalhes</h1>
+                    <h1 class="h1-header"><?php _e('Details','lis'); ?></h1>
                 </header>
                 <div class="row-fluid">
                     <article class="conteudo-loop">
@@ -54,12 +56,12 @@ if ($response){
                             </p>
 
                             <div id="conteudo-loop-data" class="row-fluid margintop05">
-                                <span class="conteudo-loop-data-tit">Sugerido em:</span>
+                                <span class="conteudo-loop-data-tit"><?php _e('Resource added in','lis'); ?>:</span>
                                 29/07/2013 - 5h33                           
                             </div>
 
                             <div id="conteudo-loop-idiomas" class="row-fluid">
-                                <span class="conteudo-loop-idiomas-tit">Idiomas disponíveis:</span>
+                                <span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','lis'); ?>:</span>
                                 Português, English, Español
                             </div>
 
@@ -73,21 +75,21 @@ if ($response){
                                     <li class="conteudo-loop-icons-li">
                                         <a href="#">
                                             <i class="ico-compartilhar"></i>
-                                            Compartilhar
+                                            <?php _e('Share','lis'); ?>
                                         </a>
                                     </li>
 
                                     <li class="conteudo-loop-icons-li">
                                         <a href="#">
                                             <i class="ico-tag"></i>
-                                            Sugerir Tag
+                                            <?php _e('Suggest tag','lis'); ?>
                                         </a>
                                     </li>
 
                                     <li class="conteudo-loop-icons-li">
                                         <span class="reportar-erro-open">
                                             <i class="ico-reportar"></i>
-                                            Reportar Erro
+                                            <?php _e('Report error','lis'); ?>
                                         </span>
 
                                         <div class="reportar-erro"> 
@@ -133,7 +135,7 @@ if ($response){
                                     <li class="conteudo-loop-icons-li">
                                         <a href="#">
                                             <i class="ico-comentar"></i>
-                                            Comentar
+                                            <?php _e('Comments','lis'); ?>
                                         </a>
                                     </li>
                                 </ul>
@@ -146,7 +148,7 @@ if ($response){
             <aside id="sidebar">
                 <section class="row-fluid marginbottom25 widget_categories">
                     <header class="row-fluid border-bottom marginbottom15">
-                        <h1 class="h1-header">Categorias</h1>
+                        <h1 class="h1-header"><?php _e('Subjects','lis'); ?></h1>
                     </header>
                     <ul>
                         <li class="cat-item"><a href="http://localhost/lis/category/educacao/">Educação</a><span class="cat-item-count">3</span>
