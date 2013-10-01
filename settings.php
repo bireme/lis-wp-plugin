@@ -5,23 +5,25 @@ function lis_page_admin() {
 
     ?>
     <div class="wrap">
-            <div id="icon-options-general" class="icon32">
-                
-            </div>
+            <div id="icon-options-general" class="icon32"></div>
             <h2><?php _e('LIS Plugin Options', 'lis'); ?></h2>
             
             <form method="post" action="options.php">
 
                 <?php settings_fields('lis-settings-group'); ?>
 
-                <h3><?php _e('LIS service information', 'lis'); ?></h3>
-                
-                <p>
-                    <?php _e('Service URL:', 'lis'); ?> <input type="text" name="lis_config[service_url]" value="<?php echo $lis_config[service_url] ?>" class="regular-text code">
-                </p>
-                <p>
-                    <?php _e('Filter query:', 'lis'); ?> <input type="text" name="lis_config[initial_filter]" value="<?php echo $lis_config[initial_filter] ?>" class="regular-text code">
-                </p>
+                <table class="form-table">
+                    <tbody>
+                        <tr valign="top">
+                            <th scope="row"><?php _e('Service URL:', 'lis'); ?></th>
+                            <td><input type="text" name="lis_config[service_url]" value="<?php echo $lis_config[service_url] ?>" class="regular-text code"></td>
+                        </tr>
+                        <tr valign="top">
+                            <th scope="row"><?php _e('Filter query:', 'lis'); ?></th>
+                            <td><input type="text" name="lis_config[initial_filter]" value="<?php echo $lis_config[initial_filter] ?>" class="regular-text code"></td>
+                        </tr>                        
+                    </tbody>
+                </table>
 
                 <p class="submit">
                 <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
