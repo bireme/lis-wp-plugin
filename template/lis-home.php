@@ -19,7 +19,7 @@ $response = @file_get_contents($lis_service_request);
 if ($response){
     $response_json = json_decode($response);
     $resource_list = $response_json->diaServerResponse[0]->response->docs;
-    $topic_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->tags;
+    $topic_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->descriptors;
 }
 ?>
 
