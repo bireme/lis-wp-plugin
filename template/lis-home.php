@@ -30,7 +30,23 @@ if ($response){
                 <a href="<?php echo home_url(); ?>"><?php _e('Home','lis'); ?></a> > <?php _e('Health Information Locator', 'lis') ?>
             </div>
 			<div class="row-fluid">
-                    <div class="pull-left">
+                <section class="header-search">
+                    <?php if ($lis_config['show_form']) : ?>
+                        <form role="search" method="get" id="searchform" action="<?php echo home_url('lis/'); ?>">
+                            <input value="<?php echo $query ?>" name="s" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'lis'); ?>...">
+                            <input id="searchsubmit" value="<?php _e('Search', 'lis'); ?>" type="submit">
+                        </form>
+                    <?php endif; ?>
+                </section>
+                <div class="pull-right">
+                    <a href="enviar-colaboracion" class="header-colabore"><?php _e('Suggest a site','lis'); ?></a>
+                </div>   
+            </div>
+				
+			<section id="conteudo">
+				<header class="row-fluid border-bottom">
+					<h1 class="h1-header"><?php _e('Most recent','lis'); ?></h1>
+                    <div class="pull-right">
                         <a href="#" class="ico-feeds"></a>
                         <form action="">
                             <select name="txtRegistros" id="txtRegistros" class="select-input-home">
@@ -45,15 +61,7 @@ if ($response){
                                 <option value="Mais Lidas"><?php _e('Most recent','lis'); ?></option>
                             </select>
                         </form>
-                    </div>
-				    <div class="pull-right">
-    					<a href="enviar-colaboracion" class="header-colabore"><?php _e('Suggest a site','lis'); ?></a>
-	   			    </div>   
-			</div>
-				
-			<section id="conteudo">
-				<header class="row-fluid border-bottom">
-					<h1 class="h1-header"><?php _e('Most recent','lis'); ?></h1>
+                    </div>                    
 				</header>
 				<div class="row-fluid">
                     <?php foreach ( $resource_list as $resource) { ?>
@@ -64,25 +72,35 @@ if ($response){
     						<div class="conteudo-loop-rates">
     							<div class="star" data-score="1"></div>
     						</div>
-    						<span class="row-fluid margintop05">
-    							<a href="<?php echo $resource->link; ?>"><?php echo $resource->link; ?></a>	
-    						</span>
+    						<p class="row-fluid margintop05">
+                                <?php foreach($resource->link as $link): ?>
+    							    <a href="<?php echo $link; ?>"><?php echo $link; ?></a><br/>
+                                <?php endforeach; ?>
+    						</p>
     						<p class="row-fluid">
     							<?php echo $resource->abstract; ?><br/>
     							<span class="more"><a href="resource/<?php echo $resource->django_id; ?>"><?php _e('See more details','lis'); ?>...</a></span>
     						</p>
-    						<div id="conteudo-loop-data" class="row-fluid margintop05">
-    							<span class="conteudo-loop-data-tit"><?php _e('Resource added in','lis'); ?>:</span>
-    							22/05/2013
-    						</div>
+
+                            <?php if ($resource->created_date): ?>
+        						<div id="conteudo-loop-data" class="row-fluid margintop05">
+        							<span class="conteudo-loop-data-tit"><?php _e('Resource added in','lis'); ?>:</span>
+        							<?php echo $resource->created_date; ?>
+        						</div>
+                            <?php endif; ?>
+
     						<div id="conteudo-loop-idiomas" class="row-fluid">
     							<span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','lis'); ?>:</span>
     							Português, English, Español
     						</div>
-    						<div id="conteudo-loop-tags" class="row-fluid margintop10">
-    							<i class="ico-tags"></i>
-    							Chagas, Dengue, Hanseníase, Leishmaniose, Malária
-    						</div>
+
+                            <?php if ($resource->descriptors || $resource->keywords ) : ?>
+                                <div id="conteudo-loop-tags" class="row-fluid margintop10">
+                                    <i class="ico-tags"></i>                                  
+                                        <?php echo implode(", ", array_merge($resource->descriptors, $resource->keywords) ); ?>
+                                  </div>
+                            <?php endif; ?>
+
     					</article>
                     <?php } ?>
 				</div>

@@ -15,13 +15,20 @@ function lis_page_admin() {
                 <table class="form-table">
                     <tbody>
                         <tr valign="top">
-                            <th scope="row"><?php _e('Service URL:', 'lis'); ?></th>
+                            <th scope="row"><?php _e('Service URL', 'lis'); ?>:</th>
                             <td><input type="text" name="lis_config[service_url]" value="<?php echo $lis_config[service_url] ?>" class="regular-text code"></td>
                         </tr>
                         <tr valign="top">
-                            <th scope="row"><?php _e('Filter query:', 'lis'); ?></th>
+                            <th scope="row"><?php _e('Filter query', 'lis'); ?>:</th>
                             <td><input type="text" name="lis_config[initial_filter]" value="<?php echo $lis_config[initial_filter] ?>" class="regular-text code"></td>
-                        </tr>                        
+                        </tr>
+                        <tr valign="top">
+                            <th scope="row"><?php _e('Search form', 'lis'); ?>:</th>
+                            <td>
+                                <input type="checkbox" name="lis_config[show_form]" value="1" <?php if ( $lis_config['show_form'] == '1' ): echo ' checked="checked"'; endif;?> >
+                                <?php _e('Show search form', 'lis'); ?>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
 

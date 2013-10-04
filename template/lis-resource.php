@@ -29,119 +29,150 @@ if ($response){
                 <a href="<?php echo home_url(); ?>"><?php _e('Home','lis'); ?></a> > 
                 <a href="<?php echo home_url('lis/'); ?>"><?php _e('Health Information Locator', 'lis') ?> </a> > 
                 <?php _e('Resource','lis'); ?>
-            </div>        
+            </div>
             <div class="row-fluid">
+                <section class="header-search">
+                    <?php if ($lis_config['show_form']) : ?>
+                        <form role="search" method="get" id="searchform" action="<?php echo home_url('lis/'); ?>">
+                            <input value="<?php echo $query ?>" name="s" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'lis'); ?>...">
+                            <input id="searchsubmit" value="<?php _e('Search', 'lis'); ?>" type="submit">
+                        </form>
+                    <?php endif; ?>
+                </section>
                 <div class="pull-right">
                     <a href="enviar-colaboracion" class="header-colabore"><?php _e('Suggest a site','lis'); ?></a>
-                </div>
+                </div>   
             </div>
 
             <section id="conteudo">
                 <header class="row-fluid border-bottom">
-                    <h1 class="h1-header"><?php _e('Details','lis'); ?></h1>
+                    <h1 class="h1-header"><?php echo $resource->title; ?></h1>
                 </header>
                 <div class="row-fluid">
                     <article class="conteudo-loop">
-                        <div class="row-fluid">
-                            <h2 class="h2-loop-tit"><?php echo $resource->title; ?></h2>
+                        <div class="conteudo-loop-rates">
+                            <div class="star" data-score="1"></div>
                         </div>
-                            <div class="conteudo-loop-rates">
-                                <div class="star" data-score="1"></div>
-                            </div>
-                            <span class="row-fluid margintop05">
-                                <a href="<?php echo $resource->link; ?>"><?php echo $resource->link; ?></a>   
-                            </span>
-                            <p class="row-fluid">
-                                <?php echo $resource->abstract; ?>
-                            </p>
+                        <p class="row-fluid margintop05">
+                            <?php foreach($resource->link as $link): ?>
+                                <a href="<?php echo $link; ?>"><?php echo $link; ?></a><br/>
+                            <?php endforeach; ?>
+                        </p>
 
+                        <p class="row-fluid">
+                            <?php echo $resource->abstract; ?>
+                        </p>
+
+                        <span class="row-fluid margintop05">
+                            <span class="conteudo-loop-data-tit"><?php _e('Author(s)','lis'); ?>:</span>
+                            <?php echo implode(", ", $resource->author); ?> 
+                        </span>
+
+                        <span class="row-fluid margintop05">
+                            <span class="conteudo-loop-data-tit"><?php _e('Originator(s)','lis'); ?>:</span>
+                            <?php echo implode(", ", $resource->originator); ?> 
+                        </span>
+
+                        <?php if ($resource->created_date): ?>
                             <div id="conteudo-loop-data" class="row-fluid margintop05">
                                 <span class="conteudo-loop-data-tit"><?php _e('Resource added in','lis'); ?>:</span>
-                                29/07/2013 - 5h33                           
+                               <?php echo $resource->created_date; ?>                           
                             </div>
+                        <?php endif; ?>
 
-                            <div id="conteudo-loop-idiomas" class="row-fluid">
-                                <span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','lis'); ?>:</span>
-                                Português, English, Español
-                            </div>
+                        <?php if ($resource->objective): ?>
+                            <span class="row-fluid margintop05">
+                                <span class="conteudo-loop-data-tit"><?php _e('Objective','lis'); ?>:</span>
+                                <?php echo $resource->objective; ?> 
+                            </span>
+                        <?php endif; ?>
 
+
+                        <div id="conteudo-loop-idiomas" class="row-fluid">
+                            <span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','lis'); ?>:</span>
+                            Português, English, Español
+                        </div>
+
+                        <?php if ($resource->descriptors || $resource->keywords ) : ?>
                             <div id="conteudo-loop-tags" class="row-fluid margintop10">
-                                <i class="ico-tags"></i>
-                                <a href="#" rel="tag">Chagas</a>, <a href="#" rel="tag">Dengue</a>, <a href="#" rel="tag">Hanseníase</a>, <a href="#" rel="tag">Leishmaniose</a>, <a href="#" rel="tag">Malária</a><br />
-                            </div>
+                                <i class="ico-tags"></i>                                  
+                                    <?php echo implode(", ", array_merge($resource->descriptors, $resource->keywords) ); ?>
+                              </div>
+                        <?php endif; ?>
 
-                            <footer class="row-fluid margintop5">
-                                <ul class="conteudo-loop-icons">
-                                    <li class="conteudo-loop-icons-li">
-                                        <a href="#">
-                                            <i class="ico-compartilhar"></i>
-                                            <?php _e('Share','lis'); ?>
-                                        </a>
-                                    </li>
 
-                                    <li class="conteudo-loop-icons-li">
-                                        <a href="#">
-                                            <i class="ico-tag"></i>
-                                            <?php _e('Suggest tag','lis'); ?>
-                                        </a>
-                                    </li>
+                        <footer class="row-fluid margintop5">
+                            <ul class="conteudo-loop-icons">
+                                <li class="conteudo-loop-icons-li">
+                                    <a href="#">
+                                        <i class="ico-compartilhar"></i>
+                                        <?php _e('Share','lis'); ?>
+                                    </a>
+                                </li>
 
-                                    <li class="conteudo-loop-icons-li">
-                                        <span class="reportar-erro-open">
-                                            <i class="ico-reportar"></i>
-                                            <?php _e('Report error','lis'); ?>
-                                        </span>
+                                <li class="conteudo-loop-icons-li">
+                                    <a href="#">
+                                        <i class="ico-tag"></i>
+                                        <?php _e('Suggest tag','lis'); ?>
+                                    </a>
+                                </li>
 
-                                        <div class="reportar-erro"> 
-                                            <form action="">
-                                                <div class="reportar-erro-close">[X]</div>
-                                                <span class="reportar-erro-tit">Motivo</span>
+                                <li class="conteudo-loop-icons-li">
+                                    <span class="reportar-erro-open">
+                                        <i class="ico-reportar"></i>
+                                        <?php _e('Report error','lis'); ?>
+                                    </span>
 
-                                                <div class="row-fluid margintop05">
-                                                    <input type="radio" name="txtMotivo" id="txtMotivo1">
-                                                    <label class="reportar-erro-lbl" for="txtMotivo1">Motivo 01</label>
-                                                </div>
+                                    <div class="reportar-erro"> 
+                                        <form action="">
+                                            <div class="reportar-erro-close">[X]</div>
+                                            <span class="reportar-erro-tit">Motivo</span>
 
-                                                <div class="row-fluid">
-                                                    <input type="radio" name="txtMotivo" id="txtMotivo2">
-                                                    <label class="reportar-erro-lbl" for="txtMotivo2">Motivo 02</label>
-                                                </div>
+                                            <div class="row-fluid margintop05">
+                                                <input type="radio" name="txtMotivo" id="txtMotivo1">
+                                                <label class="reportar-erro-lbl" for="txtMotivo1">Motivo 01</label>
+                                            </div>
 
-                                                <div class="row-fluid">
-                                                    <input type="radio" name="txtMotivo" id="txtMotivo3">
-                                                    <label class="reportar-erro-lbl" for="txtMotivo3">Motivo 03</label>
-                                                </div>
+                                            <div class="row-fluid">
+                                                <input type="radio" name="txtMotivo" id="txtMotivo2">
+                                                <label class="reportar-erro-lbl" for="txtMotivo2">Motivo 02</label>
+                                            </div>
 
-                                                <div class="row-fluid margintop05">
-                                                    <textarea name="txtArea" id="txtArea" class="reportar-erro-area" cols="20" rows="2"></textarea>
-                                                </div>
+                                            <div class="row-fluid">
+                                                <input type="radio" name="txtMotivo" id="txtMotivo3">
+                                                <label class="reportar-erro-lbl" for="txtMotivo3">Motivo 03</label>
+                                            </div>
 
-                                                <div class="row-fluid border-bottom2"></div>
+                                            <div class="row-fluid margintop05">
+                                                <textarea name="txtArea" id="txtArea" class="reportar-erro-area" cols="20" rows="2"></textarea>
+                                            </div>
 
-                                                <span class="reportar-erro-tit margintop05">Nueva URL (Opcional)</span>
-                                                <div class="row-fluid margintop05">
-                                                    <textarea name="txtUrl" id="txtUrl" class="reportar-erro-area" cols="20" rows="2"></textarea>
-                                                </div>
+                                            <div class="row-fluid border-bottom2"></div>
 
-                                                <div class="row-fluid border-bottom2"></div>
+                                            <span class="reportar-erro-tit margintop05">Nueva URL (Opcional)</span>
+                                            <div class="row-fluid margintop05">
+                                                <textarea name="txtUrl" id="txtUrl" class="reportar-erro-area" cols="20" rows="2"></textarea>
+                                            </div>
 
-                                                <div class="row-fluid margintop05">
-                                                    <button class="pull-right reportar-erro-btn">Enviar</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </li>
+                                            <div class="row-fluid border-bottom2"></div>
 
-                                    <li class="conteudo-loop-icons-li">
-                                        <a href="#">
-                                            <i class="ico-comentar"></i>
-                                            <?php _e('Comments','lis'); ?>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </footer>
-                        </article>
-                    </div>
+                                            <div class="row-fluid margintop05">
+                                                <button class="pull-right reportar-erro-btn">Enviar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </li>
+
+                                <li class="conteudo-loop-icons-li">
+                                    <a href="#">
+                                        <i class="ico-comentar"></i>
+                                        <?php _e('Comments','lis'); ?>
+                                    </a>
+                                </li>
+                            </ul>
+                        </footer>
+                    </article>
+                </div>
             </section>
 
         </div>
