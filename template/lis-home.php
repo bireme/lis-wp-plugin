@@ -8,13 +8,27 @@ $lis_service_url = $lis_config['service_url'];
 $lis_initial_filter = $lis_config['initial_filter'];
 
 $query = $_GET['s'];
+$user_filter = stripslashes($_GET['filter']);
 $page = ( isset($_GET['page']) ? $_GET['page'] : 1 );
 $total = 0;
-$count = 20;
+$count = 10;
+$filter = '';
+
+if ($lis_initial_filter != ''){
+    if ($user_filter != ''){    
+        $filter = $lis_initial_filter . ' AND ' . $user_filter;
+    }else{
+        $filter = $lis_initial_filter;
+    }    
+}else{
+    $filter = $user_filter;
+}
 
 $start = ($page * $count) - $count;
 
-$lis_service_request = $lis_service_url . 'api/resource/search/?q=' . urlencode($query) . '&fq=' . $lis_initial_filter . '&start=' . $start;
+$lis_service_request = $lis_service_url . 'api/resource/search/?q=' . urlencode($query) . '&fq=' .urlencode($filter) . '&start=' . $start;
+
+print $lis_service_request;
 
 $response = @file_get_contents($lis_service_request);
 if ($response){
@@ -22,7 +36,7 @@ if ($response){
     //var_dump($response_json);
     $total = $response_json->diaServerResponse[0]->response->numFound;
     $resource_list = $response_json->diaServerResponse[0]->response->docs;
-    $topic_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->descriptors;
+    $descriptor_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->descriptor_filter;
 }
 ?>
 
@@ -31,7 +45,7 @@ if ($response){
 		<div class="ajusta2">
             <div class="row-fluid">
                 <a href="<?php echo home_url(); ?>"><?php _e('Home','lis'); ?></a> >
-                <?php if ($query == ''): ?>
+                <?php if ($query == '' && $filter == ''): ?>
                     <?php _e('Health Information Locator', 'lis') ?>
                 <?php else: ?>                    
                     <a href="<?php echo home_url('lis/'); ?>"><?php _e('Health Information Locator', 'lis') ?> </a> >
@@ -57,11 +71,12 @@ if ($response){
                     <h1 class="h1-header"><?php _e('No results found','lis'); ?></h1>
                 <?php else :?>
     				<header class="row-fluid border-bottom">
-                        <?php if ( isset($query) && strval($total) > 0) :?>
+                        <?php if ( ( $query != '' || $user_filter != '' ) && strval($total) > 0) :?>
     					   <h1 class="h1-header"><?php _e('Resources found','lis'); ?>: <?php echo $total; ?></h1>
                         <?php else: ?>
                            <h1 class="h1-header"><?php _e('Most recent','lis'); ?></h1>
-                        <?php endif; ?>    
+                        <?php endif; ?>
+                        <!-- Not implemented yet
                         <div class="pull-right">
                             <a href="#" class="ico-feeds"></a>
                             <form action="">
@@ -77,7 +92,8 @@ if ($response){
                                     <option value="Mais Lidas"><?php _e('Most recent','lis'); ?></option>
                                 </select>
                             </form>
-                        </div>                    
+                        </div>
+                        -->
     				</header>
     				<div class="row-fluid">
                         <?php foreach ( $resource_list as $resource) { ?>
@@ -112,8 +128,12 @@ if ($response){
 
                                 <?php if ($resource->descriptors || $resource->keywords ) : ?>
                                     <div id="conteudo-loop-tags" class="row-fluid margintop10">
-                                        <i class="ico-tags"></i>                                  
-                                            <?php echo implode(", ", array_merge($resource->descriptors, $resource->keywords) ); ?>
+                                        <i class="ico-tags"> </i>   
+                                            <?php 
+                                                $descriptors = (array)$resource->descriptors;
+                                                $keywords = (array)$resource->keywords;
+                                            ?>                               
+                                            <?php echo implode(", ", array_merge( $descriptors, $keywords) ); ?>
                                       </div>
                                 <?php endif; ?>
 
@@ -122,8 +142,16 @@ if ($response){
     				</div>
                     <div class="row-fluid">
                         <ul class="pager">
-                            <li  <?php if ($page == 1) echo ' class="disabled" ';?>><a href="<?php if ($page > 1) echo '?s=' . $query . '&page=' . strval($page-1); ?>" ><?php _e('Previous','lis'); ?></a></li>
-                            <li><a href="<?php echo '?s=' . $query . '&page=' . strval($page+1); ?>"><?php _e('Next','lis'); ?></a></li>
+                            <?php if ($page == 1): ?>
+                                <li class="disabled"><a href="#"><?php _e('Previous','lis'); ?></a></li>
+                            <?php else:  ?>
+                                <li><a href="?s=<?php echo $query . '&page=' . strval($page-1); ?>" ><?php _e('Previous','lis'); ?></a></li>    
+                            <?php endif; ?>
+                            <?php if ($total < ($start+$count)): ?>
+                                <li class="disabled"><a href="#"><?php _e('Next','lis'); ?></a></li>
+                            <?php else:  ?>
+                                <li><a href='<?php echo '?s=' . $query . '&page=' . strval($page+1); ?>&filter=<?php echo $user_filter; ?>'><?php _e('Next','lis'); ?></a></li>
+                            <?php endif; ?>
                         </ul>
                     </div>
                 <?php endif; ?>
@@ -135,9 +163,10 @@ if ($response){
     						<h1 class="h1-header"><?php _e('Subjects','lis'); ?></h1>
     					</header>
     					<ul>
-                            <?php foreach ( $topic_list as $topic) { ?>
+                            <?php foreach ( $descriptor_list as $descriptor) { ?>
                                 <li class="cat-item">
-                                    <a href="#"><?php echo $topic[0] ?></a><span class="cat-item-count"><?php echo $topic[1] ?></span>
+                                    <a href='?filter=descriptor:"<?php echo $descriptor[0]; ?>"'><?php echo $descriptor[0] ?></a>
+                                    <span class="cat-item-count"><?php echo $descriptor[1] ?></span>
                                 </li>
                             <?php } ?>
     					</ul>

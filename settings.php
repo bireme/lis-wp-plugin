@@ -29,6 +29,10 @@ function lis_page_admin() {
                                 <?php _e('Show search form', 'lis'); ?>
                             </td>
                         </tr>
+                        <tr valign="top">
+                            <th scope="row"><?php _e('Disqus shortname', 'lis'); ?>:</th>
+                            <td><input type="text" name="lis_config[disqus_shortname]" value="<?php echo $lis_config[disqus_shortname] ?>" class="regular-text code"></td>
+                        </tr>
                     </tbody>
                 </table>
 
