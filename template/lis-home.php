@@ -7,7 +7,7 @@ $lis_config = get_option('lis_config');
 $lis_service_url = $lis_config['service_url'];
 $lis_initial_filter = $lis_config['initial_filter'];
 
-$query = $_GET['s'];
+$query = ( isset($_GET['s']) ? $_GET['s'] : $_GET['q'] );
 $user_filter = stripslashes($_GET['filter']);
 $page = ( isset($_GET['page']) ? $_GET['page'] : 1 );
 $total = 0;
@@ -28,7 +28,7 @@ $start = ($page * $count) - $count;
 
 $lis_service_request = $lis_service_url . 'api/resource/search/?q=' . urlencode($query) . '&fq=' .urlencode($filter) . '&start=' . $start;
 
-print $lis_service_request;
+//print $lis_service_request;
 
 $response = @file_get_contents($lis_service_request);
 if ($response){
@@ -56,7 +56,7 @@ if ($response){
                 <section class="header-search">
                     <?php if ($lis_config['show_form']) : ?>
                         <form role="search" method="get" id="searchform" action="<?php echo home_url('lis/'); ?>">
-                            <input value="<?php echo $query ?>" name="s" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'lis'); ?>...">
+                            <input value="<?php echo $query ?>" name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'lis'); ?>...">
                             <input id="searchsubmit" value="<?php _e('Search', 'lis'); ?>" type="submit">
                         </form>
                     <?php endif; ?>
@@ -145,12 +145,12 @@ if ($response){
                             <?php if ($page == 1): ?>
                                 <li class="disabled"><a href="#"><?php _e('Previous','lis'); ?></a></li>
                             <?php else:  ?>
-                                <li><a href="?s=<?php echo $query . '&page=' . strval($page-1); ?>" ><?php _e('Previous','lis'); ?></a></li>    
+                                <li><a href="?q=<?php echo $query . '&page=' . strval($page-1); ?>" ><?php _e('Previous','lis'); ?></a></li>    
                             <?php endif; ?>
                             <?php if ($total < ($start+$count)): ?>
                                 <li class="disabled"><a href="#"><?php _e('Next','lis'); ?></a></li>
                             <?php else:  ?>
-                                <li><a href='<?php echo '?s=' . $query . '&page=' . strval($page+1); ?>&filter=<?php echo $user_filter; ?>'><?php _e('Next','lis'); ?></a></li>
+                                <li><a href='<?php echo '?q=' . $query . '&page=' . strval($page+1); ?>&filter=<?php echo $user_filter; ?>'><?php _e('Next','lis'); ?></a></li>
                             <?php endif; ?>
                         </ul>
                     </div>

@@ -35,7 +35,7 @@ if ($response){
                 <section class="header-search">
                     <?php if ($lis_config['show_form']) : ?>
                         <form role="search" method="get" id="searchform" action="<?php echo home_url('lis/'); ?>">
-                            <input value="<?php echo $query ?>" name="s" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'lis'); ?>...">
+                            <input value="<?php echo $query ?>" name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'lis'); ?>...">
                             <input id="searchsubmit" value="<?php _e('Search', 'lis'); ?>" type="submit">
                         </form>
                     <?php endif; ?>
