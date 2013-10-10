@@ -22,17 +22,18 @@ if(LIS_SYMBOLIC_LINK == true) {
 define('LIS_PLUGIN_DIR',   plugin_basename( LIS_PLUGIN_PATH ) );
 define('LIS_PLUGIN_URL',   plugin_dir_url(__FILE__) );
 
+$plugin_slug = 'lis';
 
 require_once(LIS_PLUGIN_PATH . '/settings.php');
 
 function lis_theme_redirect() {
-    global $wp;
+    global $wp, $plugin_slug;
     $pagename = $wp->query_vars["pagename"];
 
-    if ($pagename == 'lis' || $pagename == 'lis/resource') {
+    if ($pagename == $plugin_slug || $pagename == $plugin_slug . '/resource') {
         add_action( 'wp_enqueue_scripts', 'page_template_styles_scripts' );
 
-        if ($pagename == 'lis'){
+        if ($pagename == $plugin_slug){
             $template = LIS_PLUGIN_PATH . '/template/lis-home.php';
         }else{
             $template = LIS_PLUGIN_PATH . '/template/lis-resource.php';
@@ -53,6 +54,12 @@ function page_template_styles_scripts(){
 }
 
 function lis_init() {
+    global $plugin_slug;
+    $lis_config = get_option('lis_config');
+
+    if ($lis_config['plugin_slug'] != ''){
+        $plugin_slug = $lis_config['plugin_slug'];
+    }
 
 }
 
@@ -100,12 +107,12 @@ function lis_google_analytics_code(){
 }
 
 function lis_search_form( $form ) {
-    global $wp;
+    global $wp, $plugin_slug;
     $pagename = $wp->query_vars["pagename"];
 
 
-    if ($pagename == 'lis' || $pagename == 'lis/resource') {
-        $form = preg_replace('/action="([^"]*)"(.*)/','action="' . home_url('lis/') . '"',$form);
+    if ($pagename == $plugin_slug || $pagename == $plugin_slug .'/resource') {
+        $form = preg_replace('/action="([^"]*)"(.*)/','action="' . home_url($plugin_slug) . '"',$form);
     }
 
     return $form;

@@ -28,13 +28,13 @@ if ($response){
         <div class="ajusta2">
             <div class="row-fluid">
                 <a href="<?php echo home_url(); ?>"><?php _e('Home','lis'); ?></a> > 
-                <a href="<?php echo home_url('lis/'); ?>"><?php _e('Health Information Locator', 'lis') ?> </a> > 
+                <a href="<?php echo home_url($plugin_slug); ?>"><?php _e('Health Information Locator', 'lis') ?> </a> > 
                 <?php _e('Resource','lis'); ?>
             </div>
             <div class="row-fluid">
                 <section class="header-search">
                     <?php if ($lis_config['show_form']) : ?>
-                        <form role="search" method="get" id="searchform" action="<?php echo home_url('lis/'); ?>">
+                        <form role="search" method="get" id="searchform" action="<?php echo home_url($plugin_slug); ?>">
                             <input value="<?php echo $query ?>" name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'lis'); ?>...">
                             <input id="searchsubmit" value="<?php _e('Search', 'lis'); ?>" type="submit">
                         </form>

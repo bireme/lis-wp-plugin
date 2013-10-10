@@ -19,6 +19,11 @@ function lis_page_admin() {
                             <td><input type="text" name="lis_config[service_url]" value="<?php echo $lis_config[service_url] ?>" class="regular-text code"></td>
                         </tr>
                         <tr valign="top">
+                            <th scope="row"><?php _e('Plugin page', 'lis'); ?>:</th>
+                            <td><input type="text" name="lis_config[plugin_slug]" value="<?php echo ($lis_config[plugin_slug] != '' ? $lis_config[plugin_slug] : 'lis'); ?>" class="regular-text code"></td>
+                        </tr>
+
+                        <tr valign="top">
                             <th scope="row"><?php _e('Filter query', 'lis'); ?>:</th>
                             <td><input type="text" name="lis_config[initial_filter]" value="<?php echo $lis_config[initial_filter] ?>" class="regular-text code"></td>
                         </tr>
