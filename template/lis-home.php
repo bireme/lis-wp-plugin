@@ -110,7 +110,7 @@ if ($response){
         						</p>
         						<p class="row-fluid">
         							<?php echo $resource->abstract; ?><br/>
-        							<span class="more"><a href="resource/<?php echo $resource->django_id; ?>"><?php _e('See more details','lis'); ?>...</a></span>
+        							<span class="more"><a href="<?php echo home_url($plugin_slug); ?>/resource/<?php echo $resource->django_id; ?>"><?php _e('See more details','lis'); ?>...</a></span>
         						</p>
 
                                 <?php if ($resource->created_date): ?>
