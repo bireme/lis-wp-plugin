@@ -1,0 +1,194 @@
+# Copyright (C) 2013 LIS
+# This file is distributed under the same license as the LIS package.
+msgid ""
+msgstr ""
+"Project-Id-Version: LIS WP Plugin 0.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/lis\n"
+"POT-Creation-Date: 2013-10-10 20:35:49+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-10-10 17:44-0300\n"
+"Last-Translator: Vinicius Andrade <vinicius.andrade@bireme.org>\n"
+"Language-Team: BIREME <reddes@gmail.com>\n"
+"X-Poedit-Language: Portuguese\n"
+"X-Poedit-Country: BRAZIL\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: lis.php:73
+msgid "LIS Settings"
+msgstr "LIS Ajustes"
+
+#. #-#-#-#-#  lis.pot (LIS 0.1)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: lis.php:73
+msgid "LIS"
+msgstr "LIS"
+
+#: lis.php:123
+msgid "LIS sidebar"
+msgstr "LIS área de destaques"
+
+#: settings.php:9
+msgid "LIS Plugin Options"
+msgstr "LIS - Opções do plugin"
+
+#: settings.php:18
+msgid "Service URL"
+msgstr "URL do serviço"
+
+#: settings.php:22
+msgid "Plugin page"
+msgstr "Página do plugin"
+
+#: settings.php:27
+msgid "Filter query"
+msgstr "Filtro de pesquisa"
+
+#: settings.php:31
+msgid "Search form"
+msgstr "Formuário de pesquisa"
+
+#: settings.php:34
+msgid "Show search form"
+msgstr "Mostrar formulário de pesquisa"
+
+#: settings.php:38
+msgid "Disqus shortname"
+msgstr "Disqus identificador"
+
+#: settings.php:42
+msgid "AddThis profile ID"
+msgstr "AddThis identificador"
+
+#: settings.php:49
+msgid "Save Changes"
+msgstr "Salvar alterações"
+
+#: template/lis-home.php:46
+#: template/lis-resource.php:31
+msgid "Home"
+msgstr "Ínicio"
+
+#: template/lis-home.php:48
+#: template/lis-home.php:50
+#: template/lis-resource.php:32
+msgid "Health Information Locator"
+msgstr "Localizador de Informação em Saúde"
+
+#: template/lis-home.php:51
+msgid "Search result"
+msgstr "Resultado de pesquisa"
+
+#: template/lis-home.php:58
+#: template/lis-home.php:59
+#: template/lis-resource.php:39
+#: template/lis-resource.php:40
+msgid "Search"
+msgstr "Pesquisa"
+
+#: template/lis-home.php:64
+#: template/lis-resource.php:45
+msgid "Suggest a site"
+msgstr "Sugira um site"
+
+#: template/lis-home.php:70
+msgid "No results found"
+msgstr "Nenhum resultado encontrado"
+
+#: template/lis-home.php:74
+msgid "Resources found"
+msgstr "Recursos encontrados"
+
+#: template/lis-home.php:76
+#: template/lis-home.php:91
+msgid "Most recent"
+msgstr "Mais recentes"
+
+#: template/lis-home.php:83
+#: template/lis-home.php:84
+#: template/lis-home.php:85
+msgid "resources"
+msgstr "recursos"
+
+#: template/lis-home.php:89
+msgid "Order by"
+msgstr "Ordenar por"
+
+#: template/lis-home.php:90
+msgid "More relevant"
+msgstr "Mais relevantes"
+
+#: template/lis-home.php:113
+msgid "See more details"
+msgstr "Ver mais detalhes"
+
+#: template/lis-home.php:118
+#: template/lis-resource.php:93
+msgid "Resource added in"
+msgstr "Recurso adicionado em"
+
+#: template/lis-home.php:124
+#: template/lis-resource.php:107
+msgid "Available languages"
+msgstr "Idiomas disponíveis"
+
+#: template/lis-home.php:145
+#: template/lis-home.php:147
+msgid "Previous"
+msgstr "Anteriores"
+
+#: template/lis-home.php:150
+#: template/lis-home.php:152
+msgid "Next"
+msgstr "Próximo"
+
+#: template/lis-home.php:162
+msgid "Subjects"
+msgstr "Assuntos"
+
+#: template/lis-resource.php:33
+msgid "Resource"
+msgstr "Recurso"
+
+#: template/lis-resource.php:81
+msgid "Author(s)"
+msgstr "Autor(es)"
+
+#: template/lis-resource.php:87
+msgid "Originator(s)"
+msgstr "Originador(es)"
+
+#: template/lis-resource.php:100
+msgid "Objective"
+msgstr "Objetivo"
+
+#: template/lis-resource.php:127
+#: template/lis-resource.php:133
+msgid "Share"
+msgstr "Compartilhar"
+
+#: template/lis-resource.php:141
+msgid "Suggest tag"
+msgstr "Sugerir uma palavra-chave"
+
+#: template/lis-resource.php:148
+msgid "Report error"
+msgstr "Informar um erro"
+
+#. Plugin URI of the plugin/theme
+msgid "http://reddes.bvsalud.org/projects/lis/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Create a Health Information Locator Site"
+msgstr "Cria uma página do LIS - Localizador de Informações em Saúde"
+
+#. Author of the plugin/theme
+msgid "BIREME/OPAS/OMS"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://reddes.bvsalud.org/"
+msgstr ""
+
