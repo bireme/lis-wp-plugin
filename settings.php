@@ -38,6 +38,10 @@ function lis_page_admin() {
                             <th scope="row"><?php _e('Disqus shortname', 'lis'); ?>:</th>
                             <td><input type="text" name="lis_config[disqus_shortname]" value="<?php echo $lis_config[disqus_shortname] ?>" class="regular-text code"></td>
                         </tr>
+                        <tr valign="top">
+                            <th scope="row"><?php _e('AddThis profile ID', 'lis'); ?>:</th>
+                            <td><input type="text" name="lis_config[addthis_profile_id]" value="<?php echo $lis_config[addthis_profile_id] ?>" class="regular-text code"></td>
+                        </tr>
                     </tbody>
                 </table>
 

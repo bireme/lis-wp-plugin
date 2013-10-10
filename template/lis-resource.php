@@ -10,7 +10,8 @@ $request_parts = explode('/', $request_uri);
 $resource_id = end($request_parts);
 
 $lis_service_url = $lis_config['service_url'];
-$lis_disqus_id = $lis_config['disqus_shortname'];
+$lis_disqus_id  = $lis_config['disqus_shortname'];
+$lis_addthis_id = $lis_config['addthis_profile_id'];
 $lis_service_request = $lis_service_url . 'api/resource/search/?q=id:"main.resource.' .$resource_id . '"';
 
 $response = @file_get_contents($lis_service_request);
@@ -48,6 +49,17 @@ if ($response){
             <section id="conteudo">
                 <header class="row-fluid border-bottom">
                     <h1 class="h1-header"><?php echo $resource->title; ?></h1>
+                    <!-- AddThis Button BEGIN -->
+                    <div class="addthis_toolbox addthis_default_style addthis_32x32_style row-fluid">
+                    <a class="addthis_button_preferred_1"></a>
+                    <a class="addthis_button_preferred_2"></a>
+                    <a class="addthis_button_preferred_3"></a>
+                    <a class="addthis_button_preferred_4"></a>
+                    <a class="addthis_button_compact"></a>                    
+                    </div>
+                    <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=<?php echo $lis_addthis_id; ?>"></script>
+                    <!-- AddThis Button END -->
                 </header>
                 <div class="row-fluid">
                     <article class="conteudo-loop">
@@ -110,10 +122,17 @@ if ($response){
                         <footer class="row-fluid margintop05">
                             <ul class="conteudo-loop-icons">
                                 <li class="conteudo-loop-icons-li">
-                                    <a href="#">
-                                        <i class="ico-compartilhar"></i>
+                                    <i class="ico-compartilhar"></i>
+                                    <!-- AddThis Button BEGIN -->
+                                    <a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=300&amp;pubid=<?php echo $lis_addthis_id; ?>"><?php _e('Share','lis'); ?></a>
+                                    <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+                                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=<?php echo $lis_addthis_id; ?>"></script>
+                                    <!-- AddThis Button END -->
+                                    <!--
+                                    <a href="#">                                       
                                         <?php _e('Share','lis'); ?>
                                     </a>
+                                    -->
                                 </li>
 
                                 <li class="conteudo-loop-icons-li">
