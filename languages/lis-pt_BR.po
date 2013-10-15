@@ -4,28 +4,29 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LIS WP Plugin 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/lis\n"
-"POT-Creation-Date: 2013-10-10 20:35:49+00:00\n"
+"POT-Creation-Date: 2013-10-15 19:08:42+00:00\n"
+"PO-Revision-Date: 2013-10-15 16:09-0300\n"
+"Last-Translator: Vinicius Andrade <vinicius.andrade@bireme.org>\n"
+"Language-Team: BIREME <reddes@gmail.com>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2013-10-10 17:44-0300\n"
-"Last-Translator: Vinicius Andrade <vinicius.andrade@bireme.org>\n"
-"Language-Team: BIREME <reddes@gmail.com>\n"
 "X-Poedit-Language: Portuguese\n"
 "X-Poedit-Country: BRAZIL\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: lis.php:73
+#: lis.php:75
 msgid "LIS Settings"
 msgstr "LIS Ajustes"
 
 #. #-#-#-#-#  lis.pot (LIS 0.1)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: lis.php:73
+#: lis.php:75
 msgid "LIS"
 msgstr "LIS"
 
-#: lis.php:123
+#: lis.php:125
 msgid "LIS sidebar"
 msgstr "LIS área de destaques"
 
@@ -67,12 +68,14 @@ msgstr "Salvar alterações"
 
 #: template/lis-home.php:46
 #: template/lis-resource.php:31
+#: template/lis-suggest.php:32
 msgid "Home"
 msgstr "Ínicio"
 
 #: template/lis-home.php:48
 #: template/lis-home.php:50
 #: template/lis-resource.php:32
+#: template/lis-suggest.php:33
 msgid "Health Information Locator"
 msgstr "Localizador de Informação em Saúde"
 
@@ -89,6 +92,8 @@ msgstr "Pesquisa"
 
 #: template/lis-home.php:64
 #: template/lis-resource.php:45
+#: template/lis-suggest.php:34
+#: template/lis-suggest.php:39
 msgid "Suggest a site"
 msgstr "Sugira um site"
 
@@ -175,6 +180,26 @@ msgstr "Sugerir uma palavra-chave"
 #: template/lis-resource.php:148
 msgid "Report error"
 msgstr "Informar um erro"
+
+#: template/lis-suggest.php:50
+msgid "Title"
+msgstr "Título"
+
+#: template/lis-suggest.php:53
+msgid "Link"
+msgstr "Link"
+
+#: template/lis-suggest.php:57
+msgid "Comments"
+msgstr "Comentários"
+
+#: template/lis-suggest.php:61
+msgid "Keywords"
+msgstr "Palavras-chave"
+
+#: template/lis-suggest.php:84
+msgid "Send"
+msgstr "Enviar"
 
 #. Plugin URI of the plugin/theme
 msgid "http://reddes.bvsalud.org/projects/lis/"

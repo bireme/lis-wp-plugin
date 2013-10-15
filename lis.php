@@ -30,11 +30,13 @@ function lis_theme_redirect() {
     global $wp, $plugin_slug;
     $pagename = $wp->query_vars["pagename"];
 
-    if ($pagename == $plugin_slug || $pagename == $plugin_slug . '/resource') {
+    if ($pagename == $plugin_slug || $pagename == $plugin_slug . '/resource' || $pagename == $plugin_slug . '/suggest') {
         add_action( 'wp_enqueue_scripts', 'page_template_styles_scripts' );
 
         if ($pagename == $plugin_slug){
             $template = LIS_PLUGIN_PATH . '/template/lis-home.php';
+        }elseif ($pagename == $plugin_slug . '/suggest'){
+            $template = LIS_PLUGIN_PATH . '/template/lis-suggest.php';
         }else{
             $template = LIS_PLUGIN_PATH . '/template/lis-resource.php';
         }
