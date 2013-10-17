@@ -5,8 +5,7 @@ Template Name: LIS Detail
 
 $lis_config = get_option('lis_config');
 
-$current_language = strtolower(get_bloginfo('language'));
-$site_lang = substr($current_language, 0,2);
+$site_language = strtolower(get_bloginfo('language'));
 
 $request_uri = $_SERVER["REQUEST_URI"];
 $request_parts = explode('/', $request_uri);
@@ -65,7 +64,7 @@ if ($response){
                             <script type="text/javascript">
                                 var RecaptchaOptions = {
                                     theme : 'clean',
-                                    lang : '<?php echo $site_lang ?>'
+                                    lang : '<?php echo substr($site_language, 0,2); ?>'
                                 };
                             </script>
                             <script type="text/javascript"

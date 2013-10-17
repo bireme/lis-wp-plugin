@@ -3,9 +3,13 @@
 Template Name: LIS Home
 */
 
+require_once(LIS_PLUGIN_PATH . '/lib/Paginator.php');
+
 $lis_config = get_option('lis_config');
 $lis_service_url = $lis_config['service_url'];
 $lis_initial_filter = $lis_config['initial_filter'];
+
+$site_language = strtolower(get_bloginfo('language'));
 
 $query = ( isset($_GET['s']) ? $_GET['s'] : $_GET['q'] );
 $user_filter = stripslashes($_GET['filter']);
@@ -34,9 +38,16 @@ if ($response){
     $response_json = json_decode($response);
     //var_dump($response_json);
     $total = $response_json->diaServerResponse[0]->response->numFound;
+    $start = $response_json->diaServerResponse[0]->response->start;
     $resource_list = $response_json->diaServerResponse[0]->response->docs;
     $descriptor_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->descriptor_filter;
 }
+
+$page_url_params = home_url($plugin_slug) . '?q=' . $query . '&filter=' . $user_filter;
+
+$pages = new Paginator($total, $start);
+$pages->paginate($page_url_params);
+
 ?>
 
 <?php get_header();?>
@@ -93,6 +104,7 @@ if ($response){
                             </form>
                         </div>
                         -->
+                        <?php echo $pages->display_pages(); ?>
     				</header>
     				<div class="row-fluid">
                         <?php foreach ( $resource_list as $resource) { ?>
@@ -109,8 +121,8 @@ if ($response){
                                     <?php endforeach; ?>
         						</p>
         						<p class="row-fluid">
-        							<?php echo $resource->abstract; ?><br/>
-        							<span class="more"><a href="<?php echo home_url($plugin_slug); ?>/resource/<?php echo $resource->django_id; ?>"><?php _e('See more details','lis'); ?>...</a></span>
+        							<?php echo ( strlen($resource->abstract) > 200 ? substr($resource->abstract,0,200) . '...' : $resource->abstract); ?><br/>
+        							<span class="more"><a href="<?php echo home_url($plugin_slug); ?>/resource/<?php echo $resource->django_id; ?>"><?php _e('See more details','lis'); ?></a></span>
         						</p>
 
                                 <?php if ($resource->created_date): ?>
@@ -120,10 +132,12 @@ if ($response){
             						</div>
                                 <?php endif; ?>
 
-        						<div id="conteudo-loop-idiomas" class="row-fluid">
-        							<span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','lis'); ?>:</span>
-        							Português, English, Español
-        						</div>
+                                <?php if ($resource->source_language_display): ?>
+            						<div id="conteudo-loop-idiomas" class="row-fluid">
+            							<span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','lis'); ?>:</span>
+            							<?php print_lang_value($resource->source_language_display, $site_language); ?>
+            						</div>
+                                <?php endif; ?>
 
                                 <?php if ($resource->descriptors || $resource->keywords ) : ?>
                                     <div id="conteudo-loop-tags" class="row-fluid margintop10">
@@ -140,18 +154,7 @@ if ($response){
                         <?php } ?>
     				</div>
                     <div class="row-fluid">
-                        <ul class="pager">
-                            <?php if ($page == 1): ?>
-                                <li class="disabled"><a href="#"><?php _e('Previous','lis'); ?></a></li>
-                            <?php else:  ?>
-                                <li><a href="<?php echo home_url($plugin_slug) . '?q=' . $query . '&page=' . strval($page-1); ?>" ><?php _e('Previous','lis'); ?></a></li>    
-                            <?php endif; ?>
-                            <?php if ($total <= ($start+$count)): ?>
-                                <li class="disabled"><a href="#"><?php _e('Next','lis'); ?></a></li>
-                            <?php else:  ?>
-                                <li><a href='<?php echo home_url($plugin_slug) . '?q=' . $query . '&page=' . strval($page+1); ?>&filter=<?php echo $user_filter; ?>'><?php _e('Next','lis'); ?></a></li>
-                            <?php endif; ?>
-                        </ul>
+                        <?php echo $pages->display_pages(); ?>
                     </div>
                 <?php endif; ?>
 			</section>
