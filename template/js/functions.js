@@ -1,13 +1,14 @@
-$(window).load(function(){
+var $j = jQuery;
+
+$j(window).load(function(){
 	regExp();
 	reportarErro();
 	sugerirTag();
-	compartilhar();
 });
 
 function regExp(){
-	if($(".cat-item").length){
-		$("#categories-3 .cat-item").each(function(e){
+	if($j(".cat-item").length){
+		$j("#categories-3 .cat-item").each(function(e){
 			i = e+1;
 			element = $(this);
 
@@ -24,40 +25,60 @@ function regExp(){
 }
 
 function reportarErro(){
-	$(".reportar-erro-open").on("click", function(){
-		$(".reportar-erro").hide();
-		$(".compartilhar").hide();
-		$(".sugerir-tag").hide();
-		$(this).siblings(".reportar-erro").show();
+	$j(".reportar-erro-open").on("click", function(){
+		$j(".reportar-erro").hide();
+		$j(".compartilhar").hide();
+		$j(".sugerir-tag").hide();
+		$j(this).siblings(".reportar-erro").show();
 	});
 
-	$(".reportar-erro-close").on("click", function(){
-		$(this).parent().parent().hide();
-	});
-}
-
-function compartilhar(){
-	$(".compartilhar-open").on("click", function(){
-		$(".compartilhar").hide();
-		$(".sugerir-tag").hide();
-		$(".reportar-erro").hide();
-		$(this).siblings(".compartilhar").show();
-	});
-
-	$(".compartilhar-close").on("click", function(){
-		$(this).parent().hide();
+	$j(".reportar-erro-close").on("click", function(){
+		$j(this).parent().parent().hide();
 	});
 }
 
 function sugerirTag(){
-	$(".sugerir-tag-open").on("click", function(){
-		$(".reportar-erro").hide();
-		$(".compartilhar").hide();
-		$(".sugerir-tag").hide();
-		$(this).siblings(".sugerir-tag").show();
+	$j(".sugerir-tag-open").on("click", function(){
+		$j(".reportar-erro").hide();
+		$j(".compartilhar").hide();
+		$j(".sugerir-tag").hide();
+        $j(".sugerir-tag-result").hide();        
+		$j(this).siblings(".sugerir-tag").show();
+        $j(".sugerir-form").show();
 	});
 
-	$(".sugerir-tag-close").on("click", function(){
-		$(this).parent().parent().hide();
+	$j(".sugerir-tag-close").on("click", function(){
+		$j(".sugerir-tag").hide();
 	});
+
+
+    // Attach a submit handler to the form
+    $j( "#tagForm" ).submit(function( event ) {
+     
+      // Stop form from submitting normally
+      event.preventDefault();
+     
+      // Get some values from elements on the page:
+      var $form = $j( this ),
+        resource_id = $form.find( "input[name='resource_id']" ).val(),
+        tags = $form.find( "input[name='txtTag']" ).val(),
+        url = $form.attr( "action" );
+     
+      // Send the data using post
+      var posting = $j.post( url, { resource_id: resource_id, tags: tags } );
+     
+      // Put the results in a div
+      posting.done(function( data ) {
+        $j(".sugerir-form").hide();
+
+        if (data == 'True'){       
+            $j(".sugerir-tag-result").find('#result-problem').hide();
+        }else{
+            $j(".sugerir-tag-result").find('#result-ok').hide();
+        }
+        $j(".sugerir-tag-result").show();
+        
+      });
+    });
 }
+

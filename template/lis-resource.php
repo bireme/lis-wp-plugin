@@ -80,7 +80,7 @@ if ($response){
                         <?php if ($resource->created_date): ?>
                             <div id="conteudo-loop-data" class="row-fluid margintop05">
                                 <span class="conteudo-loop-data-tit"><?php _e('Resource added in','lis'); ?>:</span>
-                               <?php echo $resource->created_date; ?>                           
+                               <?php echo print_formated_date($resource->created_date); ?>                           
                             </div>
                         <?php endif; ?>
 
@@ -91,11 +91,12 @@ if ($response){
                             </span>
                         <?php endif; ?>
 
-
-                        <div id="conteudo-loop-idiomas" class="row-fluid">
-                            <span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','lis'); ?>:</span>
-                            Português, English, Español
-                        </div>
+                        <?php if ($resource->source_language_display): ?>
+                            <div id="conteudo-loop-idiomas" class="row-fluid">
+                               <span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','lis'); ?>:</span>
+                               <?php print_lang_value($resource->source_language_display, $site_language); ?>
+                            </div>
+                        <?php endif; ?>                            
 
                         <?php if ($resource->descriptors || $resource->keywords ) : ?>
                             <div id="conteudo-loop-tags" class="row-fluid margintop10">
@@ -125,10 +126,37 @@ if ($response){
                                 </li>
 
                                 <li class="conteudo-loop-icons-li">
-                                    <a href="#">
+                                    <span class="sugerir-tag-open">
                                         <i class="ico-tag"></i>
                                         <?php _e('Suggest tag','lis'); ?>
-                                    </a>
+                                    </span>
+                                    <div class="sugerir-tag">
+                                        <div class="sugerir-form">
+                                            <form action="<?php echo $lis_service_url ?>suggest-tag" id="tagForm">
+                                                <input type="hidden" name="resource_id" value="<?php echo $resource_id; ?>"/>
+                                                <div class="sugerir-tag-close">[X]</div>
+                                                <span class="sugerir-tag-tit"><?php _e('Suggestions','lis'); ?></span>
+                                                    
+                                                <div class="row-fluid margintop05 marginbottom10">
+                                                    <input type="text" name="txtTag" class="sugerir-tag-input" id="txtTag">
+                                                </div>                                                
+
+                                                <div class="row-fluid margintop05">
+                                                    <span class="sugerir-tag-separator"><?php _e('Separated by comma','lis'); ?></span>
+                                                    <button class="pull-right colaboracion-enviar"><?php _e('Send','lis'); ?></button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="sugerir-tag-result">
+                                            <div class="sugerir-tag-close">[X]</div>
+                                            <div id="result-ok">
+                                                <?php _e('Thank you for your suggestion.','lis'); ?>
+                                            </div>
+                                            <div id="result-problem">
+                                                <?php _e('Communication problem. Please try again later.','lis'); ?>
+                                            </div>                                            
+                                        </div>
+                                    </div>
                                 </li>
 
                                 <li class="conteudo-loop-icons-li">
@@ -202,14 +230,5 @@ if ($response){
 
         </div>
     </div>
-    <script>
-
-        $('.star').raty({
-            path: '/lis/wp-content/themes/lis/Js/raty-2.5.2/lib/img/',
-            score: function() {
-            return $(this).attr('data-score');
-          }
-        });
-    </script>
 
 <?php get_footer();?>

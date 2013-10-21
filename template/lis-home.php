@@ -128,7 +128,7 @@ $pages->paginate($page_url_params);
                                 <?php if ($resource->created_date): ?>
             						<div id="conteudo-loop-data" class="row-fluid margintop05">
             							<span class="conteudo-loop-data-tit"><?php _e('Resource added in','lis'); ?>:</span>
-            							<?php echo $resource->created_date; ?>
+            							<?php echo print_formated_date($resource->created_date); ?>
             						</div>
                                 <?php endif; ?>
 
@@ -179,13 +179,4 @@ $pages->paginate($page_url_params);
 
 		</div>
 	</div>
-	<script>
-							
-		$('.star').raty({
-			path: '/lis/wp-content/themes/lis/Js/raty-2.5.2/lib/img/',
-			score: function() {
-			return $(this).attr('data-score');
-		  }
-		});
-	</script>
 <?php get_footer();?>

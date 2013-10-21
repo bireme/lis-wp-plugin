@@ -105,15 +105,20 @@ a:hover{color:rgb(0,153,255); text-decoration:underline;}
 .reportar-erro-btn{cursor:pointer; width:74px; height:28px; float:left; background-position:-113px -118px; border:none; text-indent:-999px;}
 .reportar-erro-close{position:absolute; z-index:3; right:10px; top:10px; cursor:pointer;}
 
-.sugerir-tag{display:none; width:185px; padding:10px; background:rgb(255,255,255); border:1px solid rgb(167,167,167); border-radius:7px; position:absolute; left:15px; top:28px; z-index:10;}
+.sugerir-tag{display:none; width:240px; padding:10px; background:rgb(255,255,255); border:1px solid rgb(167,167,167); border-radius:7px; position:absolute; left:15px; top:28px; z-index:10;}
 .sugerir-tag-tit{width:100%; float:left; font-weight:bold; font-size:13px;}
 .sugerir-tag-open{cursor:pointer; color:rgb(0,0,0); text-transform:uppercase; font-size:11px; font-weight:600;}
 .sugerir-tag-open:hover{text-decoration:underline;}
-.sugerir-tag-input{width:177px; padding:3px; border-radius:5px; border:1px solid rgb(132,132,132);}
+.sugerir-tag-input{width:220px; padding:3px; border-radius:5px; border:1px solid rgb(132,132,132);}
 .sugerir-tag-close{position:absolute; z-index:3; right:10px; top:10px; cursor:pointer;}
 .sugerir-tag-keywords{float:right; background:rgb(225,225,225); padding:2px 3px; border-radius:10px;}
 .sugerir-tag-keywords-remove{text-align:center; width:20px; height:20px; float:right; margin-left:5px; background:rgb(255,255,255); border-radius:10px;}
 .sugerir-tag-keywords-text{margin-left:5px;}
+.sugerir-tag-separator {font-size: 80%; font-style: italic;}
+.sugerir-tag-result #result-ok, .sugerir-tag-result #result-problem {margin: 15px 0 15px 0;}
+.sugerir-tag-result #result-ok {color: blue;}
+.sugerir-tag-result #result-problem {color: red;}
+
 
 .compartilhar{display:none; width:185px; padding:10px; background:rgb(255,255,255); border:1px solid rgb(167,167,167); border-radius:7px; position:absolute; left:15px; top:28px; z-index:10;}
 .compartilhar-tit{width:100%; float:left; font-weight:bold; font-size:13px;}
