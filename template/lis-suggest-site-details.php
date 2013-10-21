@@ -5,20 +5,18 @@ Template Name: LIS Detail
 
 $lis_config = get_option('lis_config');
 
+$lis_service_url = $lis_config['service_url'];
 $site_language = strtolower(get_bloginfo('language'));
 
-$request_uri = $_SERVER["REQUEST_URI"];
-$request_parts = explode('/', $request_uri);
-$resource_id = end($request_parts);
+$site_link = $_POST['link'];
+$site_meta_tags = array();
 
-$lis_service_url = $lis_config['service_url'];
-$lis_service_request = $lis_service_url . 'api/resource/search/?q=id:"main.resource.' .$resource_id . '"';
+if ($site_link != ''){
+    if ( preg_match('/^http/',$site_link) == false) {
+        $site_link = "http://" . $site_link;
+    }
+    $site_meta_tags = get_site_meta_tags($site_link);
 
-$response = @file_get_contents($lis_service_request);
-
-if ($response){
-    $response_json = json_decode($response);
-    $resource = $response_json->diaServerResponse[0]->response->docs[0];
 }
 
 ?>
@@ -39,27 +37,22 @@ if ($response){
                 </header>
                 <div class="row-fluid">
                     <article class="conteudo-loop">
-                        <div class="conteudo-loop-rates">
-                            <div class="star" data-score="1"></div>
-                        </div>
 
                         <form method="post" action="<?php echo $lis_service_url ?>suggest-resource">
 
-                           
-                            <?php _e('Title', 'lis') ?> 
-                            <p><input type="text" name="title" size="80"/></p>
-                            
                             <?php _e('Link', 'lis') ?>
-                            <p><input type="text"  name="link" size="80"/></p>
+                            <p><input type="text"  name="link" size="80" value="<?php echo $site_link ?>"/></p>
 
-                            
-                            <?php _e('Comments', 'lis') ?>
-                            <p><textarea placeholder="" name="comments" rows="6" cols="80"></textarea>
-                            </p>
+ 
+                            <?php _e('Title', 'lis') ?> 
+                            <p><input type="text" name="title" size="80" value="<?php echo $site_meta_tags['title'] ?>"/></p>
 
                             <?php _e('Keywords', 'lis') ?>
-                            <p><input type="text" placeholder="" name="keywords" size="80"/></p>
+                            <p><input type="text" placeholder="" name="keywords" size="80" value="<?php echo $site_meta_tags['keywords'] ?>"/></p>
 
+                            <?php _e('Abstract', 'lis') ?>
+                            <p><textarea placeholder="" name="abstract" rows="6" cols="80"><?php echo $site_meta_tags['description'] ?></textarea>
+                            </p>
 
                             <script type="text/javascript">
                                 var RecaptchaOptions = {

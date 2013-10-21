@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LIS 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/lis\n"
-"POT-Creation-Date: 2013-10-21 17:24:44+00:00\n"
-"PO-Revision-Date: 2013-10-21 15:25-0300\n"
+"POT-Creation-Date: 2013-10-21 18:53:08+00:00\n"
+"PO-Revision-Date: 2013-10-21 16:54-0300\n"
 "Last-Translator: Vinicius Andrade <vinicius.andrade@bireme.org>\n"
 "Language-Team: RedDes <reddes@gmail.com>\n"
 "Language: \n"
@@ -27,17 +27,17 @@ msgstr ""
 msgid "go to page"
 msgstr "ir para pagina"
 
-#: lis.php:76
+#: lis.php:80
 msgid "LIS Settings"
 msgstr "LIS - Ajustes"
 
 #. #-#-#-#-#  lis.pot (LIS 0.1)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: lis.php:76
+#: lis.php:80
 msgid "LIS"
 msgstr "LIS"
 
-#: lis.php:126
+#: lis.php:130
 msgid "LIS sidebar"
 msgstr "LIS area de destacados"
 
@@ -79,14 +79,16 @@ msgstr "Guardar Cambios"
 
 #: template/lis-home.php:57
 #: template/lis-resource.php:31
-#: template/lis-suggest.php:31
+#: template/lis-suggest-site-details.php:29
+#: template/lis-suggest-site.php:17
 msgid "Home"
 msgstr "Inicio"
 
 #: template/lis-home.php:59
 #: template/lis-home.php:61
 #: template/lis-resource.php:32
-#: template/lis-suggest.php:32
+#: template/lis-suggest-site-details.php:30
+#: template/lis-suggest-site.php:18
 msgid "Health Information Locator"
 msgstr "Localizador de Información en Salud"
 
@@ -103,8 +105,10 @@ msgstr "Buscar"
 
 #: template/lis-home.php:75
 #: template/lis-resource.php:45
-#: template/lis-suggest.php:33
-#: template/lis-suggest.php:38
+#: template/lis-suggest-site-details.php:31
+#: template/lis-suggest-site-details.php:36
+#: template/lis-suggest-site.php:19
+#: template/lis-suggest-site.php:24
 msgid "Suggest a site"
 msgstr "Sugerir un sitio"
 
@@ -187,7 +191,8 @@ msgid "Separated by comma"
 msgstr "Separados por comas"
 
 #: template/lis-resource.php:146
-#: template/lis-suggest.php:83
+#: template/lis-suggest-site-details.php:76
+#: template/lis-suggest-site.php:34
 msgid "Send"
 msgstr "Enviar"
 
@@ -203,21 +208,22 @@ msgstr "Problema de Comunicación. Por favor inténte más tarde."
 msgid "Report error"
 msgstr "Informar un error"
 
-#: template/lis-suggest.php:49
-msgid "Title"
-msgstr "Titulo"
-
-#: template/lis-suggest.php:52
+#: template/lis-suggest-site-details.php:43
+#: template/lis-suggest-site.php:30
 msgid "Link"
 msgstr "Enlace"
 
-#: template/lis-suggest.php:56
-msgid "Comments"
-msgstr "Comentarios"
+#: template/lis-suggest-site-details.php:47
+msgid "Title"
+msgstr "Titulo"
 
-#: template/lis-suggest.php:60
+#: template/lis-suggest-site-details.php:50
 msgid "Keywords"
 msgstr "Palabras clave"
+
+#: template/lis-suggest-site-details.php:53
+msgid "Abstract"
+msgstr "Resumen"
 
 #. Plugin URI of the plugin/theme
 msgid "http://reddes.bvsalud.org/projects/lis/"
@@ -234,6 +240,9 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "http://reddes.bvsalud.org/"
 msgstr ""
+
+#~ msgid "Comments"
+#~ msgstr "Comentarios"
 
 #~ msgid "Previous"
 #~ msgstr "Anteriores"

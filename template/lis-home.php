@@ -72,7 +72,7 @@ $pages->paginate($page_url_params);
                     <?php endif; ?>
                 </section>
                 <div class="pull-right">
-                    <a href="<?php echo home_url($plugin_slug); ?>/suggest" class="header-colabore"><?php _e('Suggest a site','lis'); ?></a>
+                    <a href="<?php echo home_url($plugin_slug); ?>/suggest-site" class="header-colabore"><?php _e('Suggest a site','lis'); ?></a>
                 </div>   
             </div>
 				

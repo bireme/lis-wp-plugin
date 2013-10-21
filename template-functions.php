@@ -31,6 +31,33 @@ function print_formated_date($string){
 
 }
 
+function isUTF8($string){
+    return (utf8_encode(utf8_decode($string)) == $string);
+}
 
+function get_site_meta_tags($url){
+
+    $site_title = array();
+
+    $fp = @file_get_contents($url);
+
+    if ($fp) {
+        $res = preg_match("/<title>(.*)<\/title>/siU", $fp, $title_matches);
+        if ($res) {
+            $site_title = preg_replace('/\s+/', ' ', $title_matches[1]);
+            $site_title = trim($site_title);
+        }
+
+        $site_meta_tags = get_meta_tags($url);        
+        $site_meta_tags['title'] = $site_title;
+
+        foreach ($site_meta_tags as $key => $value) {
+            if (!isUTF8($value)){
+                $site_meta_tags[$key] = utf8_encode($value);
+            }
+        }
+    }
+    return $site_meta_tags;
+}
 
 ?>
