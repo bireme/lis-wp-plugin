@@ -139,12 +139,12 @@ $pages->paginate($page_url_params);
             						</div>
                                 <?php endif; ?>
 
-                                <?php if ($resource->descriptors || $resource->keywords ) : ?>
+                                <?php if ($resource->descriptor || $resource->keyword ) : ?>
                                     <div id="conteudo-loop-tags" class="row-fluid margintop10">
                                         <i class="ico-tags"> </i>   
                                             <?php 
-                                                $descriptors = (array)$resource->descriptors;
-                                                $keywords = (array)$resource->keywords;
+                                                $descriptors = (array)$resource->descriptor;
+                                                $keywords = (array)$resource->keyword;
                                             ?>                               
                                             <?php echo implode(", ", array_merge( $descriptors, $keywords) ); ?>
                                       </div>
