@@ -53,7 +53,7 @@ $pages->paginate($page_url_params);
 <?php get_header();?>
 	<div id="content" class="row-fluid">
 		<div class="ajusta2">
-            <div class="row-fluid">                
+            <div class="row-fluid breadcrumb">                
                 <a href="<?php echo home_url(); ?>"><?php _e('Home','lis'); ?></a> >
                 <?php if ($query == '' && $filter == ''): ?>
                     <?php _e('Health Information Locator', 'lis') ?>

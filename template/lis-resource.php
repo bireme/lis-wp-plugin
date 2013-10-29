@@ -27,7 +27,7 @@ if ($response){
 
 <div id="content" class="row-fluid">
         <div class="ajusta2">
-            <div class="row-fluid">
+            <div class="row-fluid breadcrumb">
                 <a href="<?php echo home_url(); ?>"><?php _e('Home','lis'); ?></a> > 
                 <a href="<?php echo home_url($plugin_slug); ?>"><?php _e('Health Information Locator', 'lis') ?> </a> > 
                 <?php _e('Resource','lis'); ?>
