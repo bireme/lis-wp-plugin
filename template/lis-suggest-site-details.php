@@ -36,7 +36,7 @@ if ($site_link != ''){
                     <h1 class="h1-header"><?php _e('Suggest a site','lis'); ?></h1>
                 </header>
                 <div class="row-fluid">
-                    <article class="conteudo-loop">
+                    <article class="conteudo-loop suggest-form">
 
                         <form method="post" action="<?php echo $lis_service_url ?>suggest-resource">
 
@@ -72,8 +72,8 @@ if ($site_link != ''){
                             </noscript>
 
 
-                            <div>
-                                <input type="submit" value="<?php _e('Send', 'lis') ?>"/>
+                            <div class="btn-line">
+                               <input type="submit" value="<?php _e('Send', 'lis') ?>"/>
                             </div>
 
                         </form>

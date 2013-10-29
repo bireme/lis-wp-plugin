@@ -24,13 +24,13 @@ $site_language = strtolower(get_bloginfo('language'));
                     <h1 class="h1-header"><?php _e('Suggest a site','lis'); ?></h1>
                 </header>
                 <div class="row-fluid">
-                    <article class="conteudo-loop">
+                    <article class="conteudo-loop suggest-form">
                         <form method="post" action="<?php echo home_url($plugin_slug) ?>/suggest-site-details">
 
                             <?php _e('Link', 'lis') ?>
                             <p><input type="text"  name="link" size="80"/></p>
                            
-                            <div>
+                            <div class="btn-line">
                                 <input type="submit" value="<?php _e('Send', 'lis') ?>"/>
                             </div>
 
