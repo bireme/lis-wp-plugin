@@ -115,11 +115,6 @@ $pages->paginate($page_url_params);
         						<div class="conteudo-loop-rates">
         							<div class="star" data-score="1"></div>
         						</div>
-        						<p class="row-fluid margintop05">
-                                    <?php foreach($resource->link as $link): ?>
-        							    <a href="<?php echo $link; ?>"><?php echo $link; ?></a><br/>
-                                    <?php endforeach; ?>
-        						</p>
         						<p class="row-fluid">
         							<?php echo ( strlen($resource->abstract) > 200 ? substr($resource->abstract,0,200) . '...' : $resource->abstract); ?><br/>
         							<span class="more"><a href="<?php echo home_url($plugin_slug); ?>/resource/<?php echo $resource->django_id; ?>"><?php _e('See more details','lis'); ?></a></span>

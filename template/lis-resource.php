@@ -12,13 +12,15 @@ $resource_id = end($request_parts);
 $lis_service_url = $lis_config['service_url'];
 $lis_disqus_id  = $lis_config['disqus_shortname'];
 $lis_addthis_id = $lis_config['addthis_profile_id'];
-$lis_service_request = $lis_service_url . 'api/resource/search/?q=id:"main.resource.' .$resource_id . '"';
+$lis_service_request = $lis_service_url . 'api/resource/search/?id=main.resource.' .$resource_id . '&op=related';
 
 $response = @file_get_contents($lis_service_request);
 
 if ($response){
     $response_json = json_decode($response);
-    $resource = $response_json->diaServerResponse[0]->response->docs[0];
+
+    $resource = $response_json->diaServerResponse[0]->match->docs[0];
+    $related_list = $response_json->diaServerResponse[0]->response->docs;
 }
 
 ?>
@@ -55,6 +57,7 @@ if ($response){
                         <div class="conteudo-loop-rates">
                             <div class="star" data-score="1"></div>
                         </div>
+                        
                         <p class="row-fluid margintop05">
                             <?php foreach($resource->link as $link): ?>
                                 <a href="<?php echo $link; ?>"><?php echo $link; ?></a><br/>
@@ -159,7 +162,7 @@ if ($response){
                                     </div>
                                 </li>
 
-                                <li class="conteudo-loop-icons-li">
+                                <!--li class="conteudo-loop-icons-li">
                                     <span class="reportar-erro-open">
                                         <i class="ico-reportar"></i>
                                         <?php _e('Report error','lis'); ?>
@@ -203,7 +206,7 @@ if ($response){
                                             </div>
                                         </form>
                                     </div>
-                                </li>
+                                </li-->
                             </ul>
                         </footer>
 
@@ -227,6 +230,21 @@ if ($response){
                     </article>
                 </div>
             </section>
+
+            <aside id="sidebar">
+                <section class="row-fluid marginbottom25 widget_categories">
+                    <header class="row-fluid border-bottom marginbottom15">
+                        <h1 class="h1-header"><?php _e('Related','lis'); ?></h1>
+                    </header>
+                    <ul>
+                        <?php foreach ( $related_list as $related) { ?>
+                            <li class="cat-item">
+                                <a href="<?php echo home_url($plugin_slug); ?>/resource/<?php echo $related->django_id; ?>"><?php echo $related->title ?></a>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                </section>
+            </aside>
 
         </div>
     </div>

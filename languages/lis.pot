@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LIS 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/lis\n"
-"POT-Creation-Date: 2013-10-21 18:53:08+00:00\n"
+"POT-Creation-Date: 2013-10-30 13:26:39+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -68,13 +68,13 @@ msgstr ""
 msgid "Save Changes"
 msgstr ""
 
-#: template/lis-home.php:57 template/lis-resource.php:31
+#: template/lis-home.php:57 template/lis-resource.php:33
 #: template/lis-suggest-site-details.php:29 template/lis-suggest-site.php:17
 msgid "Home"
 msgstr ""
 
 #: template/lis-home.php:59 template/lis-home.php:61
-#: template/lis-resource.php:32 template/lis-suggest-site-details.php:30
+#: template/lis-resource.php:34 template/lis-suggest-site-details.php:30
 #: template/lis-suggest-site.php:18
 msgid "Health Information Locator"
 msgstr ""
@@ -84,11 +84,11 @@ msgid "Search result"
 msgstr ""
 
 #: template/lis-home.php:69 template/lis-home.php:70
-#: template/lis-resource.php:39 template/lis-resource.php:40
+#: template/lis-resource.php:41 template/lis-resource.php:42
 msgid "Search"
 msgstr ""
 
-#: template/lis-home.php:75 template/lis-resource.php:45
+#: template/lis-home.php:75 template/lis-resource.php:47
 #: template/lis-suggest-site-details.php:31
 #: template/lis-suggest-site-details.php:36 template/lis-suggest-site.php:19
 #: template/lis-suggest-site.php:24
@@ -119,69 +119,73 @@ msgstr ""
 msgid "More relevant"
 msgstr ""
 
-#: template/lis-home.php:125
+#: template/lis-home.php:120
 msgid "See more details"
 msgstr ""
 
-#: template/lis-home.php:130 template/lis-resource.php:82
+#: template/lis-home.php:125 template/lis-resource.php:85
 msgid "Resource added in"
 msgstr ""
 
-#: template/lis-home.php:137 template/lis-resource.php:96
+#: template/lis-home.php:132 template/lis-resource.php:99
 msgid "Available languages"
 msgstr ""
 
-#: template/lis-home.php:165
+#: template/lis-home.php:160
 msgid "Subjects"
 msgstr ""
 
-#: template/lis-resource.php:33
+#: template/lis-resource.php:35
 msgid "Resource"
 msgstr ""
 
-#: template/lis-resource.php:70
+#: template/lis-resource.php:73
 msgid "Author(s)"
 msgstr ""
 
-#: template/lis-resource.php:76
+#: template/lis-resource.php:79
 msgid "Originator(s)"
 msgstr ""
 
-#: template/lis-resource.php:89
+#: template/lis-resource.php:92
 msgid "Objective"
 msgstr ""
 
-#: template/lis-resource.php:117 template/lis-resource.php:123
+#: template/lis-resource.php:120 template/lis-resource.php:126
 msgid "Share"
 msgstr ""
 
-#: template/lis-resource.php:131
+#: template/lis-resource.php:134
 msgid "Suggest tag"
 msgstr ""
 
-#: template/lis-resource.php:138
+#: template/lis-resource.php:141
 msgid "Suggestions"
 msgstr ""
 
-#: template/lis-resource.php:145
+#: template/lis-resource.php:148
 msgid "Separated by comma"
 msgstr ""
 
-#: template/lis-resource.php:146 template/lis-suggest-site-details.php:76
+#: template/lis-resource.php:149 template/lis-suggest-site-details.php:76
 #: template/lis-suggest-site.php:34
 msgid "Send"
 msgstr ""
 
-#: template/lis-resource.php:153
+#: template/lis-resource.php:156
 msgid "Thank you for your suggestion."
 msgstr ""
 
-#: template/lis-resource.php:156
+#: template/lis-resource.php:159
 msgid "Communication problem. Please try again later."
 msgstr ""
 
-#: template/lis-resource.php:165
+#: template/lis-resource.php:168
 msgid "Report error"
+msgstr ""
+
+#: template/lis-resource.php:237
+msgid "Related"
 msgstr ""
 
 #: template/lis-suggest-site-details.php:43 template/lis-suggest-site.php:30
