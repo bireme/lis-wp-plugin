@@ -23,11 +23,13 @@ class Paginator{
         $pag['total_pages'] = (($pag['total']/$this->count) % 10 == 0) ? (int)($pag['total']/$this->count) : (int)($pag['total']/$this->count+1);
         $pag['count'] = $this->count;
 
-        
+
+
         
         $range_min = (($this->current_page-5) > 0) ? $this->current_page-5 : 1;
-        $range_max = (($range_min+10) > $pag['total_pages']) ? $pag['total_pages'] : $range_min+10;
+        $range_max = (($range_min+7) > $pag['total_pages']) ? $pag['total_pages'] : $range_min+7;
         $pag['pages'] = range($range_min, $range_max);
+
 
         $this->output  = '<div class="pagination pagination-centered">';
         $this->output .= '<ul>';
@@ -40,18 +42,20 @@ class Paginator{
                 $this->output .= '<li class="disabled"><a href="#"> &laquo; </a></li>';
             }
 
-            for ($i=1; $i <= count($pag['pages']); $i++){
+            for ($i=0; $i < count($pag['pages']); $i++){
+                $for_page = $pag['pages'][$i];
+
                 if ( $this->current_page != '' ){
-                    if ($this->current_page != $i){
-                        $this->output .= '<li><a href="' . $page_url_params . '&page=' . $i . '" title="' . __('go to page','lis') . ' ' . $i . '">' . $i . '</a></li>';
+                    if ($this->current_page != $for_page){
+                        $this->output .= '<li><a href="' . $page_url_params . '&page=' . $for_page . '" title="' . __('go to page','lis') . ' ' . $for_page . '">' . $for_page . '</a></li>';
                     }else{
-                        $this->output .= '<li class="active"><a href="#">' . $i .'</a></li>'; 
+                        $this->output .= '<li class="active"><a href="#">' . $for_page .'</a></li>'; 
                     }
                 }else{
-                    if ($i != 1){
-                        $this->output .= '<li><a href="' . $page_url_params . '&page=' . $i . '" title="' . __('go to page','lis') . ' ' . $i . '">' .$i . '</a></li>';
+                    if ($for_page != 1){
+                        $this->output .= '<li><a href="' . $page_url_params . '&page=' . $for_page . '" title="' . __('go to page','lis') . ' ' . $for_page . '">' .$for_page . '</a></li>';
                     }else{
-                        $this->output .= '<li> class="active"><a href="#">' . $i .'</a></li>'; 
+                        $this->output .= '<li> class="active"><a href="#">' . $for_page .'</a></li>'; 
                     }
                 }
             }
