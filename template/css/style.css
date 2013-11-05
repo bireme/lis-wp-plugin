@@ -21,6 +21,7 @@ body{font:12px "Open Sans", Helvetica, Arial, Sans-Serif; color:rgb(102,102,102)
 img{border:0;}
 a{color:rgb(0,153,255); text-decoration:none; font-weight:600;}
 a:hover{color:rgb(0,153,255); text-decoration:underline;}
+.spacer{clear:both;}
 
 /* SPRITE */
 .ico-contato, .ico-compartilhar, .ico-rank, .ico-tag, .ico-tags, .ico-reportar, .ico-comentar, .ico-feeds, .header-logo, .b-search, 
@@ -47,6 +48,7 @@ a:hover{color:rgb(0,153,255); text-decoration:underline;}
 .h2-loop-tit{font-weight:bold; color:rgb(0,0,0); font-size:20px;width:80%;}
 
 /* ALL */
+.site-main{overflow:auto;}
 .row-fluid{width:100%; float:left;}
 .pull-right{float:right !important;}
 .pull-left{float:left !important;}

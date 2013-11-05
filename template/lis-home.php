@@ -171,7 +171,7 @@ $pages->paginate($page_url_params);
                 <?php endif; ?>
 				<?php dynamic_sidebar('lis-home');?>
 			</aside>
-
+			<div class="spacer"></div>
 		</div>
 	</div>
 <?php get_footer();?>
