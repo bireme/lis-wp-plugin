@@ -139,7 +139,13 @@ function lis_register_sidebars(){
 }
 
 function lis_page_title(){
-    return 'LIS | ';
+    global $wp, $plugin_slug;
+    $pagename = $wp->query_vars["pagename"];
+
+    if ( strpos($pagename, $plugin_slug) === 0 ) { //pagename starts with plugin slug        
+        return 'LIS | ';
+    }
+
 }    
 
 
@@ -150,7 +156,7 @@ add_action( 'wp_head', 'lis_google_analytics_code');
 add_action( 'template_redirect', 'lis_theme_redirect');
 add_action( 'widgets_init', 'lis_register_sidebars' );
 
-add_filter( 'wp_title', 'lis_page_title' );
+add_filter( 'wp_title', 'lis_page_title', 10, 2 );
 add_filter( 'get_search_form', 'lis_search_form' );
 
 ?>
