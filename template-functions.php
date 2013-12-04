@@ -8,7 +8,7 @@ if ( !function_exists('print_lang_value') ) {
             }
             echo implode(', ', $print_values);
         }else{
-            echo get_lang_value($current_value, $lang_code);
+            echo get_lang_value($value, $lang_code);
         }
         return;
     }

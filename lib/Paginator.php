@@ -23,9 +23,6 @@ class Paginator{
         $pag['total_pages'] = (($pag['total']/$this->count) % 10 == 0) ? (int)($pag['total']/$this->count) : (int)($pag['total']/$this->count+1);
         $pag['count'] = $this->count;
 
-
-
-        
         $range_min = (($this->current_page-5) > 0) ? $this->current_page-5 : 1;
         $range_max = (($range_min+7) > $pag['total_pages']) ? $pag['total_pages'] : $range_min+7;
         $pag['pages'] = range($range_min, $range_max);
