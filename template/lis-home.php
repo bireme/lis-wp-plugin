@@ -44,6 +44,7 @@ if ($response){
 }
 
 $page_url_params = home_url($plugin_slug) . '?q=' . urlencode($query) . '&filter=' . urlencode($filter);
+$feed_url = home_url($plugin_slug) . '/lis-feed?q=' . urlencode($query) . '&filter=' . urlencode($filter);
 
 $pages = new Paginator($total, $start);
 $pages->paginate($page_url_params);
@@ -73,6 +74,7 @@ $pages->paginate($page_url_params);
                 </section>
                 <div class="pull-right">
                     <a href="<?php echo home_url($plugin_slug); ?>/suggest-site" class="header-colabore"><?php _e('Suggest a site','lis'); ?></a>
+                    <a href="<?php echo $feed_url; ?>" target="blank"><img src="<?php echo LIS_PLUGIN_URL ?>template/images/icon_rss.png"></a>
                 </div>   
             </div>
 				
@@ -104,7 +106,7 @@ $pages->paginate($page_url_params);
                             </form>
                         </div>
                         -->
-                        <?php echo $pages->display_pages(); ?>
+                        <?php echo $pages->display_pages(); ?>                       
     				</header>
     				<div class="row-fluid">
                         <?php foreach ( $resource_list as $resource) { ?>

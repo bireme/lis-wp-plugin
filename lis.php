@@ -32,7 +32,10 @@ function lis_theme_redirect() {
     $pagename = $wp->query_vars["pagename"];
 
     if ($pagename == $plugin_slug || $pagename == $plugin_slug . '/resource' 
-        || $pagename == $plugin_slug . '/suggest-site' || $pagename == $plugin_slug . '/suggest-site-details') {
+        || $pagename == $plugin_slug . '/suggest-site' 
+        || $pagename == $plugin_slug . '/suggest-site-details'
+        || $pagename == $plugin_slug . '/lis-feed'
+        ) {
 
         add_action( 'wp_enqueue_scripts', 'page_template_styles_scripts' );
 
@@ -42,6 +45,8 @@ function lis_theme_redirect() {
             $template = LIS_PLUGIN_PATH . '/template/lis-suggest-site.php';
         }elseif ($pagename == $plugin_slug . '/suggest-site-details'){
             $template = LIS_PLUGIN_PATH . '/template/lis-suggest-site-details.php';            
+        }elseif ($pagename == $plugin_slug . '/lis-feed'){
+            $template = LIS_PLUGIN_PATH . '/template/rss.php';
         }else{
             $template = LIS_PLUGIN_PATH . '/template/lis-resource.php';
         }
@@ -77,8 +82,9 @@ function lis_load_translation(){
 
 function lis_add_admin_menu() {
 
-    add_submenu_page( 'options-general.php', __('LIS Settings', 'lis'), __('LIS', 'lis'), 'manage_options', 'lis',
-                      'lis_page_admin');
+    add_options_page(__('LIS Settings', 'lis'), __('LIS', 'lis'), 'manage_options', 'lis.php', 'lis_page_admin');
+
+    //add_submenu_page( 'options-general.php', __('LIS Settings', 'lis'), __('LIS', 'lis'), 'manage_options', 'lis','lis_page_admin');
 
     //call register settings function
     add_action( 'admin_init', 'lis_register_settings' );
@@ -117,7 +123,6 @@ function lis_search_form( $form ) {
     global $wp, $plugin_slug;
     $pagename = $wp->query_vars["pagename"];
 
-
     if ($pagename == $plugin_slug || $pagename == $plugin_slug .'/resource') {
         $form = preg_replace('/action="([^"]*)"(.*)/','action="' . home_url($plugin_slug) . '"',$form);
     }
@@ -148,14 +153,12 @@ function lis_page_title(){
 
 }    
 
-
 add_action( 'init', 'lis_load_translation' );
 add_action( 'admin_menu', 'lis_add_admin_menu');
 add_action( 'plugins_loaded','lis_init' );
 add_action( 'wp_head', 'lis_google_analytics_code');
 add_action( 'template_redirect', 'lis_theme_redirect');
 add_action( 'widgets_init', 'lis_register_sidebars' );
-
 add_filter( 'wp_title', 'lis_page_title', 10, 2 );
 add_filter( 'get_search_form', 'lis_search_form' );
 
