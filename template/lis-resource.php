@@ -157,56 +157,69 @@ if ($response){
                                             </div>
                                             <div id="result-problem">
                                                 <?php _e('Communication problem. Please try again later.','lis'); ?>
-                                            </div>                                            
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
 
-                                <!--li class="conteudo-loop-icons-li">
+                                <li class="conteudo-loop-icons-li">
                                     <span class="reportar-erro-open">
                                         <i class="ico-reportar"></i>
                                         <?php _e('Report error','lis'); ?>
                                     </span>
 
                                     <div class="reportar-erro"> 
-                                        <form action="">
+                                        <div class="erro-form">
+                                            <form action="<?php echo $lis_service_url ?>report-error" id="reportErrorForm">
+                                                <input type="hidden" name="resource_id" value="<?php echo $resource_id; ?>"/>
+                                                <div class="reportar-erro-close">[X]</div>
+                                                <span class="reportar-erro-tit"><?php _e('Reason','lis'); ?></span>
+
+                                                <div class="row-fluid margintop05">
+                                                    <input type="radio" name="code" id="txtMotivo1" value="0">
+                                                    <label class="reportar-erro-lbl" for="txtMotivo1"><?php _e('Invalid Link','lis'); ?></label>
+                                                </div>
+
+                                                <div class="row-fluid">
+                                                    <input type="radio" name="code" id="txtMotivo2" value="1">
+                                                    <label class="reportar-erro-lbl" for="txtMotivo2"><?php _e('Bad content','lis'); ?></label>
+                                                </div>
+
+                                                <div class="row-fluid">
+                                                    <input type="radio" name="code" id="txtMotivo3" value="3">
+                                                    <label class="reportar-erro-lbl" for="txtMotivo3"><?php _e('Other','lis'); ?></label>
+                                                </div>
+
+                                                <div class="row-fluid margintop05">
+                                                    <textarea name="description" id="txtArea" class="reportar-erro-area" cols="20" rows="2"></textarea>
+                                                </div>
+
+                                                <div class="row-fluid border-bottom2"></div>
+
+                                                <span class="reportar-erro-tit margintop05"><?php _e('New Link (Optional)','lis'); ?></span>
+                                                <div class="row-fluid margintop05">
+                                                    <textarea name="new_link" id="txtUrl" class="reportar-erro-area" cols="20" rows="2"></textarea>
+                                                </div>
+
+                                                <div class="row-fluid border-bottom2"></div>
+
+                                                <div class="row-fluid margintop05">
+                                                    <button class="pull-right reportar-erro-btn"><?php _e('Send','lis'); ?></button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="error-report-result">
                                             <div class="reportar-erro-close">[X]</div>
-                                            <span class="reportar-erro-tit">Motivo</span>
-
-                                            <div class="row-fluid margintop05">
-                                                <input type="radio" name="txtMotivo" id="txtMotivo1">
-                                                <label class="reportar-erro-lbl" for="txtMotivo1">Motivo 01</label>
+                                            <div id="result-ok">
+                                                <?php _e('Thank you for your report.','lis'); ?>
                                             </div>
-
-                                            <div class="row-fluid">
-                                                <input type="radio" name="txtMotivo" id="txtMotivo2">
-                                                <label class="reportar-erro-lbl" for="txtMotivo2">Motivo 02</label>
+                                            <div id="result-problem">
+                                                <?php _e('Communication problem. Please try again later.','lis'); ?>
                                             </div>
-
-                                            <div class="row-fluid">
-                                                <input type="radio" name="txtMotivo" id="txtMotivo3">
-                                                <label class="reportar-erro-lbl" for="txtMotivo3">Motivo 03</label>
-                                            </div>
-
-                                            <div class="row-fluid margintop05">
-                                                <textarea name="txtArea" id="txtArea" class="reportar-erro-area" cols="20" rows="2"></textarea>
-                                            </div>
-
-                                            <div class="row-fluid border-bottom2"></div>
-
-                                            <span class="reportar-erro-tit margintop05">Nueva URL (Opcional)</span>
-                                            <div class="row-fluid margintop05">
-                                                <textarea name="txtUrl" id="txtUrl" class="reportar-erro-area" cols="20" rows="2"></textarea>
-                                            </div>
-
-                                            <div class="row-fluid border-bottom2"></div>
-
-                                            <div class="row-fluid margintop05">
-                                                <button class="pull-right reportar-erro-btn">Enviar</button>
-                                            </div>
-                                        </form>
+                                        </div>
                                     </div>
-                                </li-->
+
+                                </li>
                             </ul>
                         </footer>
 
