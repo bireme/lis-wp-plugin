@@ -46,6 +46,7 @@ function lis_theme_redirect() {
         }elseif ($pagename == $plugin_slug . '/suggest-site-details'){
             $template = LIS_PLUGIN_PATH . '/template/lis-suggest-site-details.php';            
         }elseif ($pagename == $plugin_slug . '/lis-feed'){
+            header("Content-Type: text/xml; charset=UTF-8");
             $template = LIS_PLUGIN_PATH . '/template/rss.php';
         }else{
             $template = LIS_PLUGIN_PATH . '/template/lis-resource.php';
