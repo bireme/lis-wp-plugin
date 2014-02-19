@@ -50,19 +50,20 @@ $page_url_params = home_url($plugin_slug) . '?q=' . urlencode($query) . '&filter
     <channel>
         <title><?php _e('Health Information Locator', 'lis') ?> | <?php echo $query ?></title>
         <link><?php echo $page_url_params ?></link>
-    </channel>
-    <?php 
-        foreach ( $resource_list as $resource) {
-            echo "<item>\n";
-            echo "   <title>". $resource->title . "</title>\n";
-            if ($resource->author){
-                echo "   <author>". implode(", ", $resource->author) . "</author>\n";
+        <description><?php echo $query ?></description>
+        <?php 
+            foreach ( $resource_list as $resource) {
+                echo "<item>\n";
+                echo "   <title>". $resource->title . "</title>\n";
+                if ($resource->author){
+                    echo "   <author>". implode(", ", $resource->author) . "</author>\n";
+                }
+                echo "   <link>" . home_url($plugin_slug) .'/resource/' . $resource->django_id . "</link>\n";
+                echo "   <description>". $resource->abstract . "</description>\n";            
+                echo "   <pubDate>" . date_format(date_create($resource->created_date), 'D, d M Y h:i:s O') . "</pubDate>\n";
+                echo "   <guid isPermaLink=\"false\">" . $resource->django_id . "</guid>\n";
+                echo "</item>\n";
             }
-            echo "   <link>" . home_url($plugin_slug) .'/resource/' . $resource->django_id . "</link>\n";
-            echo "   <description>". $resource->abstract . "</description>\n";            
-            echo "   <pubDate>" . date_format(date_create($resource->created_date), 'D, d M Y h:i:s O') . "</pubDate>\n";
-            echo "   <guid isPermaLink=\"false\">" . $resource->django_id . "</guid>\n";
-            echo "</item>\n";
-        }
-    ?>
+        ?>
+    </channel>
 </rss>
