@@ -1,8 +1,9 @@
 <?php
+echo "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n\n";
+
 /*
 Template Name: LIS RSS
 */
-echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 
 $lis_config = get_option('lis_config');
 $lis_service_url = $lis_config['service_url'];
@@ -49,20 +50,21 @@ $page_url_params = home_url($plugin_slug) . '?q=' . urlencode($query) . '&filter
 <rss version="2.0">
     <channel>
         <title><?php _e('Health Information Locator', 'lis') ?> | <?php echo $query ?></title>
-        <link><?php echo $page_url_params ?></link>
-    </channel>
-    <?php 
-        foreach ( $resource_list as $resource) {
-            echo "<item>\n";
-            echo "   <title>". $resource->title . "</title>\n";
-            if ($resource->author){
-                echo "   <author>". implode(", ", $resource->author) . "</author>\n";
+        <link><?php echo htmlspecialchars($page_url_params) ?></link>
+        <description><?php echo $query ?></description>
+        <?php 
+            foreach ( $resource_list as $resource) {
+                echo "<item>\n";
+                echo "   <title>". $resource->title . "</title>\n";
+                if ($resource->author){
+                    echo "   <author>". implode(", ", $resource->author) . "</author>\n";
+                }
+                echo "   <link>" . home_url($plugin_slug) .'/resource/' . $resource->django_id . "</link>\n";
+                echo "   <description>". $resource->abstract . "</description>\n";            
+                echo "   <pubDate>" . date_format(date_create($resource->created_date), 'D, d M Y h:i:s O') . "</pubDate>\n";
+                echo "   <guid isPermaLink=\"false\">" . $resource->django_id . "</guid>\n";
+                echo "</item>\n";
             }
-            echo "   <link>" . home_url($plugin_slug) .'/resource/' . $resource->django_id . "</link>\n";
-            echo "   <description>". $resource->abstract . "</description>\n";            
-            echo "   <pubDate>" . date_format(date_create($resource->created_date), 'D, d M Y h:i:s O') . "</pubDate>\n";
-            echo "   <guid isPermaLink=\"false\">" . $resource->django_id . "</guid>\n";
-            echo "</item>\n";
-        }
-    ?>
+        ?>
+    </channel>
 </rss>
