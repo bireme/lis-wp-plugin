@@ -21,7 +21,7 @@ if ($site_link != ''){
 
 ?>
 
-<?php get_header(); ?>
+<?php get_header('lis'); ?>
 
 <div id="content" class="row-fluid">
         <div class="ajusta2">
