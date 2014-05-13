@@ -43,8 +43,8 @@ if ($response){
     $descriptor_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->descriptor_filter;
 }
 
-$page_url_params = home_url($plugin_slug) . '?q=' . urlencode($query) . '&filter=' . urlencode($filter);
-$feed_url = home_url($plugin_slug) . '/lis-feed?q=' . urlencode($query) . '&filter=' . urlencode($filter);
+$page_url_params = real_site_url($plugin_slug) . '?q=' . urlencode($query) . '&filter=' . urlencode($filter);
+$feed_url = real_site_url($plugin_slug) . 'lis-feed?q=' . urlencode($query) . '&filter=' . urlencode($filter);
 
 $pages = new Paginator($total, $start);
 $pages->paginate($page_url_params);
@@ -55,25 +55,25 @@ $pages->paginate($page_url_params);
 	<div id="content" class="row-fluid">
 		<div class="ajusta2">
             <div class="row-fluid breadcrumb">                
-                <a href="<?php echo home_url(); ?>"><?php _e('Home','lis'); ?></a> >
+                <a href="<?php echo real_site_url(); ?>"><?php _e('Home','lis'); ?></a> >
                 <?php if ($query == '' && $filter == ''): ?>
                     <?php _e('Health Information Locator', 'lis') ?>
                 <?php else: ?>                    
-                    <a href="<?php echo home_url($plugin_slug); ?>"><?php _e('Health Information Locator', 'lis') ?> </a> >
+                    <a href="<?php echo real_site_url($plugin_slug); ?>"><?php _e('Health Information Locator', 'lis') ?> </a> >
                     <?php _e('Search result', 'lis') ?>
                 <?php endif; ?>
             </div>
 			<div class="row-fluid">
                 <section class="header-search">
                     <?php if ($lis_config['show_form']) : ?>
-                        <form role="search" method="get" id="searchform" action="<?php echo home_url($plugin_slug); ?>">
+                        <form role="search" method="get" id="searchform" action="<?php echo real_site_url($plugin_slug); ?>">
                             <input value="<?php echo $query ?>" name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'lis'); ?>...">
                             <input id="searchsubmit" value="<?php _e('Search', 'lis'); ?>" type="submit">
                         </form>
                     <?php endif; ?>
                 </section>
                 <div class="pull-right">
-                    <a href="<?php echo home_url($plugin_slug); ?>/suggest-site" class="header-colabore"><?php _e('Suggest a site','lis'); ?></a>
+                    <a href="<?php echo real_site_url($plugin_slug); ?>suggest-site" class="header-colabore"><?php _e('Suggest a site','lis'); ?></a>
                     <a href="<?php echo $feed_url; ?>" target="blank"><img src="<?php echo LIS_PLUGIN_URL ?>template/images/icon_rss.png"></a>
                 </div>   
             </div>
@@ -119,7 +119,7 @@ $pages->paginate($page_url_params);
         						</div>
         						<p class="row-fluid">
         							<?php echo ( strlen($resource->abstract) > 200 ? substr($resource->abstract,0,200) . '...' : $resource->abstract); ?><br/>
-        							<span class="more"><a href="<?php echo home_url($plugin_slug); ?>/resource/<?php echo $resource->django_id; ?>"><?php _e('See more details','lis'); ?></a></span>
+        							<span class="more"><a href="<?php echo real_site_url($plugin_slug); ?>resource/<?php echo $resource->django_id; ?>"><?php _e('See more details','lis'); ?></a></span>
         						</p>
 
                                 <?php if ($resource->created_date): ?>

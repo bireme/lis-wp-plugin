@@ -26,8 +26,8 @@ if ($site_link != ''){
 <div id="content" class="row-fluid">
         <div class="ajusta2">
             <div class="row-fluid">
-                <a href="<?php echo home_url(); ?>"><?php _e('Home','lis'); ?></a> > 
-                <a href="<?php echo home_url($plugin_slug); ?>"><?php _e('Health Information Locator', 'lis') ?> </a> > 
+                <a href="<?php echo real_site_url(); ?>"><?php _e('Home','lis'); ?></a> > 
+                <a href="<?php echo real_site_url($plugin_slug); ?>"><?php _e('Health Information Locator', 'lis') ?> </a> > 
                 <?php _e('Suggest a site','lis'); ?>
             </div>
 
