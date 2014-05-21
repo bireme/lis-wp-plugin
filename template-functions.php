@@ -9,7 +9,6 @@ if ( !function_exists('print_lang_value') ) {
             }
             echo implode(', ', $print_values);
         }else{
-
             echo get_lang_value($value, $lang_code);
         }
         return;

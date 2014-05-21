@@ -164,7 +164,17 @@ $pages->paginate($page_url_params);
     					<ul>
                             <?php foreach ( $descriptor_list as $descriptor) { ?>
                                 <li class="cat-item">
-                                    <a href='?filter=descriptor:"<?php echo $descriptor[0]; ?>"'><?php echo $descriptor[0] ?></a>
+                                    <?php
+                                        $filter_link = '?';
+                                        if ($query != ''){
+                                            $filter_link .= 'q=' . $query . '&';
+                                        }
+                                        $filter_link .= 'filter=descriptor:"' . $descriptor[0] . '"';
+                                        if ($user_filter != ''){
+                                            $filter_link .= ' AND ' . $user_filter ;
+                                        }
+                                    ?>
+                                    <a href='<?php echo $filter_link ?>'><?php echo $descriptor[0] ?></a>
                                     <span class="cat-item-count"><?php echo $descriptor[1] ?></span>
                                 </li>
                             <?php } ?>
