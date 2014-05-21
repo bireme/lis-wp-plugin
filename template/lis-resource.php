@@ -250,10 +250,12 @@ if ($response){
                         <h1 class="h1-header"><?php _e('Related','lis'); ?></h1>
                     </header>
                     <ul>
-                        <?php foreach ( $related_list as $related) { ?>
-                            <li class="cat-item">
-                                <a href="<?php echo real_site_url($plugin_slug); ?>resource/<?php echo $related->django_id; ?>"><?php echo $related->title ?></a>
-                            </li>
+                        <?php foreach ( $related_list as $related) { ?>                            
+                            <?php if ($related->django_ct == 'main.resource') : ?>
+                                <li class="cat-item">
+                                    <a href="<?php echo real_site_url($plugin_slug); ?>resource/<?php echo $related->django_id; ?>"><?php echo $related->title ?></a>
+                                </li>
+                            <?php endif; ?>
                         <?php } ?>
                     </ul>
                 </section>
