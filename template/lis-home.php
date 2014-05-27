@@ -10,6 +10,7 @@ $lis_service_url = $lis_config['service_url'];
 $lis_initial_filter = $lis_config['initial_filter'];
 
 $site_language = strtolower(get_bloginfo('language'));
+$lang_dir = substr($site_language,0,2);
 
 $query = ( isset($_GET['s']) ? $_GET['s'] : $_GET['q'] );
 $user_filter = stripslashes($_GET['filter']);
@@ -29,7 +30,7 @@ if ($lis_initial_filter != ''){
 }
 $start = ($page * $count) - $count;
 
-$lis_service_request = $lis_service_url . 'api/resource/search/?q=' . urlencode($query) . '&fq=' .urlencode($filter) . '&start=' . $start;
+$lis_service_request = $lis_service_url . 'api/resource/search/?q=' . urlencode($query) . '&fq=' .urlencode($filter) . '&start=' . $start . '&lang=' . $lang_dir;
 
 //print $lis_service_request;
 

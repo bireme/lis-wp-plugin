@@ -9,10 +9,13 @@ $request_uri = $_SERVER["REQUEST_URI"];
 $request_parts = explode('/', $request_uri);
 $resource_id = end($request_parts);
 
+$site_language = strtolower(get_bloginfo('language'));
+$lang_dir = substr($site_language,0,2);
+
 $lis_service_url = $lis_config['service_url'];
 $lis_disqus_id  = $lis_config['disqus_shortname'];
 $lis_addthis_id = $lis_config['addthis_profile_id'];
-$lis_service_request = $lis_service_url . 'api/resource/search/?id=main.resource.' .$resource_id . '&op=related';
+$lis_service_request = $lis_service_url . 'api/resource/search/?id=main.resource.' .$resource_id . '&op=related&lang=' . $lang_dir;
 
 $response = @file_get_contents($lis_service_request);
 
