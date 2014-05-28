@@ -74,8 +74,7 @@ $pages->paginate($page_url_params);
                     <?php endif; ?>
                 </section>
                 <div class="pull-right">
-                    <a href="<?php echo real_site_url($plugin_slug); ?>suggest-site" class="header-colabore"><?php _e('Suggest a site','lis'); ?></a>
-                    <a href="<?php echo $feed_url; ?>" target="blank"><img src="<?php echo LIS_PLUGIN_URL ?>template/images/icon_rss.png"></a>
+                    <a href="<?php echo real_site_url($plugin_slug); ?>suggest-site" class="header-colabore"><?php _e('Suggest a site','lis'); ?></a>                    
                 </div>   
             </div>
 				
@@ -89,6 +88,10 @@ $pages->paginate($page_url_params);
                         <?php else: ?>
                            <h1 class="h1-header"><?php _e('Most recent','lis'); ?></h1>
                         <?php endif; ?>
+                        <div class="pull-right">
+                            <a href="<?php echo $feed_url; ?>" target="blank"><img src="<?php echo LIS_PLUGIN_URL ?>template/images/icon_rss.png"></a>
+                        </div>
+
                         <!-- Not implemented yet
                         <div class="pull-right">
                             <a href="#" class="ico-feeds"></a>
@@ -107,7 +110,6 @@ $pages->paginate($page_url_params);
                             </form>
                         </div>
                         -->
-                        <?php echo $pages->display_pages(); ?>                       
     				</header>
     				<div class="row-fluid">
                         <?php foreach ( $resource_list as $resource) { ?>
