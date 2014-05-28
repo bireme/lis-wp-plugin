@@ -16,7 +16,7 @@ function lis_page_admin() {
                     <tbody>
                         <tr valign="top">
                             <th scope="row"><?php _e('Service URL', 'lis'); ?>:</th>
-                            <td><input type="text" name="lis_config[service_url]" value="<?php echo $lis_config[service_url] ?>" class="regular-text code"></td>
+                            <td><input type="text" name="lis_config[service_url]" value="<?php echo ($lis_config['service_url'] == '' ? 'http://fi-admin.bvsalud.org/' : $lis_config['service_url'] ) ?>" class="regular-text code"></td>
                         </tr>
                         <tr valign="top">
                             <th scope="row"><?php _e('Plugin page', 'lis'); ?>:</th>
@@ -42,6 +42,10 @@ function lis_page_admin() {
                             <th scope="row"><?php _e('AddThis profile ID', 'lis'); ?>:</th>
                             <td><input type="text" name="lis_config[addthis_profile_id]" value="<?php echo $lis_config[addthis_profile_id] ?>" class="regular-text code"></td>
                         </tr>
+                        <tr valign="top">
+                            <th scope="row"><?php _e('Google Analytics code', 'lis'); ?>:</th>
+                            <td><input type="text" name="lis_config[google_analytics_code]" value="<?php echo $lis_config[google_analytics_code] ?>" class="regular-text code"></td>
+                        </tr>                        
                     </tbody>
                 </table>
 
