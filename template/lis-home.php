@@ -64,7 +64,7 @@ $pages->paginate($page_url_params);
                     <?php _e('Search result', 'lis') ?>
                 <?php endif; ?>
             </div>
-			<div class="row-fluid">
+			<!--div class="row-fluid">
                 <section class="header-search">
                     <?php if ($lis_config['show_form']) : ?>
                         <form role="search" method="get" id="searchform" action="<?php echo real_site_url($plugin_slug); ?>">
@@ -76,7 +76,7 @@ $pages->paginate($page_url_params);
                 <div class="pull-right">
                     <a href="<?php echo real_site_url($plugin_slug); ?>suggest-site" class="header-colabore"><?php _e('Suggest a site','lis'); ?></a>                    
                 </div>   
-            </div>
+            </div-->
 				
 			<section id="conteudo">
                 <?php if ( isset($total) && strval($total) == 0) :?>
@@ -89,7 +89,7 @@ $pages->paginate($page_url_params);
                            <h1 class="h1-header"><?php _e('Most recent','lis'); ?></h1>
                         <?php endif; ?>
                         <div class="pull-right">
-                            <a href="<?php echo $feed_url; ?>" target="blank"><img src="<?php echo LIS_PLUGIN_URL ?>template/images/icon_rss.png"></a>
+                            <a href="<?php echo $feed_url; ?>" target="blank"><img src="<?php echo LIS_PLUGIN_URL ?>template/images/icon_rss.png" class="rss_feed" /></a>
                         </div>
 
                         <!-- Not implemented yet
@@ -159,6 +159,15 @@ $pages->paginate($page_url_params);
                 <?php endif; ?>
 			</section>
 			<aside id="sidebar">
+			 <section class="header-search">
+                    		<?php if ($lis_config['show_form']) : ?>
+                        		<form role="search" method="get" id="searchform" action="<?php echo real_site_url($plugin_slug); ?>">
+                            			<input value="<?php echo $query ?>" name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'lis'); ?>...">
+                            			<input id="searchsubmit" value="<?php _e('Search', 'lis'); ?>" type="submit">
+                        		</form>
+                    		<?php endif; ?>
+                	</section>
+			<a href="<?php echo real_site_url($plugin_slug); ?>suggest-site" class="header-colabore"><?php _e('Suggest a site','lis'); ?></a>
                 <?php if (strval($total) > 0) :?>
     				<section class="row-fluid marginbottom25 widget_categories">
     					<header class="row-fluid border-bottom marginbottom15">

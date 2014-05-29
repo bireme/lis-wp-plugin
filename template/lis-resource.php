@@ -37,7 +37,7 @@ if ($response){
                 <a href="<?php echo real_site_url($plugin_slug); ?>"><?php _e('Health Information Locator', 'lis') ?> </a> > 
                 <?php _e('Resource','lis'); ?>
             </div>
-            <div class="row-fluid">
+            <!--div class="row-fluid">
                 <section class="header-search">
                     <?php if ($lis_config['show_form']) : ?>
                         <form role="search" method="get" id="searchform" action="<?php echo real_site_url($plugin_slug); ?>">
@@ -49,7 +49,7 @@ if ($response){
                 <div class="pull-right">
                     <a href="<?php echo real_site_url($plugin_slug); ?>suggest-site" class="header-colabore"><?php _e('Suggest a site','lis'); ?></a>
                 </div>   
-            </div>
+            </div-->
 
             <section id="conteudo">
                 <header class="row-fluid border-bottom">
@@ -248,6 +248,15 @@ if ($response){
             </section>
 
             <aside id="sidebar">
+		<section class="header-search">
+                    <?php if ($lis_config['show_form']) : ?>
+                        <form role="search" method="get" id="searchform" action="<?php echo real_site_url($plugin_slug); ?>">
+                            <input value="<?php echo $query ?>" name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'lis'); ?>...">
+                            <input id="searchsubmit" value="<?php _e('Search', 'lis'); ?>" type="submit">
+                        </form>
+                    <?php endif; ?>
+                </section>
+                <a href="<?php echo real_site_url($plugin_slug); ?>suggest-site" class="header-colabore"><?php _e('Suggest a site','lis'); ?></a>
                 <section class="row-fluid marginbottom25 widget_categories">
                     <header class="row-fluid border-bottom marginbottom15">
                         <h1 class="h1-header"><?php _e('Related','lis'); ?></h1>
