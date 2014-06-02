@@ -44,7 +44,7 @@ a:hover{color:rgb(0,153,255); text-decoration:underline;}
 
 /* HEADINGS */
 .bar div {margin-top:4px;}
-.h1-header{float:left; line-height:30px; font-size:26px; color:rgb(40,54,125); font-weight:normal; text-decoration:none;}
+.h1-header{float:left; line-height:30px; font-size:26px; color:#28367D !important; font-weight:normal; text-decoration:none;}
 .h2-loop-tit{font-weight:bold; color:rgb(0,0,0); font-size:20px;width:80%;}
 
 /* ALL */
@@ -82,7 +82,7 @@ a:hover{color:rgb(0,153,255); text-decoration:underline;}
 .header-search{float:left; margin:15px 15px 15px 0;}
 .input-search{width:195px; min-height:19px; float:left; padding:8px 10px; border-radius:10px 0px 0px 10px; border:1px solid rgb(132,132,132);}
 .b-search{cursor:pointer; width:101px; height:41px; border:0px; float:left; background-position:0 -118px; margin-left:-1px;}
-.header-colabore{margin:18px 0px 8px 81px;padding: 6px 6px 6px 32px;background:rgb(0,74,142) url(../images/ok.png) no-repeat 6px 6px;background-size: 20px 20px;border-radius: 8px;color: #fff;float:left;}
+.header-colabore{font-size: 170%;text-decoration: none;color: #28367D !important;padding-left:22px;background: url(/portal-lis/wp-content/themes/portal-lis/images/plus.png) 0px 6px no-repeat;display:inline-block; margin:18px 0 12px 0;}
 .header-colabore:hover{text-decoration:none;}
 .topMenu .widget{margin-bottom: 0px;}
 
