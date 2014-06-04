@@ -185,7 +185,7 @@ input[type=radio]{float:left; margin:3px 5px 0 0;}
 .footer-logo-texto{float:left; line-height:18px; color:rgb(0,0,0);}
 
 /* PAGINATION */
-.row-fluid .pagination{margin-top: 20px;}
+.row-fluid .pagination{margin: 20px 0 20px 0;}
 .pagination-centered {
     text-align: center;
 }
