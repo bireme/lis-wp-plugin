@@ -17,5 +17,5 @@ This plugin creates a search interface for the [Virtual Health Library](http://m
     * `Plugin page` is mandatory and is set to `lis` by default. It defines the URL of the search interface page.
     * `Search form` is optional and defines a flag to control the display of the search box in the `LIS` homepage.
     * `Disqus shortname` is optional. If used, it requires a code for the integration with the associated comments service  [Disqus](http://disqus.com/). Notice this requires previous registration within the comments service choosed.
-    * `AddThis profile ID` is optional and is provided to allow the integration with sharing tools services [AddThis](http://www.addthis.com/).
-    * `Google Analytics code` is optional and allows the integration of website analytics services provided by Google.
+    * `AddThis profile ID` is optional and is provided to allow the integration with sharing tools services [AddThis](http://www.addthis.com/). Notice this requires previous registration within the sharing tools service choosed.
+    * `Google Analytics code` is optional and allows the integration of website analytics services provided by Google. Notice this requires previous registration in Google.
