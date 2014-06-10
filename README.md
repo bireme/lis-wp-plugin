@@ -1,5 +1,5 @@
-LIS WordPress plugin 
-===================
+LIS plugin for WordPress
+========================
 
 ##Introduction
 This plugin creates a search interface for the [Virtual Health Library](http://modelo.bvsalud.org/en/) LIS (Health Information Locator) information source.
