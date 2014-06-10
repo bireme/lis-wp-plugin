@@ -23,3 +23,4 @@ This plugin creates a search interface for the [Virtual Health Library](http://m
 
 ## Translations of this document
 Español: [Instalación del Plugin LIS para Wordpress](http://wiki.bireme.org/es/index.php/Instalaci%C3%B3n_del_Plugin_LIS_para_Wordpress)
+Português: [Plugin LIS para Wordpress](http://wiki.bireme.org/pt/index.php/Plugin_LIS_para_Wordpress)
