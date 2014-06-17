@@ -99,8 +99,14 @@ function lis_register_settings(){
 }
 
 function lis_google_analytics_code(){
+    global $wp, $plugin_slug;
+
+    $pagename = $wp->query_vars["pagename"];
     $lis_config = get_option('lis_config');
-    if ($lis_config['google_analytics_code'] != ''){
+
+    // check if is defined GA code and pagename starts with plugin slug
+    if ($lis_config['google_analytics_code'] != ''
+        && strpos($pagename, $plugin_slug) === 0){
 ?>
 
 <script type="text/javascript">
