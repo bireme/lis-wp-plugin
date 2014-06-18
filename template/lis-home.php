@@ -13,6 +13,7 @@ $site_language = strtolower(get_bloginfo('language'));
 $lang_dir = substr($site_language,0,2);
 
 $query = ( isset($_GET['s']) ? $_GET['s'] : $_GET['q'] );
+$query = stripslashes($query);
 $user_filter = stripslashes($_GET['filter']);
 $page = ( isset($_GET['page']) ? $_GET['page'] : 1 );
 $total = 0;
@@ -64,19 +65,6 @@ $pages->paginate($page_url_params);
                     <?php _e('Search result', 'lis') ?>
                 <?php endif; ?>
             </div>
-			<!--div class="row-fluid">
-                <section class="header-search">
-                    <?php if ($lis_config['show_form']) : ?>
-                        <form role="search" method="get" id="searchform" action="<?php echo real_site_url($plugin_slug); ?>">
-                            <input value="<?php echo $query ?>" name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'lis'); ?>...">
-                            <input id="searchsubmit" value="<?php _e('Search', 'lis'); ?>" type="submit">
-                        </form>
-                    <?php endif; ?>
-                </section>
-                <div class="pull-right">
-                    <a href="<?php echo real_site_url($plugin_slug); ?>suggest-site" class="header-colabore"><?php _e('Suggest a site','lis'); ?></a>                    
-                </div>   
-            </div-->
 				
 			<section id="conteudo">
                 <?php if ( isset($total) && strval($total) == 0) :?>
@@ -162,7 +150,7 @@ $pages->paginate($page_url_params);
 			 <section class="header-search">
                     		<?php if ($lis_config['show_form']) : ?>
                         		<form role="search" method="get" id="searchform" action="<?php echo real_site_url($plugin_slug); ?>">
-                            			<input value="<?php echo $query ?>" name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'lis'); ?>...">
+                            			<input value='<?php echo $query ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'lis'); ?>...">
                             			<input id="searchsubmit" value="<?php _e('Search', 'lis'); ?>" type="submit">
                         		</form>
                     		<?php endif; ?>
