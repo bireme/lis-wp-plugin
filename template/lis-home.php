@@ -74,7 +74,7 @@ $pages->paginate($page_url_params);
                         <?php if ( ( $query != '' || $user_filter != '' ) && strval($total) > 0) :?>
     					   <h1 class="h1-header"><?php _e('Resources found','lis'); ?>: <?php echo $total; ?></h1>
                         <?php else: ?>
-                           <h1 class="h1-header"><?php _e('Most recent','lis'); ?></h1>
+                           <h1 class="h1-header"><?php _e('Total of resources','lis'); echo ': ' . $total; ?></h1>
                         <?php endif; ?>
                         <div class="pull-right">
                             <a href="<?php echo $feed_url; ?>" target="blank"><img src="<?php echo LIS_PLUGIN_URL ?>template/images/icon_rss.png" class="rss_feed" /></a>
