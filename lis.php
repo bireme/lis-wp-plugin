@@ -142,10 +142,10 @@ function lis_register_sidebars(){
         'name' => __('LIS sidebar', 'lis'),
         'id'   => 'lis-home',
         'description' => 'LIS Area',
-        'before_widget' => '<section id="%1$s" class="row-fluid widget %2$s">',
+        'before_widget' => '<section id="%1$s" class="row-fluid marginbottom25 widget_categories">',
         'after_widget'  => '</section>',        
-        'before_title'  => '<h2 class="widgettitle">',
-        'after_title'   => '</h2>',
+        'before_title'  => '<header class="row-fluid border-bottom marginbottom15"><h1 class="h1-header">',
+        'after_title'   => '</h1></header>',
     );
     register_sidebar( $args );
 }
