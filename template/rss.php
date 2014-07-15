@@ -60,8 +60,7 @@ $page_url_params = home_url($plugin_slug) . '?q=' . urlencode($query) . '&filter
                     echo "   <author>". implode(", ", $resource->author) . "</author>\n";
                 }
                 echo "   <link>" . home_url($plugin_slug) .'/resource/' . $resource->django_id . "</link>\n";
-                echo "   <description>". htmlspecialchars($resource->abstract) . "</description>\n";            
-                echo "   <pubDate>" . date_format(date_create($resource->created_date), 'D, d M Y h:i:s O') . "</pubDate>\n";
+                echo "   <description>". htmlspecialchars($resource->abstract) . "</description>\n";
                 echo "   <guid isPermaLink=\"false\">" . $resource->django_id . "</guid>\n";
                 echo "</item>\n";
             }
