@@ -12,8 +12,10 @@ $lis_initial_filter = $lis_config['initial_filter'];
 $site_language = strtolower(get_bloginfo('language'));
 $lang_dir = substr($site_language,0,2);
 
-$query = ( isset($_GET['s']) ? $_GET['s'] : $_GET['q'] );
-$query = stripslashes($query);
+// set query using default param q (query) or s (wordpress search) or newexpr (metaiah)
+$query = $_GET['s'] . $_GET['q'] . $_GET['newexpr'];
+$query = stripslashes( trim($query) );
+
 $user_filter = stripslashes($_GET['filter']);
 $page = ( isset($_GET['page']) ? $_GET['page'] : 1 );
 $total = 0;
