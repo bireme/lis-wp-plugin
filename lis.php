@@ -160,6 +160,13 @@ function lis_page_title(){
 
 }    
 
+function lis_settings_link($links) {        
+    $settings_link = '<a href="options-general.php?page=lis.php">Settings</a>';
+    array_unshift($links, $settings_link);
+    return $links;
+}
+
+add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'lis_settings_link' );
 add_action( 'init', 'lis_load_translation' );
 add_action( 'admin_menu', 'lis_add_admin_menu');
 add_action( 'plugins_loaded','lis_init' );
