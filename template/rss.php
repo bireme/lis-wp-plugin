@@ -13,17 +13,17 @@ $site_language = strtolower(get_bloginfo('language'));
 
 $query = ( isset($_GET['s']) ? $_GET['s'] : $_GET['q'] );
 $user_filter = stripslashes($_GET['filter']);
-$page = ( isset($_GET['page']) ? $_GET['page'] : 1 );
+$page = ( isset($_GET['pg']) ? $_GET['pg'] : 1 );
 $total = 0;
 $count = 10;
 $filter = '';
 
 if ($lis_initial_filter != ''){
-    if ($user_filter != ''){    
+    if ($user_filter != ''){
         $filter = $lis_initial_filter . ' AND ' . $user_filter;
     }else{
         $filter = $lis_initial_filter;
-    }    
+    }
 }else{
     $filter = $user_filter;
 }
@@ -52,7 +52,7 @@ $page_url_params = home_url($plugin_slug) . '?q=' . urlencode($query) . '&filter
         <title><?php _e('Health Information Locator', 'lis') ?> | <?php echo $query ?></title>
         <link><?php echo htmlspecialchars($page_url_params) ?></link>
         <description><?php echo $query ?></description>
-        <?php 
+        <?php
             foreach ( $resource_list as $resource) {
                 echo "<item>\n";
                 echo "   <title>". htmlspecialchars($resource->title) . "</title>\n";

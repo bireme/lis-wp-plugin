@@ -17,17 +17,17 @@ $query = $_GET['s'] . $_GET['q'] . $_GET['newexpr'];
 $query = stripslashes( trim($query) );
 
 $user_filter = stripslashes($_GET['filter']);
-$page = ( isset($_GET['page']) ? $_GET['page'] : 1 );
+$page = ( isset($_GET['pg']) ? $_GET['pg'] : 1 );
 $total = 0;
 $count = 10;
 $filter = '';
 
 if ($lis_initial_filter != ''){
-    if ($user_filter != ''){    
+    if ($user_filter != ''){
         $filter = $lis_initial_filter . ' AND ' . $user_filter;
     }else{
         $filter = $lis_initial_filter;
-    }    
+    }
 }else{
     $filter = $user_filter;
 }
@@ -58,16 +58,16 @@ $pages->paginate($page_url_params);
 <?php get_header('lis');?>
 	<div id="content" class="row-fluid">
 		<div class="ajusta2">
-            <div class="row-fluid breadcrumb">                
+            <div class="row-fluid breadcrumb">
                 <a href="<?php echo real_site_url(); ?>"><?php _e('Home','lis'); ?></a> >
                 <?php if ($query == '' && $filter == ''): ?>
                     <?php _e('Health Information Locator', 'lis') ?>
-                <?php else: ?>                    
+                <?php else: ?>
                     <a href="<?php echo real_site_url($plugin_slug); ?>"><?php _e('Health Information Locator', 'lis') ?> </a> >
                     <?php _e('Search result', 'lis') ?>
                 <?php endif; ?>
             </div>
-				
+
 			<section id="conteudo">
                 <?php if ( isset($total) && strval($total) == 0) :?>
                     <h1 class="h1-header"><?php _e('No results found','lis'); ?></h1>
@@ -131,11 +131,11 @@ $pages->paginate($page_url_params);
 
                                 <?php if ($resource->descriptor || $resource->keyword ) : ?>
                                     <div id="conteudo-loop-tags" class="row-fluid margintop10">
-                                        <i class="ico-tags"> </i>   
-                                            <?php 
+                                        <i class="ico-tags"> </i>
+                                            <?php
                                                 $descriptors = (array)$resource->descriptor;
                                                 $keywords = (array)$resource->keyword;
-                                            ?>                               
+                                            ?>
                                             <?php echo implode(", ", array_merge( $descriptors, $keywords) ); ?>
                                       </div>
                                 <?php endif; ?>
@@ -185,7 +185,7 @@ $pages->paginate($page_url_params);
                                 <?php } ?>
         					</ul>
         				</section>
-                    <?php endif; ?>				
+                    <?php endif; ?>
 			</aside>
 			<div class="spacer"></div>
 		</div>
