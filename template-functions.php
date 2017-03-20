@@ -84,7 +84,7 @@ if ( !function_exists('real_site_url') ) {
                 $site_url .= '/' . $current_language;    
             }
         }
-        // check for multi-language-framework plugin
+        // check for polylang plugin
         elseif ( defined( 'POLYLANG_VERSION' ) ) {
             $default_language = pll_default_language();
             $current_language = pll_current_language();
@@ -99,7 +99,6 @@ if ( !function_exists('real_site_url') ) {
         }
         
         $site_url .= '/';
-
 
         return $site_url;
     }
