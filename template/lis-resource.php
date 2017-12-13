@@ -26,6 +26,8 @@ if ($response){
     $related_list = $response_json->diaServerResponse[0]->response->docs;
 }
 
+//print_r($related_list);
+
 ?>
 
 <?php get_header('lis'); ?>
@@ -33,8 +35,8 @@ if ($response){
 <div id="content" class="row-fluid">
         <div class="ajusta2">
             <div class="row-fluid breadcrumb">
-                <a href="<?php echo real_site_url(); ?>"><?php _e('Home','lis'); ?></a> > 
-                <a href="<?php echo real_site_url($plugin_slug); ?>"><?php _e('Health Information Locator', 'lis') ?> </a> > 
+                <a href="<?php echo real_site_url(); ?>"><?php _e('Home','lis'); ?></a> >
+                <a href="<?php echo real_site_url($plugin_slug); ?>"><?php _e('Health Information Locator', 'lis') ?> </a> >
                 <?php _e('Resource','lis'); ?>
             </div>
 
@@ -47,7 +49,7 @@ if ($response){
                         <div class="conteudo-loop-rates">
                             <div class="star" data-score="1"></div>
                         </div>
-                        
+
                         <p class="row-fluid margintop05">
                             <?php foreach($resource->link as $link): ?>
                                 <a href="<?php echo $link; ?>"><?php echo $link; ?></a><br/>
@@ -61,26 +63,26 @@ if ($response){
                         <?php if ($resource->author): ?>
                             <span class="row-fluid margintop05">
                                 <span class="conteudo-loop-data-tit"><?php _e('Author(s)','lis'); ?>:</span>
-                                <?php echo implode(", ", $resource->author); ?> 
+                                <?php echo implode(", ", $resource->author); ?>
                             </span>
                         <?php endif; ?>
 
                         <span class="row-fluid margintop05">
                             <span class="conteudo-loop-data-tit"><?php _e('Originator(s)','lis'); ?>:</span>
-                            <?php echo implode(", ", $resource->originator); ?> 
+                            <?php echo implode(", ", $resource->originator); ?>
                         </span>
 
                         <?php if ($resource->created_date): ?>
                             <div id="conteudo-loop-data" class="row-fluid margintop05">
                                 <span class="conteudo-loop-data-tit"><?php _e('Resource added in','lis'); ?>:</span>
-                               <?php echo print_formated_date($resource->created_date); ?>                           
+                               <?php echo print_formated_date($resource->created_date); ?>
                             </div>
                         <?php endif; ?>
 
                         <?php if ($resource->objective): ?>
                             <span class="row-fluid margintop05">
                                 <span class="conteudo-loop-data-tit"><?php _e('Objective','lis'); ?>:</span>
-                                <?php echo $resource->objective; ?> 
+                                <?php echo $resource->objective; ?>
                             </span>
                         <?php endif; ?>
 
@@ -89,15 +91,15 @@ if ($response){
                                <span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','lis'); ?>:</span>
                                <?php print_lang_value($resource->source_language_display, $site_language); ?>
                             </div>
-                        <?php endif; ?>                            
+                        <?php endif; ?>
 
                         <?php if ($resource->descriptor || $resource->keyword ) : ?>
                             <div id="conteudo-loop-tags" class="row-fluid margintop10">
-                                <i class="ico-tags"> </i>   
-                                    <?php 
+                                <i class="ico-tags"> </i>
+                                    <?php
                                         $descriptors = (array)$resource->descriptor;
                                         $keywords = (array)$resource->keyword;
-                                    ?>                               
+                                    ?>
                                     <?php echo implode(", ", array_merge( $descriptors, $keywords) ); ?>
                               </div>
                         <?php endif; ?>
@@ -108,11 +110,11 @@ if ($response){
                                     <i class="ico-compartilhar"></i>
                                     <!-- AddThis Button BEGIN -->
                                     <a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=300&amp;pubid=<?php echo $lis_addthis_id; ?>"><?php _e('Share','lis'); ?></a>
-                                    <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+                                    <script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
                                     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=<?php echo $lis_addthis_id; ?>"></script>
                                     <!-- AddThis Button END -->
                                     <!--
-                                    <a href="#">                                       
+                                    <a href="#">
                                         <?php _e('Share','lis'); ?>
                                     </a>
                                     -->
@@ -129,10 +131,10 @@ if ($response){
                                                 <input type="hidden" name="resource_id" value="<?php echo $resource_id; ?>"/>
                                                 <div class="sugerir-tag-close">[X]</div>
                                                 <span class="sugerir-tag-tit"><?php _e('Suggestions','lis'); ?></span>
-                                                    
+
                                                 <div class="row-fluid margintop05 marginbottom10">
                                                     <input type="text" name="txtTag" class="sugerir-tag-input" id="txtTag">
-                                                </div>                                                
+                                                </div>
 
                                                 <div class="row-fluid margintop05">
                                                     <span class="sugerir-tag-separator"><?php _e('Separated by comma','lis'); ?></span>
@@ -158,7 +160,7 @@ if ($response){
                                         <?php _e('Report error','lis'); ?>
                                     </span>
 
-                                    <div class="reportar-erro"> 
+                                    <div class="reportar-erro">
                                         <div class="erro-form">
                                             <form action="<?php echo $lis_service_url ?>report-error" id="reportErrorForm">
                                                 <input type="hidden" name="resource_id" value="<?php echo $resource_id; ?>"/>
@@ -229,7 +231,7 @@ if ($response){
                             <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                             <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
                         <?php endif; ?>
-    
+
                     </article>
                 </div>
             </section>
@@ -249,8 +251,8 @@ if ($response){
                         <h1 class="h1-header"><?php _e('Related','lis'); ?></h1>
                     </header>
                     <ul>
-                        <?php foreach ( $related_list as $related) { ?>                            
-                            <?php if ($related->django_ct == 'main.resource') : ?>
+                        <?php foreach ( $related_list as $related) { ?>
+                            <?php if ($related->django_ct == 'main.resource' && $related->status == '1') : ?>
                                 <li class="cat-item">
                                     <a href="<?php echo real_site_url($plugin_slug); ?>resource/<?php echo $related->django_id; ?>"><?php echo $related->title ?></a>
                                 </li>
