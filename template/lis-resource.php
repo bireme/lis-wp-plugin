@@ -2,17 +2,14 @@
 /*
 Template Name: LIS Detail
 */
+global $lis_service_url;
 
 $lis_config = get_option('lis_config');
-
-$request_uri = $_SERVER["REQUEST_URI"];
-$request_parts = explode('/', $request_uri);
-$resource_id = end($request_parts);
+$resource_id   = $_GET['id'];
 
 $site_language = strtolower(get_bloginfo('language'));
 $lang_dir = substr($site_language,0,2);
 
-$lis_service_url = $lis_config['service_url'];
 $lis_disqus_id  = $lis_config['disqus_shortname'];
 $lis_addthis_id = $lis_config['addthis_profile_id'];
 $lis_service_request = $lis_service_url . 'api/resource/search/?id=main.resource.' .$resource_id . '&op=related&lang=' . $lang_dir;
@@ -36,7 +33,7 @@ if ($response){
         <div class="ajusta2">
             <div class="row-fluid breadcrumb">
                 <a href="<?php echo real_site_url(); ?>"><?php _e('Home','lis'); ?></a> >
-                <a href="<?php echo real_site_url($plugin_slug); ?>"><?php _e('Health Information Locator', 'lis') ?> </a> >
+                <a href="<?php echo real_site_url($lis_plugin_slug); ?>"><?php _e('Health Information Locator', 'lis') ?> </a> >
                 <?php _e('Resource','lis'); ?>
             </div>
 
@@ -239,13 +236,13 @@ if ($response){
             <aside id="sidebar">
 		      <section class="header-search">
                     <?php if ($lis_config['show_form']) : ?>
-                        <form role="search" method="get" id="searchform" action="<?php echo real_site_url($plugin_slug); ?>">
+                        <form role="search" method="get" id="searchform" action="<?php echo real_site_url($lis_plugin_slug); ?>">
                             <input value='<?php echo $query ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'lis'); ?>...">
                             <input id="searchsubmit" value="<?php _e('Search', 'lis'); ?>" type="submit">
                         </form>
                     <?php endif; ?>
                 </section>
-                <a href="<?php echo real_site_url($plugin_slug); ?>suggest-site" class="header-colabore"><?php _e('Suggest a site','lis'); ?></a>
+                <a href="<?php echo real_site_url($lis_plugin_slug); ?>suggest-site" class="header-colabore"><?php _e('Suggest a site','lis'); ?></a>
                 <section class="row-fluid marginbottom25 widget_categories">
                     <header class="row-fluid border-bottom marginbottom15">
                         <h1 class="h1-header"><?php _e('Related','lis'); ?></h1>
@@ -254,7 +251,7 @@ if ($response){
                         <?php foreach ( $related_list as $related) { ?>
                             <?php if ($related->django_ct == 'main.resource' && $related->status == '1') : ?>
                                 <li class="cat-item">
-                                    <a href="<?php echo real_site_url($plugin_slug); ?>resource/<?php echo $related->django_id; ?>"><?php echo $related->title ?></a>
+                                    <a href="<?php echo real_site_url($lis_plugin_slug); ?>resource/?id=<?php echo $related->django_id; ?>"><?php echo $related->title ?></a>
                                 </li>
                             <?php endif; ?>
                         <?php } ?>

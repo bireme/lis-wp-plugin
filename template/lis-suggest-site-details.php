@@ -2,10 +2,9 @@
 /*
 Template Name: LIS Detail
 */
+global $lis_service_url;
 
 $lis_config = get_option('lis_config');
-
-$lis_service_url = $lis_config['service_url'];
 $site_language = strtolower(get_bloginfo('language'));
 
 $site_link = $_POST['link'];
@@ -26,8 +25,8 @@ if ($site_link != ''){
 <div id="content" class="row-fluid">
         <div class="ajusta2">
             <div class="row-fluid">
-                <a href="<?php echo real_site_url(); ?>"><?php _e('Home','lis'); ?></a> > 
-                <a href="<?php echo real_site_url($plugin_slug); ?>"><?php _e('Health Information Locator', 'lis') ?> </a> > 
+                <a href="<?php echo real_site_url(); ?>"><?php _e('Home','lis'); ?></a> >
+                <a href="<?php echo real_site_url($lis_plugin_slug); ?>"><?php _e('Health Information Locator', 'lis') ?> </a> >
                 <?php _e('Suggest a site','lis'); ?>
             </div>
 
@@ -43,8 +42,8 @@ if ($site_link != ''){
                             <?php _e('Link', 'lis') ?>
                             <p><input type="text"  name="link" size="80" value="<?php echo $site_link ?>"/></p>
 
- 
-                            <?php _e('Title', 'lis') ?> 
+
+                            <?php _e('Title', 'lis') ?>
                             <p><input type="text" name="title" size="80" value="<?php echo $site_meta_tags['title'] ?>"/></p>
 
                             <?php _e('Keywords', 'lis') ?>
@@ -77,7 +76,7 @@ if ($site_link != ''){
                             </div>
 
                         </form>
-    
+
                     </article>
                 </div>
             </section>

@@ -1,12 +1,8 @@
 <?php
+global $lis_service_url;
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
 
-/*
-Template Name: LIS RSS
-*/
-
 $lis_config = get_option('lis_config');
-$lis_service_url = $lis_config['service_url'];
 $lis_initial_filter = $lis_config['initial_filter'];
 
 $site_language = strtolower(get_bloginfo('language'));
@@ -43,7 +39,7 @@ if ($response){
     $descriptor_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->descriptor_filter;
 }
 
-$page_url_params = home_url($plugin_slug) . '?q=' . urlencode($query) . '&filter=' . urlencode($filter);
+$page_url_params = home_url($lis_plugin_slug) . '?q=' . urlencode($query) . '&filter=' . urlencode($filter);
 
 
 ?>
@@ -59,7 +55,7 @@ $page_url_params = home_url($plugin_slug) . '?q=' . urlencode($query) . '&filter
                 if ($resource->author){
                     echo "   <author>". implode(", ", $resource->author) . "</author>\n";
                 }
-                echo "   <link>" . home_url($plugin_slug) .'/resource/' . $resource->django_id . "</link>\n";
+                echo "   <link>" . home_url($lis_plugin_slug) .'/resource/' . $resource->django_id . "</link>\n";
                 echo "   <description>". htmlspecialchars($resource->abstract) . "</description>\n";
                 echo "   <guid isPermaLink=\"false\">" . $resource->django_id . "</guid>\n";
                 echo "</item>\n";
