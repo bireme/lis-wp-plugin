@@ -8,7 +8,7 @@ Version: 0.2
 Author URI: http://reddes.bvsalud.org/
 */
 
-define('LIS_VERSION', '0.2' );
+define('LIS_VERSION', '0.3' );
 
 define('LIS_SYMBOLIC_LINK', false );
 define('LIS_PLUGIN_DIRNAME', 'lis-page' );

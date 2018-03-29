@@ -15,12 +15,19 @@ if ($site_link != ''){
         $site_link = "http://" . $site_link;
     }
     $site_meta_tags = get_site_meta_tags($site_link);
-
 }
 
 ?>
 
 <?php get_header('lis'); ?>
+
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
+<script language="javascript">
+    function onSubmit(){
+        document.getElementById("suggest-form").submit();
+    }
+</script>
 
 <div id="content" class="row-fluid">
         <div class="ajusta2">
@@ -37,11 +44,9 @@ if ($site_link != ''){
                 <div class="row-fluid">
                     <article class="conteudo-loop suggest-form">
 
-                        <form method="post" action="<?php echo $lis_service_url ?>suggest-resource">
-
+                        <form method="post" id="suggest-form" action="<?php echo $lis_service_url ?>suggest-resource">
                             <?php _e('Link', 'lis') ?>
                             <p><input type="text"  name="link" size="80" value="<?php echo $site_link ?>"/></p>
-
 
                             <?php _e('Title', 'lis') ?>
                             <p><input type="text" name="title" size="80" value="<?php echo $site_meta_tags['title'] ?>"/></p>
@@ -53,28 +58,12 @@ if ($site_link != ''){
                             <p><textarea placeholder="" name="abstract" rows="6" cols="80"><?php echo $site_meta_tags['description'] ?></textarea>
                             </p>
 
-                            <script type="text/javascript">
-                                var RecaptchaOptions = {
-                                    theme : 'clean',
-                                    lang : '<?php echo substr($site_language, 0,2); ?>'
-                                };
-                            </script>
-                            <script type="text/javascript"
-                               src="http://www.google.com/recaptcha/api/challenge?k=6LcV0ugSAAAAAEpxBvqmNlnOZIAKSf_E6M-s8abc">
-                            </script>
-                            <noscript>
-                               <iframe src="http://www.google.com/recaptcha/api/noscript?k=6LcV0ugSAAAAAEpxBvqmNlnOZIAKSf_E6M-s8abc"
-                                   height="300" width="500" frameborder="0"></iframe><br>
-                               <textarea name="recaptcha_challenge_field" rows="3" cols="40">
-                               </textarea>
-                               <input type="hidden" name="recaptcha_response_field" value="manual_challenge">
-                            </noscript>
-
-
-                            <div class="btn-line">
-                               <input type="submit" value="<?php _e('Send', 'lis') ?>"/>
-                            </div>
-
+                            <button
+                                class="g-recaptcha"
+                                data-sitekey="6Lczl08UAAAAACjpV0PZ_1exDzQ7SJA_TmDrwI2U"
+                                data-callback="onSubmit">
+                                <?php _e('Send', 'lis') ?>
+                            </button>
                         </form>
 
                     </article>
