@@ -55,7 +55,7 @@ $page_url_params = home_url($lis_plugin_slug) . '?q=' . urlencode($query) . '&fi
                 if ($resource->author){
                     echo "   <author>". implode(", ", $resource->author) . "</author>\n";
                 }
-                echo "   <link>" . home_url($lis_plugin_slug) .'/resource/' . $resource->django_id . "</link>\n";
+                echo "   <link>" . home_url($lis_plugin_slug) .'/resource/?id=' . $resource->django_id . "</link>\n";
                 echo "   <description>". htmlspecialchars($resource->abstract) . "</description>\n";
                 echo "   <guid isPermaLink=\"false\">" . $resource->django_id . "</guid>\n";
                 echo "</item>\n";
