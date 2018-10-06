@@ -185,6 +185,8 @@ if(!class_exists('LIS_Plugin')) {
 
         function register_settings(){
             register_setting('lis-settings-group', 'lis_config');
+            wp_enqueue_style ('lis_config' ,  LIS_PLUGIN_URL . 'template/css/admin.css');
+            wp_enqueue_script('lis_config' ,  LIS_PLUGIN_URL . 'template/js/jquery-ui.js');
         }
 
         function google_analytics_code(){

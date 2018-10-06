@@ -5,25 +5,19 @@ msgstr ""
 "Project-Id-Version: LIS WP Plugin 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/lis\n"
 "POT-Creation-Date: 2014-06-26 18:22:05+00:00\n"
-"PO-Revision-Date: 2014-06-26 15:23-0300\n"
+"PO-Revision-Date: 2018-10-06 16:10-0300\n"
 "Last-Translator: Vinicius Andrade <vinicius.andrade@bireme.org>\n"
 "Language-Team: BIREME <reddes@gmail.com>\n"
-"Language: \n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Portuguese\n"
-"X-Poedit-Country: BRAZIL\n"
 "X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Poedit 2.0.6\n"
 
-#: lib/Paginator.php:35
-#: lib/Paginator.php:36
-#: lib/Paginator.php:47
-#: lib/Paginator.php:53
-#: lib/Paginator.php:62
-#: lib/Paginator.php:63
-#: lib/Paginator.php:69
-#: lib/Paginator.php:70
+#: lib/Paginator.php:35 lib/Paginator.php:36 lib/Paginator.php:47
+#: lib/Paginator.php:53 lib/Paginator.php:62 lib/Paginator.php:63
+#: lib/Paginator.php:69 lib/Paginator.php:70
 msgid "go to page"
 msgstr "ir para página"
 
@@ -31,7 +25,6 @@ msgstr "ir para página"
 msgid "LIS Settings"
 msgstr "LIS Ajustes"
 
-#. #-#-#-#-#  lis.pot (LIS 0.1)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: lis.php:86
 msgid "LIS"
@@ -81,19 +74,22 @@ msgstr "Código do Google Analytics"
 msgid "Save Changes"
 msgstr "Salvar alterações"
 
-#: template/lis-home.php:60
-#: template/lis-resource.php:36
-#: template/lis-suggest-site-details.php:29
-#: template/lis-suggest-site.php:17
+#: settings.php:89
+msgid "Available"
+msgstr "Disponíveis"
+
+#: settings.php:102
+msgid "Selected"
+msgstr "Selecionados"
+
+#: template/lis-home.php:60 template/lis-resource.php:36
+#: template/lis-suggest-site-details.php:29 template/lis-suggest-site.php:17
 msgid "Home"
 msgstr "Ínicio"
 
-#: template/lis-home.php:62
-#: template/lis-home.php:64
-#: template/lis-resource.php:37
-#: template/lis-suggest-site-details.php:30
-#: template/lis-suggest-site.php:18
-#: template/rss.php:52
+#: template/lis-home.php:62 template/lis-home.php:64
+#: template/lis-resource.php:37 template/lis-suggest-site-details.php:30
+#: template/lis-suggest-site.php:18 template/rss.php:52
 msgid "Health Information Locator"
 msgstr "Localizador de Informação em Saúde"
 
@@ -113,9 +109,7 @@ msgstr "Recursos encontrados"
 msgid "Total of resources"
 msgstr "Total de recursos"
 
-#: template/lis-home.php:88
-#: template/lis-home.php:89
-#: template/lis-home.php:90
+#: template/lis-home.php:88 template/lis-home.php:89 template/lis-home.php:90
 msgid "resources"
 msgstr "recursos"
 
@@ -135,28 +129,22 @@ msgstr "Mais recentes"
 msgid "See more details"
 msgstr "Ver mais detalhes"
 
-#: template/lis-home.php:118
-#: template/lis-resource.php:75
+#: template/lis-home.php:118 template/lis-resource.php:75
 msgid "Resource added in"
 msgstr "Recurso adicionado em"
 
-#: template/lis-home.php:125
-#: template/lis-resource.php:89
+#: template/lis-home.php:125 template/lis-resource.php:89
 msgid "Available languages"
 msgstr "Idiomas disponíveis"
 
-#: template/lis-home.php:153
-#: template/lis-home.php:154
-#: template/lis-resource.php:241
-#: template/lis-resource.php:242
+#: template/lis-home.php:153 template/lis-home.php:154
+#: template/lis-resource.php:241 template/lis-resource.php:242
 msgid "Search"
 msgstr "Pesquisa"
 
-#: template/lis-home.php:158
-#: template/lis-resource.php:246
+#: template/lis-home.php:158 template/lis-resource.php:246
 #: template/lis-suggest-site-details.php:31
-#: template/lis-suggest-site-details.php:36
-#: template/lis-suggest-site.php:19
+#: template/lis-suggest-site-details.php:36 template/lis-suggest-site.php:19
 #: template/lis-suggest-site.php:24
 msgid "Suggest a site"
 msgstr "Sugira um site"
@@ -181,8 +169,7 @@ msgstr "Originador(es)"
 msgid "Objective"
 msgstr "Objetivo"
 
-#: template/lis-resource.php:110
-#: template/lis-resource.php:116
+#: template/lis-resource.php:110 template/lis-resource.php:116
 msgid "Share"
 msgstr "Compartilhar"
 
@@ -198,10 +185,8 @@ msgstr "Sugestões"
 msgid "Separated by comma"
 msgstr "Separadas por virgula"
 
-#: template/lis-resource.php:139
-#: template/lis-resource.php:197
-#: template/lis-suggest-site-details.php:76
-#: template/lis-suggest-site.php:34
+#: template/lis-resource.php:139 template/lis-resource.php:197
+#: template/lis-suggest-site-details.php:76 template/lis-suggest-site.php:34
 msgid "Send"
 msgstr "Enviar"
 
@@ -209,8 +194,7 @@ msgstr "Enviar"
 msgid "Thank you for your suggestion."
 msgstr "Obrigado por sua sugestão."
 
-#: template/lis-resource.php:149
-#: template/lis-resource.php:207
+#: template/lis-resource.php:149 template/lis-resource.php:207
 msgid "Communication problem. Please try again later."
 msgstr "Problemas de comunicação. Por favor tente novamente."
 
@@ -246,8 +230,7 @@ msgstr "Obrigado por informar este problema."
 msgid "Related"
 msgstr "Relacionados"
 
-#: template/lis-suggest-site-details.php:43
-#: template/lis-suggest-site.php:30
+#: template/lis-suggest-site-details.php:43 template/lis-suggest-site.php:30
 msgid "Link"
 msgstr "Link"
 

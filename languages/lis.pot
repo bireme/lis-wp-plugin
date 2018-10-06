@@ -72,6 +72,14 @@ msgstr ""
 msgid "Save Changes"
 msgstr ""
 
+#: settings.php:89
+msgid "Available"
+msgstr ""
+
+#: settings.php:102
+msgid "Selected"
+msgstr ""
+
 #: template/lis-home.php:60 template/lis-resource.php:36
 #: template/lis-suggest-site-details.php:29 template/lis-suggest-site.php:17
 msgid "Home"
