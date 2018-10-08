@@ -161,7 +161,12 @@ $pages->paginate($page_url_params);
 
                     <?php dynamic_sidebar('lis-home');?>
 
-                    <?php if (strval($total) > 0) :?>
+                    <?php
+                      $order = explode(';', $lis_config['available_filter']);
+                      foreach($order as $index=>$content) {
+                    ?>
+
+                    <?php if ( trim($content) == 'Subjects' ) { ?>
         				<section class="row-fluid marginbottom25 widget_categories">
         					<header class="row-fluid border-bottom marginbottom15">
         						<h1 class="h1-header"><?php _e('Subjects','lis'); ?></h1>
@@ -185,7 +190,9 @@ $pages->paginate($page_url_params);
                                 <?php } ?>
         					</ul>
         				</section>
-                    <?php endif; ?>
+              <?php }
+            }
+            ?>
 			</aside>
 			<div class="spacer"></div>
 		</div>
