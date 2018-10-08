@@ -16,12 +16,12 @@ function lis_page_admin() {
                     <tbody>
                         <tr valign="top">
                             <th scope="row"><?php _e('Plugin page', 'lis'); ?>:</th>
-                            <td><input type="text" name="lis_config[plugin_slug]" value="<?php echo ($lis_config[plugin_slug] != '' ? $lis_config[plugin_slug] : 'lis'); ?>" class="regular-text code"></td>
+                            <td><input type="text" name="lis_config[plugin_slug]" value="<?php echo ($lis_config['plugin_slug'] != '' ? $lis_config['plugin_slug'] : 'lis'); ?>" class="regular-text code"></td>
                         </tr>
 
                         <tr valign="top">
                             <th scope="row"><?php _e('Filter query', 'lis'); ?>:</th>
-                            <td><input type="text" name="lis_config[initial_filter]" value='<?php echo $lis_config[initial_filter] ?>' class="regular-text code"></td>
+                            <td><input type="text" name="lis_config[initial_filter]" value='<?php echo $lis_config['initial_filter'] ?>' class="regular-text code"></td>
                         </tr>
                         <tr valign="top">
                             <th scope="row"><?php _e('Search form', 'lis'); ?>:</th>
@@ -55,15 +55,15 @@ function lis_page_admin() {
 
                         <tr valign="top">
                             <th scope="row"><?php _e('Disqus shortname', 'lis'); ?>:</th>
-                            <td><input type="text" name="lis_config[disqus_shortname]" value="<?php echo $lis_config[disqus_shortname] ?>" class="regular-text code"></td>
+                            <td><input type="text" name="lis_config[disqus_shortname]" value="<?php echo $lis_config['disqus_shortname'] ?>" class="regular-text code"></td>
                         </tr>
                         <tr valign="top">
                             <th scope="row"><?php _e('AddThis profile ID', 'lis'); ?>:</th>
-                            <td><input type="text" name="lis_config[addthis_profile_id]" value="<?php echo $lis_config[addthis_profile_id] ?>" class="regular-text code"></td>
+                            <td><input type="text" name="lis_config[addthis_profile_id]" value="<?php echo $lis_config['addthis_profile_id'] ?>" class="regular-text code"></td>
                         </tr>
                         <tr valign="top">
                             <th scope="row"><?php _e('Google Analytics code', 'lis'); ?>:</th>
-                            <td><input type="text" name="lis_config[google_analytics_code]" value="<?php echo $lis_config[google_analytics_code] ?>" class="regular-text code"></td>
+                            <td><input type="text" name="lis_config[google_analytics_code]" value="<?php echo $lis_config['google_analytics_code'] ?>" class="regular-text code"></td>
                         </tr>
                         <tr valign="top">
                             <th scope="row"><?php _e('Sidebar order', 'lis');?>:</th>
