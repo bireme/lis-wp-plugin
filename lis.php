@@ -29,7 +29,7 @@ require_once(LIS_PLUGIN_PATH . '/template-functions.php');
 if(!class_exists('LIS_Plugin')) {
     class LIS_Plugin {
         private $plugin_slug = 'lis';
-        private $service_url = 'http://fi-admin.bvsalud.org/';
+        private $service_url = 'https://fi-admin.bvsalud.org/';
         private $similar_docs_url = 'http://similardocs.bireme.org/SDService';
         /**
          * Construct the plugin object
