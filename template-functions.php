@@ -111,28 +111,4 @@ if ( !function_exists('real_site_url') ) {
     }
 }
 
-if ( ! function_exists('is_plugin') ) {
-    function is_plugin() {
-        global $wp, $lis_plugin_slug;
-        $type = false;
-
-        $pos_slug = strpos($wp->request, $lis_plugin_slug);
-        if ( $pos_slug !== false ){
-            $pagename = substr($wp->request, $pos_slug);
-        }
-
-        if ( is_404() && $pos_slug !== false ){
-            if ($pagename == $lis_plugin_slug || $pagename == $lis_plugin_slug . '/resource') {
-                if ($pagename == $lis_plugin_slug) {
-                    $type = 'wp-plugin-search';
-                } else {
-                    $type = 'wp-plugin-document';
-                }
-            }
-        }
-
-        return $type;
-    }
-}
-
 ?>
