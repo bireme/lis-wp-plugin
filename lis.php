@@ -29,7 +29,7 @@ require_once(LIS_PLUGIN_PATH . '/template-functions.php');
 if(!class_exists('LIS_Plugin')) {
     class LIS_Plugin {
         private $plugin_slug = 'lis';
-        private $service_url = 'http://fi-admin.data.bvsalud.org/';
+        private $service_url = 'https://fi-admin-api.bvsalud.org/';
         private $similar_docs_url = 'http://similardocs.bireme.org/SDService';
         /**
          * Construct the plugin object
@@ -83,7 +83,7 @@ if(!class_exists('LIS_Plugin')) {
         }
 
         function template_redirect() {
-            global $wp, $lis_plugin_slug, $lis_service_url;
+            global $wp, $lis_plugin_slug, $lis_service_url, $similar_docs_url;
 
             // check if request contains plugin slug string
             $pos_slug = strpos($wp->request, $this->plugin_slug);
@@ -94,6 +94,7 @@ if(!class_exists('LIS_Plugin')) {
             if ( is_404() && $pos_slug !== false ){
                 $lis_service_url = $this->service_url;
                 $lis_plugin_slug = $this->plugin_slug;
+                $similar_docs_url = $this->similar_docs_url;
 
                 if ($pagename == $this->plugin_slug || $pagename == $this->plugin_slug . '/resource'
                     || $pagename == $this->plugin_slug . '/suggest-site'
@@ -115,6 +116,7 @@ if(!class_exists('LIS_Plugin')) {
                     }else{
                         $template = LIS_PLUGIN_PATH . '/template/lis-resource.php';
                     }
+                    
                     // force status to 200 - OK
                     status_header(200);
 
@@ -178,8 +180,11 @@ if(!class_exists('LIS_Plugin')) {
         }
 
         function page_template_styles_scripts(){
+            wp_enqueue_script ('slick-js', '//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js');
             wp_enqueue_script('lis-page',    LIS_PLUGIN_URL . 'template/js/functions.js');
             wp_enqueue_script('jquery-raty', LIS_PLUGIN_URL . 'template/js/jquery.raty.min.js', array( 'jquery' ));
+            wp_enqueue_style ('slick-css', '//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css');
+            wp_enqueue_style ('slick-theme-css', '//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css');
             wp_enqueue_style ('lis-page',    LIS_PLUGIN_URL . 'template/css/style.css');
         }
 
