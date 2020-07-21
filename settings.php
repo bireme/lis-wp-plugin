@@ -96,9 +96,16 @@ function lis_page_admin() {
                             <td><input type="text" name="lis_config[google_analytics_code]" value="<?php echo $lis_config['google_analytics_code'] ?>" class="regular-text code"></td>
                         </tr>
                         <tr valign="top">
-                            <th scope="row"><?php _e('Related documents filter', 'lis'); ?>:</th>
+                            <th scope="row"><?php _e('Related Documents filter', 'lis'); ?>:</th>
                             <td>
                                 <input type="text" name="lis_config[default_filter_db]" value='<?php echo $lis_config['default_filter_db']; ?>' class="regular-text code">
+                                <small style="display: block;">* <?php _e('The filters must be separated by commas.', 'lis'); ?></small>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <th scope="row"><?php _e('More Related Documents filter', 'lis'); ?>:</th>
+                            <td>
+                                <input type="text" name="lis_config[extra_filter_db]" value='<?php echo $lis_config['extra_filter_db']; ?>' class="regular-text code">
                                 <small style="display: block;">* <?php _e('The filters must be separated by commas.', 'lis'); ?></small>
                             </td>
                         </tr>
