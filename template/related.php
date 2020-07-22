@@ -53,7 +53,7 @@
                             <?php
                         }
                     } else {
-                        echo '<li>' . __('No related documents', 'biblio') . '</li>';
+                        echo '<li>' . __('No related documents', 'lis') . '</li>';
                     }
                 ?>
                 </ul>
