@@ -40,7 +40,7 @@ if(!class_exists('LIS_Plugin')) {
             add_action( 'admin_menu', array(&$this, 'admin_menu'));
             add_action( 'plugins_loaded', array(&$this, 'plugin_init'));
             add_action( 'wp_head', array(&$this, 'google_analytics_code'));
-            add_action( 'template_redirect', array(&$this, 'template_redirect'));
+            add_action( 'template_redirect', array(&$this, 'template_redirect'), 1);
             add_action( 'widgets_init', array(&$this, 'register_sidebars'));
             add_filter( 'get_search_form', array(&$this, 'search_form'));
             add_filter( 'document_title_parts', array(&$this, 'theme_slug_render_title'));
