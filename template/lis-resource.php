@@ -5,7 +5,7 @@ Template Name: LIS Detail
 global $lis_service_url, $similar_docs_url;
 
 $lis_config = get_option('lis_config');
-$resource_id   = $_GET['id'];
+$resource_id = sanitize_text_field($_GET['id']);
 
 $site_language = strtolower(get_bloginfo('language'));
 $lang_dir = substr($site_language,0,2);
