@@ -126,7 +126,7 @@ $pages->paginate($page_url_params);
                                 <?php if ($resource->source_language_display): ?>
             						<div id="conteudo-loop-idiomas" class="row-fluid">
             							<span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','lis'); ?>:</span>
-            							<?php print_lang_value($resource->source_language_display, $site_language); ?>
+            							<?php lis_print_lang_value($resource->source_language_display, $site_language); ?>
             						</div>
                                 <?php endif; ?>
 
