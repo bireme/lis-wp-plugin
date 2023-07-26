@@ -57,8 +57,8 @@ $pages->paginate($page_url_params);
 ?>
 
 <?php get_header('lis');?>
-	<div id="content" class="row-fluid">
-		<div class="ajusta2">
+    <div id="content" class="row-fluid">
+        <div class="ajusta2">
             <div class="row-fluid breadcrumb">
                 <a href="<?php echo real_site_url(); ?>"><?php _e('Home','lis'); ?></a> >
                 <?php if ($query == '' && $filter == ''): ?>
@@ -69,13 +69,13 @@ $pages->paginate($page_url_params);
                 <?php endif; ?>
             </div>
 
-			<section id="conteudo">
+            <section id="conteudo">
                 <?php if ( isset($total) && strval($total) == 0) :?>
                     <h1 class="h1-header"><?php _e('No results found','lis'); ?></h1>
                 <?php else :?>
-    				<header class="row-fluid border-bottom">
+                    <header class="row-fluid border-bottom">
                         <?php if ( ( $query != '' || $user_filter != '' ) && strval($total) > 0) :?>
-    					   <h1 class="h1-header"><?php _e('Resources found','lis'); ?>: <?php echo $total; ?></h1>
+                           <h1 class="h1-header"><?php _e('Resources found','lis'); ?>: <?php echo $total; ?></h1>
                         <?php else: ?>
                            <h1 class="h1-header"><?php _e('Total of resources','lis'); echo ': ' . $total; ?></h1>
                         <?php endif; ?>
@@ -101,33 +101,33 @@ $pages->paginate($page_url_params);
                             </form>
                         </div>
                         -->
-    				</header>
-    				<div class="row-fluid">
+                    </header>
+                    <div class="row-fluid">
                         <?php foreach ( $resource_list as $resource) { ?>
-    					    <article class="conteudo-loop">
-        						<div class="row-fluid">
-        							<h2 class="h2-loop-tit"><?php echo $resource->title; ?></h2>
-        						</div>
-        						<div class="conteudo-loop-rates">
-        							<div class="star" data-score="1"></div>
-        						</div>
-        						<p class="row-fluid">
-        							<?php echo ( strlen($resource->abstract) > 200 ? substr($resource->abstract,0,200) . '...' : $resource->abstract); ?><br/>
-        							<span class="more"><a href="<?php echo real_site_url($lis_plugin_slug); ?>resource/?id=<?php echo $resource->django_id; ?>"><?php _e('See more details','lis'); ?></a></span>
-        						</p>
+                            <article class="conteudo-loop">
+                                <div class="row-fluid">
+                                    <h2 class="h2-loop-tit"><?php echo $resource->title; ?></h2>
+                                </div>
+                                <div class="conteudo-loop-rates">
+                                    <div class="star" data-score="1"></div>
+                                </div>
+                                <p class="row-fluid">
+                                    <?php echo ( strlen($resource->abstract) > 200 ? substr($resource->abstract,0,200) . '...' : $resource->abstract); ?><br/>
+                                    <span class="more"><a href="<?php echo real_site_url($lis_plugin_slug); ?>resource/?id=<?php echo $resource->django_id; ?>"><?php _e('See more details','lis'); ?></a></span>
+                                </p>
 
                                 <?php if ($resource->created_date): ?>
-            						<div id="conteudo-loop-data" class="row-fluid margintop05">
-            							<span class="conteudo-loop-data-tit"><?php _e('Resource added in','lis'); ?>:</span>
-            							<?php echo print_formated_date($resource->created_date); ?>
-            						</div>
+                                    <div id="conteudo-loop-data" class="row-fluid margintop05">
+                                        <span class="conteudo-loop-data-tit"><?php _e('Resource added in','lis'); ?>:</span>
+                                        <?php echo print_formated_date($resource->created_date); ?>
+                                    </div>
                                 <?php endif; ?>
 
                                 <?php if ($resource->source_language_display): ?>
-            						<div id="conteudo-loop-idiomas" class="row-fluid">
-            							<span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','lis'); ?>:</span>
-            							<?php lis_print_lang_value($resource->source_language_display, $site_language); ?>
-            						</div>
+                                    <div id="conteudo-loop-idiomas" class="row-fluid">
+                                        <span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','lis'); ?>:</span>
+                                        <?php lis_print_lang_value($resource->source_language_display, $site_language); ?>
+                                    </div>
                                 <?php endif; ?>
 
                                 <?php if ($resource->descriptor || $resource->keyword ) : ?>
@@ -141,24 +141,24 @@ $pages->paginate($page_url_params);
                                       </div>
                                 <?php endif; ?>
 
-        					</article>
+                            </article>
                         <?php } ?>
-    				</div>
+                    </div>
                     <div class="row-fluid">
                         <?php echo $pages->display_pages(); ?>
                     </div>
                 <?php endif; ?>
-			</section>
-			<aside id="sidebar">
-			       <section class="header-search">
-                    		<?php if ($lis_config['show_form']) : ?>
-                        		<form role="search" method="get" id="searchform" action="<?php echo real_site_url($lis_plugin_slug); ?>">
-                            			<input value='<?php echo $query ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'lis'); ?>...">
-                            			<input id="searchsubmit" value="<?php _e('Search', 'lis'); ?>" type="submit">
-                        		</form>
-                    		<?php endif; ?>
-                	</section>
-			        <a href="<?php echo real_site_url($lis_plugin_slug); ?>suggest-site" class="header-colabore"><?php _e('Suggest a site','lis'); ?></a>
+            </section>
+            <aside id="sidebar">
+                   <section class="header-search">
+                        <?php if ($lis_config['show_form']) : ?>
+                            <form role="search" method="get" id="searchform" action="<?php echo real_site_url($lis_plugin_slug); ?>">
+                                <input value='<?php echo $query ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'lis'); ?>...">
+                                <input id="searchsubmit" value="<?php _e('Search', 'lis'); ?>" type="submit">
+                            </form>
+                        <?php endif; ?>
+                    </section>
+                    <a href="<?php echo real_site_url($lis_plugin_slug); ?>suggest-site" class="header-colabore"><?php _e('Suggest a site','lis'); ?></a>
 
                     <?php dynamic_sidebar('lis-home');?>
 
@@ -168,34 +168,36 @@ $pages->paginate($page_url_params);
                     ?>
 
                     <?php if ( trim($content) == 'Subjects' ) { ?>
-        				<section class="row-fluid marginbottom25 widget_categories">
-        					<header class="row-fluid border-bottom marginbottom15">
-        						<h1 class="h1-header"><?php _e('Subjects','lis'); ?></h1>
-        					</header>
-        					<ul>
-                                <?php foreach ( $descriptor_list as $descriptor) { ?>
-                                    <li class="cat-item">
-                                        <?php
-                                            $filter_link = '?';
-                                            if ($query != ''){
-                                                $filter_link .= 'q=' . $query . '&';
-                                            }
-                                            $filter_link .= 'filter=descriptor:"' . $descriptor[0] . '"';
-                                            if ($user_filter != ''){
-                                                $filter_link .= ' AND ' . $user_filter ;
-                                            }
-                                        ?>
-                                        <a href='<?php echo $filter_link ?>'><?php echo $descriptor[0] ?></a>
-                                        <span class="cat-item-count"><?php echo $descriptor[1] ?></span>
-                                    </li>
-                                <?php } ?>
-        					</ul>
-        				</section>
+                        <section class="row-fluid marginbottom25 widget_categories">
+                            <header class="row-fluid border-bottom marginbottom15">
+                                <h1 class="h1-header"><?php _e('Subjects','lis'); ?></h1>
+                            </header>
+                            <ul>
+                                <?php foreach ( $descriptor_list as $descriptor ) : ?>
+                                    <?php
+                                        $filter_link = '?';
+                                        if ($query != ''){
+                                            $filter_link .= 'q=' . $query . '&';
+                                        }
+                                        $filter_link .= 'filter=descriptor:"' . $descriptor[0] . '"';
+                                        if ($user_filter != ''){
+                                            $filter_link .= ' AND ' . $user_filter ;
+                                        }
+                                    ?>
+                                    <?php if ( filter_var($descriptor[0], FILTER_VALIDATE_INT) === false ) : ?>
+                                        <li class="cat-item">
+                                            <a href='<?php echo $filter_link ?>'><?php echo $descriptor[0] ?></a>
+                                            <span class="cat-item-count"><?php echo $descriptor[1] ?></span>
+                                        </li>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </ul>
+                        </section>
               <?php }
             }
             ?>
-			</aside>
-			<div class="spacer"></div>
-		</div>
-	</div>
+            </aside>
+            <div class="spacer"></div>
+        </div>
+    </div>
 <?php get_footer();?>
