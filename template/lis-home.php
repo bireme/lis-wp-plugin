@@ -69,6 +69,8 @@ $pages->paginate($page_url_params);
                 <?php endif; ?>
             </div>
 
+<?php if ($lis_config['page_layout'] != 'whole_page' || $_GET['q'] != '' || $_GET['filter'] != '' ) : ?>
+
             <section id="conteudo">
                 <?php if ( isset($total) && strval($total) == 0) :?>
                     <h1 class="h1-header"><?php _e('No results found','lis'); ?></h1>
@@ -82,25 +84,6 @@ $pages->paginate($page_url_params);
                         <div class="pull-right">
                             <a href="<?php echo $feed_url; ?>" target="blank"><img src="<?php echo LIS_PLUGIN_URL ?>template/images/icon_rss.png" class="rss_feed" /></a>
                         </div>
-
-                        <!-- Not implemented yet
-                        <div class="pull-right">
-                            <a href="#" class="ico-feeds"></a>
-                            <form action="">
-                                <select name="txtRegistros" id="txtRegistros" class="select-input-home">
-                                    <option value="10 Registros">10 <?php _e('resources', 'lis'); ?></option>`
-                                    <option value="20 Registros">20 <?php _e('resources', 'lis'); ?></option>
-                                    <option value="50 Registros">50 <?php _e('resources', 'lis'); ?></option>
-                                </select>
-
-                                <select name="txtOrder" id="txtOrder" class="select-input-home">
-                                    <option value=""><?php _e('Order by', 'lis'); ?></option>
-                                    <option value="Mais Recentes"><?php _e('More relevant','lis'); ?></option>
-                                    <option value="Mais Lidas"><?php _e('Most recent','lis'); ?></option>
-                                </select>
-                            </form>
-                        </div>
-                        -->
                     </header>
                     <div class="row-fluid">
                         <?php foreach ( $resource_list as $resource) { ?>
@@ -150,54 +133,144 @@ $pages->paginate($page_url_params);
                 <?php endif; ?>
             </section>
             <aside id="sidebar">
-                   <section class="header-search">
-                        <?php if ($lis_config['show_form']) : ?>
-                            <form role="search" method="get" id="searchform" action="<?php echo real_site_url($lis_plugin_slug); ?>">
-                                <input value='<?php echo $query ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'lis'); ?>...">
-                                <input id="searchsubmit" value="<?php _e('Search', 'lis'); ?>" type="submit">
-                            </form>
-                        <?php endif; ?>
+                <section class="header-search">
+                    <?php if ($lis_config['show_form']) : ?>
+                        <form role="search" method="get" id="searchform" action="<?php echo real_site_url($lis_plugin_slug); ?>">
+                            <input value='<?php echo $query ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'lis'); ?>...">
+                            <input id="searchsubmit" value="<?php _e('Search', 'lis'); ?>" type="submit">
+                        </form>
+                    <?php endif; ?>
+                </section>
+                <a href="<?php echo real_site_url($lis_plugin_slug); ?>suggest-site" class="header-colabore"><?php _e('Suggest a site','lis'); ?></a>
+
+                <?php dynamic_sidebar('lis-home');?>
+
+                <?php
+                  $order = explode(';', $lis_config['available_filter']);
+                  foreach($order as $index=>$content) {
+                ?>
+
+                <?php if ( trim($content) == 'Subjects' ) { ?>
+                    <section class="row-fluid marginbottom25 widget_categories">
+                        <header class="row-fluid border-bottom marginbottom15">
+                            <h1 class="h1-header"><?php _e('Subjects','lis'); ?></h1>
+                        </header>
+                        <ul>
+                            <?php foreach ( $descriptor_list as $descriptor ) : ?>
+                                <?php
+                                    $filter_link = '?';
+                                    if ($query != ''){
+                                        $filter_link .= 'q=' . $query . '&';
+                                    }
+                                    $filter_link .= 'filter=descriptor:"' . $descriptor[0] . '"';
+                                    if ($user_filter != ''){
+                                        $filter_link .= ' AND ' . $user_filter ;
+                                    }
+                                ?>
+                                <?php if ( filter_var($descriptor[0], FILTER_VALIDATE_INT) === false ) : ?>
+                                    <li class="cat-item">
+                                        <a href='<?php echo $filter_link ?>'><?php echo $descriptor[0] ?></a>
+                                        <span class="cat-item-count"><?php echo $descriptor[1] ?></span>
+                                    </li>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </ul>
                     </section>
-                    <a href="<?php echo real_site_url($lis_plugin_slug); ?>suggest-site" class="header-colabore"><?php _e('Suggest a site','lis'); ?></a>
-
-                    <?php dynamic_sidebar('lis-home');?>
-
-                    <?php
-                      $order = explode(';', $lis_config['available_filter']);
-                      foreach($order as $index=>$content) {
-                    ?>
-
-                    <?php if ( trim($content) == 'Subjects' ) { ?>
-                        <section class="row-fluid marginbottom25 widget_categories">
-                            <header class="row-fluid border-bottom marginbottom15">
-                                <h1 class="h1-header"><?php _e('Subjects','lis'); ?></h1>
-                            </header>
-                            <ul>
-                                <?php foreach ( $descriptor_list as $descriptor ) : ?>
-                                    <?php
-                                        $filter_link = '?';
-                                        if ($query != ''){
-                                            $filter_link .= 'q=' . $query . '&';
-                                        }
-                                        $filter_link .= 'filter=descriptor:"' . $descriptor[0] . '"';
-                                        if ($user_filter != ''){
-                                            $filter_link .= ' AND ' . $user_filter ;
-                                        }
-                                    ?>
-                                    <?php if ( filter_var($descriptor[0], FILTER_VALIDATE_INT) === false ) : ?>
-                                        <li class="cat-item">
-                                            <a href='<?php echo $filter_link ?>'><?php echo $descriptor[0] ?></a>
-                                            <span class="cat-item-count"><?php echo $descriptor[1] ?></span>
-                                        </li>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                            </ul>
-                        </section>
               <?php }
             }
             ?>
             </aside>
+
             <div class="spacer"></div>
+
+<?php else : ?>
+
+            <section id="">
+                <?php if ( isset($total) && strval($total) == 0) :?>
+                    <header class="row-fluid border-bottom">
+                        <div class="list-header">
+                            <h1 class="h1-header"><?php _e('No results found','lis'); ?></h1>
+                            <?php if ($lis_config['show_form']) : ?>
+                                <section class="header-search">
+                                    <form role="search" method="get" id="searchform" action="<?php echo real_site_url($lis_plugin_slug); ?>">
+                                        <input value='<?php echo $query; ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'lis'); ?>...">
+                                        <input id="searchsubmit" value="<?php _e('Search', 'lis'); ?>" type="submit">
+                                    </form>
+                                </section>
+                            <?php endif; ?>
+                        </div>
+                    </header>
+                <?php else :?>
+                    <header class="row-fluid border-bottom">
+                        <div class="list-header">
+                            <?php if ( ( $query != '' || $user_filter != '' ) && strval($total) > 0) :?>
+                                <h1 class="h1-header"><?php _e('Resources found','lis'); ?>: <?php echo $total; ?></h1>
+                            <?php else: ?>
+                               <h1 class="h1-header"><?php _e('Total of resources','lis'); echo ': ' . $total; ?></h1>
+                            <?php endif; ?>
+                            <?php if ($lis_config['show_form']) : ?>
+                                <section class="header-search">
+                                    <form role="search" method="get" id="searchform" action="<?php echo real_site_url($lis_plugin_slug); ?>">
+                                        <input value='<?php echo $query; ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'lis'); ?>...">
+                                        <input id="searchsubmit" value="<?php _e('Search', 'lis'); ?>" type="submit">
+                                    </form>
+                                </section>
+                            <?php endif; ?>
+                        </div>
+                        <div class="pull-right">
+                            <a href="<?php echo $feed_url; ?>" target="blank"><img src="<?php echo LIS_PLUGIN_URL; ?>template/images/icon_rss.png" class="rss_feed" ></a>
+                        </div>
+                    </header>
+                <?php endif; ?>
+            </section>
+
+
+            <aside id="">
+
+                <a href="<?php echo real_site_url($lis_plugin_slug); ?>suggest-site" class="header-colabore pull-right"><?php _e('Suggest a site','lis'); ?></a>
+
+                <?php if (strval($total) > 0) :?>
+                    <?php
+                        $order = explode(';', $lis_config['available_filter']);
+                        foreach ( $order as $index => $content) {
+                    ?>
+                        <?php if(trim($content) == 'Subjects'){ ?>
+                            <section class="row-fluid widget_categories">
+                                <header class="row-fluid border-bottom marginbottom15">
+                                    <h1 class="h1-header"><?php _e('Subjects','lis'); ?></h1>
+                                </header>
+                                <ul class="col3">
+                                    <?php foreach ( $descriptor_list as $descriptor) { ?>
+                                        <?php
+                                            $filter_link = '?';
+                                            if ($query != ''){
+                                                $filter_link .= 'q=' . $query . '&';
+                                            }
+                                            $filter_link .= 'filter=descriptor:"' . $descriptor[0] . '"';
+                                            if ($user_filter != ''){
+                                                $filter_link .= ' AND ' . $user_filter ;
+                                            }
+                                        ?>
+                                        <?php if ( filter_var($descriptor[0], FILTER_VALIDATE_INT) === false ) : ?>
+                                            <li class="cat-item">
+                                                <a href='<?php echo $filter_link; ?>'><?php echo $descriptor[0]; ?></a>
+                                                <span class="cat-item-count"><?php echo $descriptor[1] ?></span>
+                                            </li>
+                                        <?php endif; ?>
+                                    <?php } ?>
+                                </ul>
+                            </section>
+                        <?php } ?>
+                    <?php
+                        }
+                endif; ?>
+                <?php dynamic_sidebar('lis-home');?>
+            </aside>
+
+            <div class="spacer marginbottom25"></div>            
+
+<?php endif; ?>
+
         </div>
     </div>
 <?php get_footer();?>

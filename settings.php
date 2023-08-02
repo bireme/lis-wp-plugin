@@ -111,6 +111,23 @@ function lis_page_admin() {
                         </td>
                     </tr>
                     <tr valign="top">
+                        <th scope="row">
+                            <?php _e('Page Layout', 'lis'); ?>:
+                        </th>
+                        <td>
+                            <label for="whole_page">
+                                <input type="radio" id="whole_page" value="whole_page" name="lis_config[page_layout]"  <?php if($lis_config['page_layout'] == 'whole_page' ){ echo 'checked'; }?>>
+                                <?php _e('Show filters as whole page', 'lis'); ?>
+                            </label>
+                            <br />
+                            <br />
+                            <label for="normal_page">
+                                <input type="radio" id="normal_page" value="normal_page" name="lis_config[page_layout]" <?php if(!isset($lis_config['page_layout']) || $lis_config['page_layout'] == 'normal_page' ){ echo 'checked'; }?> >
+                                <?php _e('Show normal page', 'lis'); ?>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr valign="top">
                         <th scope="row"><?php _e('Sidebar order', 'lis');?>:</th>
 
                         <?php

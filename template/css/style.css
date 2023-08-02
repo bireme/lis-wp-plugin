@@ -82,7 +82,7 @@ a:hover{color:rgb(0,153,255); text-decoration:underline;}
 .header-search{float:left; margin:15px 15px 15px 0;}
 .input-search{width:195px; min-height:19px; float:left; padding:8px 10px; border-radius:10px 0px 0px 10px; border:1px solid rgb(132,132,132);}
 .b-search{cursor:pointer; width:101px; height:41px; border:0px; float:left; background-position:0 -118px; margin-left:-1px;}
-.header-colabore{font-size: 170%;text-decoration: none;color: #28367D !important;padding-left:22px;background: url(../images/plus.png) 0px 6px no-repeat;display:inline-block; margin:18px 0 12px 0;}
+.header-colabore{font-size: 170%;text-decoration: none;color: #28367D !important;padding-left:22px;background: url(../images/plus.png) 0px 4px no-repeat;display:inline-block; margin:18px 0 12px 0;}
 .header-colabore:hover{text-decoration:none;}
 .topMenu .widget{margin-bottom: 0px;}
 
@@ -175,6 +175,7 @@ input[type=radio]{float:left; margin:3px 5px 0 0;}
 #recent-posts-3 ul li{float:left; width:100%; margin-bottom:10px; font-size:13px;}
 /*#categories-3 ul li{position:relative; width:100%; float:left; color:rgb(102,102,102); font-size:13px !important; margin-bottom:4px; padding-bottom:4px; border-bottom:1px solid rgb(229,229,229);}*/
 .widget_categories ul li{position:relative; width:100%; float:left; color:rgb(102,102,102); font-size:13px !important; margin-bottom:4px; padding-bottom:4px; border-bottom:1px solid rgb(229,229,229);}
+.widget_categories ul li a {display: block; width: 85%;}
 .tagcloud{float:left; width:100%;}
 .tagcloud a{width:100%; float:left; color:rgb(102,102,102); font-size:13px !important; margin-bottom:4px; padding-bottom:4px; border-bottom:1px solid rgb(229,229,229);}
 .cat-item-count{width:36px; font-size:12px !important; line-height:20px !important; position:absolute; right:0; top:1px; overflow:hidden; border-radius:11px; text-align:center; background:rgb(172,172,172); color:rgb(255,255,255);}
@@ -311,6 +312,27 @@ input[type=radio]{float:left; margin:3px 5px 0 0;}
 .related-docs ul li {
     border-bottom: 1px solid rgb(229,229,229);
     padding: 5px 0;
+}
+
+ul.col3 {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+    -webkit-column-gap: 2rem;
+    -moz-column-gap: 2rem;
+    column-gap: 2rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+
+.list-header {
+    float: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.list-header .input-search {
+    width: 390px;
 }
 
 /* Loader */
