@@ -17,7 +17,7 @@ $query = sanitize_text_field($_GET['s'] . $_GET['q'] . $_GET['newexpr']);
 $query = stripslashes( trim($query) );
 
 $sanitize_user_filter = sanitize_text_field($_GET['filter']);
-$user_filter = stripslashes($sanitize_text_field);
+$user_filter = stripslashes($sanitize_user_filter);
 $page = ( isset($_GET['pg']) ? sanitize_text_field($_GET['pg']) : 1 );
 $total = 0;
 $count = 10;
@@ -267,7 +267,7 @@ $pages->paginate($page_url_params);
                 <?php dynamic_sidebar('lis-home');?>
             </aside>
 
-            <div class="spacer marginbottom25"></div>            
+            <div class="spacer marginbottom25"></div>
 
 <?php endif; ?>
 

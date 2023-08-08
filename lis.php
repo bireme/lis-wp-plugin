@@ -31,6 +31,7 @@ if(!class_exists('LIS_Plugin')) {
         private $plugin_slug = 'lis';
         private $service_url = 'https://fi-admin-api.bvsalud.org/';
         private $similar_docs_url = 'http://similardocs.bireme.org/SDService';
+        private $suggest_url = 'https://fi-admin.bvsalud.org/suggest-resource';
         /**
          * Construct the plugin object
          */
@@ -121,7 +122,7 @@ if(!class_exists('LIS_Plugin')) {
                     }else{
                         $template = LIS_PLUGIN_PATH . '/template/lis-resource.php';
                     }
-                    
+
                     // force status to 200 - OK
                     status_header(200);
 

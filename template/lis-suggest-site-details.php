@@ -2,7 +2,7 @@
 /*
 Template Name: LIS Detail
 */
-global $lis_service_url;
+global $suggest_url;
 
 $lis_config = get_option('lis_config');
 $site_language = strtolower(get_bloginfo('language'));
@@ -44,7 +44,7 @@ if ($site_link != ''){
                 <div class="row-fluid">
                     <article class="conteudo-loop suggest-form">
 
-                        <form method="post" id="suggest-form" action="<?php echo $lis_service_url ?>suggest-resource">
+                        <form method="post" id="suggest-form" action="<?php echo $suggest_url ?>">
                             <?php _e('Link', 'lis') ?>
                             <p><input type="text"  name="link" size="80" value="<?php echo $site_link ?>"/></p>
 
