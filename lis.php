@@ -88,7 +88,7 @@ if(!class_exists('LIS_Plugin')) {
         }
 
         function template_redirect() {
-            global $wp, $lis_plugin_slug, $lis_service_url, $similar_docs_url;
+            global $wp, $lis_plugin_slug, $lis_service_url, $similar_docs_url, $suggest_url;
 
             // check if request contains plugin slug string
             $pos_slug = strpos($wp->request, $this->plugin_slug);
@@ -100,6 +100,7 @@ if(!class_exists('LIS_Plugin')) {
                 $lis_service_url = $this->service_url;
                 $lis_plugin_slug = $this->plugin_slug;
                 $similar_docs_url = $this->similar_docs_url;
+                $suggest_url = $this->suggest_url;
 
                 if ($pagename == $this->plugin_slug || $pagename == $this->plugin_slug . '/resource'
                     || $pagename == $this->plugin_slug . '/suggest-site'
