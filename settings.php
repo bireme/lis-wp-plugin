@@ -129,41 +129,36 @@ function lis_page_admin() {
                     </tr>
                     <tr valign="top">
                         <th scope="row"><?php _e('Sidebar order', 'lis');?>:</th>
-
                         <?php
+                            $available_filters = 'Subjects;Thematic area';
+                            $available_filter_list = explode(';', $available_filters);
                             if(!isset($lis_config['available_filter'])){
-                                $lis_config['available_filter'] = 'Subjects';
-                                $order = explode(';', $lis_config['available_filter'] );
+                                $order = $available_filter_list;
                             } else {
                                 $order = array_filter(explode(';', $lis_config['available_filter']));
                             }
                         ?>
-
                         <td>
-
                             <table border=0>
                                 <tr>
                                     <td>
-                                        <p align="right"><?php _e('Available', 'lis');?><br />
+                                        <p align="left"><?php _e('Available', 'lis');?><br />
                                             <ul id="sortable1" class="droptrue">
-                                                <?php
-                                                    if(!in_array('Subjects', $order) && !in_array('Subjects ', $order) ){
-                                                        echo '<li class="ui-state-default" id="Subjects">'.translate('Subjects','lis').'</li>';
-                                                    }
-                                                ?>
+                                                <?php foreach ($available_filter_list as $key => $value) : ?>
+                                                    <?php if ( !in_array($value, $order) ) : ?>
+                                                        <?php echo '<li class="ui-state-default" id="'.$value.'">'.translate($value,'lis').'</li>'; ?>
+                                                    <?php endif; ?>
+                                                <?php endforeach; ?>
                                             </ul>
                                         </p>
                                     </td>
-
                                     <td>
                                         <p align="left"><?php _e('Selected', 'lis');?><br />
                                             <ul id="sortable2" class="sortable-list">
                                                 <?php
                                                     foreach ($order as $index => $item) {
-                                                        $item = trim($item); // Important
-                                                        if($item != ''){
-                                                            echo '<li class="ui-state-default" id="'.$item.'">'.translate($item ,'lis').'</li>';
-                                                        }
+                                                        $item = trim($item);
+                                                        echo '<li class="ui-state-default" id="'.$item.'">'.translate($item ,'lis').'</li>';
                                                     }
                                                 ?>
                                             </ul>
@@ -172,7 +167,6 @@ function lis_page_admin() {
                                     </td>
                                 </tr>
                             </table>
-
                         </td>
                     </tr>
                 </tbody>

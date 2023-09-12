@@ -46,6 +46,7 @@ if ($response){
     $start = $response_json->diaServerResponse[0]->response->start;
     $resource_list = $response_json->diaServerResponse[0]->response->docs;
     $descriptor_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->descriptor_filter;
+    $thematic_area_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->thematic_area_display;
 }
 
 $page_url_params = real_site_url($lis_plugin_slug) . '?q=' . urlencode($query) . '&filter=' . urlencode($filter);
@@ -146,11 +147,11 @@ $pages->paginate($page_url_params);
                 <?php dynamic_sidebar('lis-home');?>
 
                 <?php
-                  $order = explode(';', $lis_config['available_filter']);
-                  foreach($order as $index=>$content) {
+                    $order = explode(';', $lis_config['available_filter']);
+                    foreach($order as $key => $value) {
                 ?>
 
-                <?php if ( trim($content) == 'Subjects' ) { ?>
+                <?php if ( $value == 'Subjects' ) : ?>
                     <section class="row-fluid marginbottom25 widget_categories">
                         <header class="row-fluid border-bottom marginbottom15">
                             <h1 class="h1-header"><?php _e('Subjects','lis'); ?></h1>
@@ -176,9 +177,33 @@ $pages->paginate($page_url_params);
                             <?php endforeach; ?>
                         </ul>
                     </section>
-              <?php }
-            }
-            ?>
+                <?php endif; ?>
+                <?php if ( $value == 'Thematic area' ) : ?>
+                    <section class="row-fluid marginbottom25 widget_categories">
+                        <header class="row-fluid border-bottom marginbottom15">
+                            <h1 class="h1-header"><?php _e('Thematic area','lis'); ?></h1>
+                        </header>
+                        <ul class="filter-list">
+                        <?php foreach ( $thematic_area_list as $ta) { ?>
+                            <?php
+                                $filter_link = '?';
+                                if ($query != ''){
+                                    $filter_link .= 'q=' . $query . '&';
+                                }
+                                $filter_link .= 'filter=thematic_area_display:"' . $ta[0] . '"';
+                                if ($user_filter != ''){
+                                    $filter_link .= ' AND ' . $user_filter ;
+                                }
+                            ?>
+                            <li class="cat-item">
+                                <a href='<?php echo $filter_link; ?>'><?php lis_print_lang_value($ta[0], $site_language); ?></a>
+                                <span class="cat-item-count"><?php echo $ta[1] ?></span>
+                            </li>
+                        <?php } ?>
+                        </ul>
+                     </section>
+                <?php endif; ?>
+            <?php } ?>
             </aside>
 
             <div class="spacer"></div>
@@ -224,17 +249,16 @@ $pages->paginate($page_url_params);
                 <?php endif; ?>
             </section>
 
-
-            <aside id="">
+            <aside id="sidebar">
 
                 <a href="<?php echo real_site_url($lis_plugin_slug); ?>suggest-site" class="header-colabore pull-right"><?php _e('Suggest a site','lis'); ?></a>
 
-                <?php if (strval($total) > 0) :?>
+                <?php if (strval($total) > 0) : ?>
                     <?php
                         $order = explode(';', $lis_config['available_filter']);
-                        foreach ( $order as $index => $content) {
+                        foreach ( $order as $key => $value) {
                     ?>
-                        <?php if(trim($content) == 'Subjects'){ ?>
+                        <?php if ( $value == 'Subjects' ) : ?>
                             <section class="row-fluid widget_categories">
                                 <header class="row-fluid border-bottom marginbottom15">
                                     <h1 class="h1-header"><?php _e('Subjects','lis'); ?></h1>
@@ -260,11 +284,37 @@ $pages->paginate($page_url_params);
                                     <?php } ?>
                                 </ul>
                             </section>
-                        <?php } ?>
-                    <?php
-                        }
-                endif; ?>
+                        <?php endif; ?>
+                        <?php if ( $value == 'Thematic area' ) : ?>
+                            <section class="row-fluid marginbottom25 widget_categories">
+                                <header class="row-fluid border-bottom marginbottom15">
+                                    <h1 class="h1-header"><?php _e('Thematic area','lis'); ?></h1>
+                                </header>
+                                <ul class="col3">
+                                <?php foreach ( $thematic_area_list as $ta) { ?>
+                                    <?php
+                                        $filter_link = '?';
+                                        if ($query != ''){
+                                            $filter_link .= 'q=' . $query . '&';
+                                        }
+                                        $filter_link .= 'filter=thematic_area_display:"' . $ta[0] . '"';
+                                        if ($user_filter != ''){
+                                            $filter_link .= ' AND ' . $user_filter ;
+                                        }
+                                    ?>
+                                    <li class="cat-item">
+                                        <a href='<?php echo $filter_link; ?>'><?php lis_print_lang_value($ta[0], $site_language); ?></a>
+                                        <span class="cat-item-count"><?php echo $ta[1] ?></span>
+                                    </li>
+                                <?php } ?>
+                                </ul>
+                             </section>
+                        <?php endif; ?>
+                    <?php } ?>
+                <?php endif; ?>
+
                 <?php dynamic_sidebar('lis-home');?>
+
             </aside>
 
             <div class="spacer marginbottom25"></div>

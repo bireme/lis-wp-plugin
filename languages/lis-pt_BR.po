@@ -4,16 +4,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LIS WP Plugin 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/lis\n"
-"POT-Creation-Date: 2014-06-26 18:22:05+00:00\n"
-"PO-Revision-Date: 2018-10-06 16:10-0300\n"
+"POT-Creation-Date: 2023-09-12 11:45-0300\n"
+"PO-Revision-Date: 2023-09-12 11:51-0300\n"
 "Last-Translator: Vinicius Andrade <vinicius.andrade@bireme.org>\n"
 "Language-Team: BIREME <reddes@gmail.com>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
 
 #: lib/Paginator.php:35 lib/Paginator.php:36 lib/Paginator.php:47
 #: lib/Paginator.php:53 lib/Paginator.php:62 lib/Paginator.php:63
@@ -21,246 +24,382 @@ msgstr ""
 msgid "go to page"
 msgstr "ir para página"
 
-#: lis.php:86
+#: lis.php:84
 msgid "LIS Settings"
 msgstr "LIS Ajustes"
 
-#. Plugin Name of the plugin/theme
-#: lis.php:86
+#: lis.php:84
 msgid "LIS"
 msgstr "LIS"
 
-#: lis.php:142
+#: lis.php:137
 msgid "LIS sidebar"
 msgstr "LIS área de destaques"
 
+#: lis.php:241
+msgid "Settings"
+msgstr "LIS Configurações"
+
+#: settings.php:8
+msgid "MEDLINE"
+msgstr ""
+
 #: settings.php:9
+msgid "LILACS"
+msgstr ""
+
+#: settings.php:10
+msgid "MedCarib"
+msgstr ""
+
+#: settings.php:11
+msgid "BBO - Dentistry"
+msgstr ""
+
+#: settings.php:12
+msgid "Coleciona SUS"
+msgstr ""
+
+#: settings.php:13
+msgid "BDENF - Nursing"
+msgstr ""
+
+#: settings.php:14
+msgid "IBECS"
+msgstr ""
+
+#: settings.php:15
+msgid "Index Psychology - Theses"
+msgstr ""
+
+#: settings.php:16
+msgid "Index Psychology - Scientific divulgation"
+msgstr ""
+
+#: settings.php:17
+msgid "RIPSA"
+msgstr ""
+
+#: settings.php:18
+msgid "RIPSA - Reports"
+msgstr ""
+
+#: settings.php:19
+msgid "RIPSA - Products"
+msgstr ""
+
+#: settings.php:20
+msgid "RIPSA - Qualification record"
+msgstr ""
+
+#: settings.php:21
+msgid "RIPSA - Normative acts"
+msgstr ""
+
+#: settings.php:22
+msgid "Theses - Puerto Rico"
+msgstr ""
+
+#: settings.php:23
+msgid "ADOLEC - Adolescence"
+msgstr ""
+
+#: settings.php:24
+msgid "CidSaúde - Healthy Cities"
+msgstr ""
+
+#: settings.php:25
+msgid "Desastres - Disasters"
+msgstr ""
+
+#: settings.php:26
+msgid "Hanseníase - Leprosy"
+msgstr ""
+
+#: settings.php:27
+msgid "HISA - History of Health"
+msgstr ""
+
+#: settings.php:28
+msgid "HomeoIndex - Homeopathy"
+msgstr ""
+
+#: settings.php:29
+msgid "Index Psychology - Scientific journals"
+msgstr ""
+
+#: settings.php:30
+msgid "REPIDISCA"
+msgstr ""
+
+#: settings.php:31
+msgid "SOF - Formative Second Opinion"
+msgstr ""
+
+#: settings.php:32
+msgid "PAHO"
+msgstr ""
+
+#: settings.php:33
+msgid "WHO IRIS"
+msgstr ""
+
+#: settings.php:34
+msgid "CUMED"
+msgstr ""
+
+#: settings.php:41
 msgid "LIS Plugin Options"
 msgstr "LIS - Opções do plugin"
 
-#: settings.php:18
-msgid "Service URL"
-msgstr "URL do serviço"
-
-#: settings.php:22
+#: settings.php:50
 msgid "Plugin page"
 msgstr "Página do plugin"
 
-#: settings.php:27
+#: settings.php:54
 msgid "Filter query"
 msgstr "Filtro de pesquisa"
 
-#: settings.php:31
+#: settings.php:58
 msgid "Search form"
 msgstr "Formuário de pesquisa"
 
-#: settings.php:34
+#: settings.php:61
 msgid "Show search form"
 msgstr "Mostrar formulário de pesquisa"
 
-#: settings.php:38
+#: settings.php:74 settings.php:81
+msgid "Page title"
+msgstr "Título da página"
+
+#: settings.php:88
 msgid "Disqus shortname"
 msgstr "Disqus identificador"
 
-#: settings.php:42
+#: settings.php:92
 msgid "AddThis profile ID"
 msgstr "AddThis identificador"
 
-#: settings.php:46
+#: settings.php:96
 msgid "Google Analytics code"
 msgstr "Código do Google Analytics"
 
-#: settings.php:53
-msgid "Save Changes"
-msgstr "Salvar alterações"
+#: settings.php:100
+msgid "Related Documents filter"
+msgstr ""
 
-#: settings.php:89
+#: settings.php:103 settings.php:110
+msgid "The filters must be separated by commas."
+msgstr ""
+
+#: settings.php:107
+msgid "More Related Documents filter"
+msgstr ""
+
+#: settings.php:115
+msgid "Page Layout"
+msgstr "Layout de Página"
+
+#: settings.php:120
+msgid "Show filters as whole page"
+msgstr "Mostrar filtros em página inteira"
+
+#: settings.php:126
+msgid "Show normal page"
+msgstr "Mostrar página normal"
+
+#: settings.php:131
+msgid "Sidebar order"
+msgstr ""
+
+#: settings.php:145
 msgid "Available"
 msgstr "Disponíveis"
 
-#: settings.php:102
+#: settings.php:156
 msgid "Selected"
 msgstr "Selecionados"
 
-#: template/lis-home.php:60 template/lis-resource.php:36
-#: template/lis-suggest-site-details.php:29 template/lis-suggest-site.php:17
+#: settings.php:176
+msgid "Save Changes"
+msgstr "Salvar alterações"
+
+#: template/lis-home.php:64 template/lis-resource.php:46
+#: template/lis-suggest-site-details.php:35 template/lis-suggest-site.php:17
 msgid "Home"
 msgstr "Ínicio"
 
-#: template/lis-home.php:62 template/lis-home.php:64
-#: template/lis-resource.php:37 template/lis-suggest-site-details.php:30
-#: template/lis-suggest-site.php:18 template/rss.php:52
+#: template/lis-home.php:66 template/lis-home.php:68
+#: template/lis-resource.php:47 template/lis-suggest-site-details.php:36
+#: template/lis-suggest-site.php:18 template/rss.php:49
 msgid "Health Information Locator"
 msgstr "Localizador de Informação em Saúde"
 
-#: template/lis-home.php:65
+#: template/lis-home.php:69
 msgid "Search result"
 msgstr "Resultado de pesquisa"
 
-#: template/lis-home.php:71
+#: template/lis-home.php:77 template/lis-home.php:217
 msgid "No results found"
 msgstr "Nenhum resultado encontrado"
 
-#: template/lis-home.php:75
+#: template/lis-home.php:81 template/lis-home.php:232
 msgid "Resources found"
 msgstr "Recursos encontrados"
 
-#: template/lis-home.php:77
+#: template/lis-home.php:83 template/lis-home.php:234
 msgid "Total of resources"
 msgstr "Total de recursos"
 
-#: template/lis-home.php:88 template/lis-home.php:89 template/lis-home.php:90
-msgid "resources"
-msgstr "recursos"
-
-#: template/lis-home.php:94
-msgid "Order by"
-msgstr "Ordenar por"
-
-#: template/lis-home.php:95
-msgid "More relevant"
-msgstr "Mais relevantes"
-
-#: template/lis-home.php:96
-msgid "Most recent"
-msgstr "Mais recentes"
-
-#: template/lis-home.php:113
+#: template/lis-home.php:100
 msgid "See more details"
 msgstr "Ver mais detalhes"
 
-#: template/lis-home.php:118 template/lis-resource.php:75
+#: template/lis-home.php:105 template/lis-resource.php:85
 msgid "Resource added in"
 msgstr "Recurso adicionado em"
 
-#: template/lis-home.php:125 template/lis-resource.php:89
+#: template/lis-home.php:112 template/lis-resource.php:99
 msgid "Available languages"
 msgstr "Idiomas disponíveis"
 
-#: template/lis-home.php:153 template/lis-home.php:154
-#: template/lis-resource.php:241 template/lis-resource.php:242
+#: template/lis-home.php:140 template/lis-home.php:141
+#: template/lis-home.php:221 template/lis-home.php:222
+#: template/lis-home.php:239 template/lis-home.php:240
+#: template/lis-resource.php:267 template/lis-resource.php:268
 msgid "Search"
 msgstr "Pesquisa"
 
-#: template/lis-home.php:158 template/lis-resource.php:246
-#: template/lis-suggest-site-details.php:31
-#: template/lis-suggest-site-details.php:36 template/lis-suggest-site.php:19
+#: template/lis-home.php:145 template/lis-home.php:254
+#: template/lis-resource.php:272 template/lis-suggest-site-details.php:37
+#: template/lis-suggest-site-details.php:42 template/lis-suggest-site.php:19
 #: template/lis-suggest-site.php:24
 msgid "Suggest a site"
 msgstr "Sugira um site"
 
-#: template/lis-home.php:162
+#: template/lis-home.php:157 template/lis-home.php:264
 msgid "Subjects"
 msgstr "Assuntos"
 
-#: template/lis-resource.php:38
+#: template/lis-home.php:184 template/lis-home.php:291
+msgid "Thematic area"
+msgstr "Área Temática"
+
+#: template/lis-resource.php:48
 msgid "Resource"
 msgstr "Recurso"
 
-#: template/lis-resource.php:63
+#: template/lis-resource.php:73
 msgid "Author(s)"
 msgstr "Autor(es)"
 
-#: template/lis-resource.php:69
+#: template/lis-resource.php:79
 msgid "Originator(s)"
 msgstr "Originador(es)"
 
-#: template/lis-resource.php:82
+#: template/lis-resource.php:92
 msgid "Objective"
 msgstr "Objetivo"
 
-#: template/lis-resource.php:110 template/lis-resource.php:116
+#: template/lis-resource.php:120 template/lis-resource.php:126
 msgid "Share"
 msgstr "Compartilhar"
 
-#: template/lis-resource.php:124
+#: template/lis-resource.php:134
 msgid "Suggest tag"
 msgstr "Sugerir uma palavra-chave"
 
-#: template/lis-resource.php:131
+#: template/lis-resource.php:141
 msgid "Suggestions"
 msgstr "Sugestões"
 
-#: template/lis-resource.php:138
+#: template/lis-resource.php:148
 msgid "Separated by comma"
 msgstr "Separadas por virgula"
 
-#: template/lis-resource.php:139 template/lis-resource.php:197
-#: template/lis-suggest-site-details.php:76 template/lis-suggest-site.php:34
+#: template/lis-resource.php:149 template/lis-resource.php:207
+#: template/lis-suggest-site-details.php:65 template/lis-suggest-site.php:34
 msgid "Send"
 msgstr "Enviar"
 
-#: template/lis-resource.php:146
+#: template/lis-resource.php:156
 msgid "Thank you for your suggestion."
 msgstr "Obrigado por sua sugestão."
 
-#: template/lis-resource.php:149 template/lis-resource.php:207
+#: template/lis-resource.php:159 template/lis-resource.php:217
 msgid "Communication problem. Please try again later."
 msgstr "Problemas de comunicação. Por favor tente novamente."
 
-#: template/lis-resource.php:158
+#: template/lis-resource.php:168
 msgid "Report error"
 msgstr "Informar um erro"
 
-#: template/lis-resource.php:166
+#: template/lis-resource.php:176
 msgid "Reason"
 msgstr "Motivo"
 
-#: template/lis-resource.php:170
+#: template/lis-resource.php:180
 msgid "Invalid Link"
 msgstr "Link inválido"
 
-#: template/lis-resource.php:175
+#: template/lis-resource.php:185
 msgid "Bad content"
 msgstr "Conteúdo inapropriado"
 
-#: template/lis-resource.php:180
+#: template/lis-resource.php:190
 msgid "Other"
 msgstr "Outro"
 
-#: template/lis-resource.php:189
+#: template/lis-resource.php:199
 msgid "New Link (Optional)"
 msgstr "Novo Link (opcional)"
 
-#: template/lis-resource.php:204
+#: template/lis-resource.php:214
 msgid "Thank you for your report."
 msgstr "Obrigado por informar este problema."
 
-#: template/lis-resource.php:249
+#: template/lis-resource.php:246
+msgid "More related"
+msgstr "Mais relacionados"
+
+#: template/lis-resource.php:275
 msgid "Related"
 msgstr "Relacionados"
 
-#: template/lis-suggest-site-details.php:43 template/lis-suggest-site.php:30
+#: template/lis-suggest-site-details.php:48 template/lis-suggest-site.php:30
 msgid "Link"
 msgstr "Link"
 
-#: template/lis-suggest-site-details.php:47
+#: template/lis-suggest-site-details.php:51
 msgid "Title"
 msgstr "Título"
 
-#: template/lis-suggest-site-details.php:50
+#: template/lis-suggest-site-details.php:54
 msgid "Keywords"
 msgstr "Palavras-chave"
 
-#: template/lis-suggest-site-details.php:53
+#: template/lis-suggest-site-details.php:57
 msgid "Abstract"
 msgstr "Resumo"
 
-#. Plugin URI of the plugin/theme
-msgid "http://reddes.bvsalud.org/projects/lis/"
-msgstr ""
+#: template/related.php:56 template/similar.php:41
+msgid "No related documents"
+msgstr "Nenhum documento relacionado encontrado"
 
-#. Description of the plugin/theme
-msgid "Create a Health Information Locator Site"
-msgstr "Cria uma página do LIS - Localizador de Informações em Saúde"
+#~ msgid "Service URL"
+#~ msgstr "URL do serviço"
 
-#. Author of the plugin/theme
-msgid "BIREME/OPAS/OMS"
-msgstr ""
+#~ msgid "resources"
+#~ msgstr "recursos"
 
-#. Author URI of the plugin/theme
-msgid "http://reddes.bvsalud.org/"
-msgstr ""
+#~ msgid "Order by"
+#~ msgstr "Ordenar por"
+
+#~ msgid "Most recent"
+#~ msgstr "Mais recentes"
+
+#~ msgid "Create a Health Information Locator Site"
+#~ msgstr "Cria uma página do LIS - Localizador de Informações em Saúde"
 
 #~ msgid "Comments"
 #~ msgstr "Comentários"
