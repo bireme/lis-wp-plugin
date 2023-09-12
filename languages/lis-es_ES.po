@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LIS WP Plugin 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/lis\n"
-"POT-Creation-Date: 2023-09-12 11:52-0300\n"
-"PO-Revision-Date: 2023-09-12 11:54-0300\n"
+"POT-Creation-Date: 2023-09-12 18:31-0300\n"
+"PO-Revision-Date: 2023-09-12 18:32-0300\n"
 "Last-Translator: Vinicius Andrade <vinicius.andrade@bireme.org>\n"
 "Language-Team: RedDes <reddes@gmail.com>\n"
 "Language: es_ES\n"
@@ -24,19 +24,19 @@ msgstr ""
 msgid "go to page"
 msgstr "ir para pagina"
 
-#: lis.php:84
+#: lis.php:87
 msgid "LIS Settings"
 msgstr "LIS - Ajustes"
 
-#: lis.php:84
+#: lis.php:87
 msgid "LIS"
 msgstr "LIS"
 
-#: lis.php:137
+#: lis.php:141
 msgid "LIS sidebar"
 msgstr "LIS area de destacados"
 
-#: lis.php:241
+#: lis.php:252
 msgid "Settings"
 msgstr "LIS Ajustes"
 
@@ -239,15 +239,15 @@ msgstr "Localizador de Información en Salud"
 msgid "Search result"
 msgstr "Resultado de la búsqueda"
 
-#: template/lis-home.php:77 template/lis-home.php:217
+#: template/lis-home.php:77 template/lis-home.php:228
 msgid "No results found"
 msgstr "No se encontraron resultados"
 
-#: template/lis-home.php:81 template/lis-home.php:232
+#: template/lis-home.php:81 template/lis-home.php:243
 msgid "Resources found"
 msgstr "Recursos encontrados"
 
-#: template/lis-home.php:83 template/lis-home.php:234
+#: template/lis-home.php:83 template/lis-home.php:245
 msgid "Total of resources"
 msgstr "Total de recursos"
 
@@ -264,24 +264,32 @@ msgid "Available languages"
 msgstr "Idiomas disponibles"
 
 #: template/lis-home.php:140 template/lis-home.php:141
-#: template/lis-home.php:221 template/lis-home.php:222
-#: template/lis-home.php:239 template/lis-home.php:240
+#: template/lis-home.php:232 template/lis-home.php:233
+#: template/lis-home.php:250 template/lis-home.php:251
 #: template/lis-resource.php:267 template/lis-resource.php:268
 msgid "Search"
 msgstr "Buscar"
 
-#: template/lis-home.php:145 template/lis-home.php:254
+#: template/lis-home.php:145 template/lis-home.php:265
 #: template/lis-resource.php:272 template/lis-suggest-site-details.php:37
 #: template/lis-suggest-site-details.php:42 template/lis-suggest-site.php:19
 #: template/lis-suggest-site.php:24
 msgid "Suggest a site"
 msgstr "Sugerir un sitio"
 
-#: template/lis-home.php:157 template/lis-home.php:264
+#: template/lis-home.php:157 template/lis-home.php:275
 msgid "Subjects"
 msgstr "Asuntos"
 
-#: template/lis-home.php:184 template/lis-home.php:291
+#: template/lis-home.php:180 template/lis-home.php:211
+msgid "show more"
+msgstr "mostrar más"
+
+#: template/lis-home.php:181 template/lis-home.php:212
+msgid "loading"
+msgstr "cargando"
+
+#: template/lis-home.php:189 template/lis-home.php:302
 msgid "Thematic area"
 msgstr "Área Temática"
 
