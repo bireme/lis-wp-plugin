@@ -49,6 +49,8 @@ if(!class_exists('LIS_Plugin')) {
             add_filter( 'document_title_separator', array(&$this, 'title_tag_sep') );
             add_filter( 'document_title_parts', array(&$this, 'theme_slug_render_title'));
             add_filter( 'wp_title', array(&$this, 'theme_slug_render_wp_title'));
+            add_action( 'wp_ajax_lis_show_more_clusters', array($this, 'lis_show_more_clusters'));
+            add_action( 'wp_ajax_nopriv_lis_show_more_clusters', array($this, 'lis_show_more_clusters'));
         } // END public function __construct
 
         /**
@@ -231,6 +233,13 @@ if(!class_exists('LIS_Plugin')) {
             wp_enqueue_style ('slick-css', '//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css');
             wp_enqueue_style ('slick-theme-css', '//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css');
             wp_enqueue_style ('lis-page',    LIS_PLUGIN_URL . 'template/css/style.css');
+
+            wp_enqueue_script('jquery');
+            wp_localize_script('jquery', 'lis_script_vars', array(
+                    'ajaxurl' => admin_url( 'admin-ajax.php' ),
+                    'ajaxnonce' => wp_create_nonce( 'ajax_post_validation' )
+                )
+            );
         }
 
         function register_settings(){
@@ -293,6 +302,24 @@ if(!class_exists('LIS_Plugin')) {
             }
 
             return $output;
+        }
+
+        function lis_show_more_clusters() {
+            global $lis_service_url;
+            $lis_service_url = $this->service_url;
+
+            ob_start();
+            include LIS_PLUGIN_PATH . '/template/cluster.php';
+            $contents = ob_get_contents();
+            ob_end_clean();
+
+            if ( $contents ) {
+                echo $contents;
+            } else {
+                echo 0;
+            }
+
+            die();
         }
     } // END class LIS_Plugin
 } // END if(!class_exists('LIS_Plugin'))

@@ -36,12 +36,12 @@ $start = ($page * $count) - $count;
 
 $lis_service_request = $lis_service_url . 'api/resource/search/?q=' . urlencode($query) . '&fq=' .urlencode($filter) . '&start=' . $start . '&lang=' . $lang_dir;
 
-//print $lis_service_request;
+// echo "<pre>"; print_r($lis_service_request); echo "</pre>"; die();
 
 $response = @file_get_contents($lis_service_request);
 if ($response){
     $response_json = json_decode($response);
-    //var_dump($response_json);
+    // echo "<pre>"; print_r($response_json); echo "</pre>"; die();
     $total = $response_json->diaServerResponse[0]->response->numFound;
     $start = $response_json->diaServerResponse[0]->response->start;
     $resource_list = $response_json->diaServerResponse[0]->response->docs;
@@ -156,7 +156,7 @@ $pages->paginate($page_url_params);
                         <header class="row-fluid border-bottom marginbottom15">
                             <h1 class="h1-header"><?php _e('Subjects','lis'); ?></h1>
                         </header>
-                        <ul>
+                        <ul class="filter-list">
                             <?php foreach ( $descriptor_list as $descriptor ) : ?>
                                 <?php
                                     $filter_link = '?';
@@ -168,14 +168,19 @@ $pages->paginate($page_url_params);
                                         $filter_link .= ' AND ' . $user_filter ;
                                     }
                                 ?>
-                                <?php if ( filter_var($descriptor[0], FILTER_VALIDATE_INT) === false ) : ?>
-                                    <li class="cat-item">
-                                        <a href='<?php echo $filter_link ?>'><?php echo $descriptor[0] ?></a>
-                                        <span class="cat-item-count"><?php echo $descriptor[1] ?></span>
-                                    </li>
-                                <?php endif; ?>
+                                <?php $class = ( filter_var($descriptor[0], FILTER_VALIDATE_INT) === false ) ? 'cat-item' : 'cat-item hide'; ?>
+                                <li class="<?php echo $class; ?>">
+                                    <a href='<?php echo $filter_link ?>'><?php echo $descriptor[0] ?></a>
+                                    <span class="cat-item-count"><?php echo $descriptor[1] ?></span>
+                                </li>
                             <?php endforeach; ?>
                         </ul>
+                        <?php if ( count($descriptor_list) == 20 ) : ?>
+                        <div class="show-more text-center">
+                            <a href="javascript:void(0)" class="btn-ajax" data-fb="30" data-cluster="descriptor_filter"><?php _e('show more','lis'); ?></a>
+                            <a href="javascript:void(0)" class="loading"><?php _e('loading','lis'); ?>...</a>
+                        </div>
+                        <?php endif; ?>
                     </section>
                 <?php endif; ?>
                 <?php if ( $value == 'Thematic area' ) : ?>
@@ -201,6 +206,12 @@ $pages->paginate($page_url_params);
                             </li>
                         <?php } ?>
                         </ul>
+                        <?php if ( count($thematic_area_list) == 20 ) : ?>
+                        <div class="show-more text-center">
+                            <a href="javascript:void(0)" class="btn-ajax" data-fb="30" data-cluster="thematic_area_display"><?php _e('show more','lis'); ?></a>
+                            <a href="javascript:void(0)" class="loading"><?php _e('loading','lis'); ?>...</a>
+                        </div>
+                        <?php endif; ?>
                      </section>
                 <?php endif; ?>
             <?php } ?>
@@ -323,4 +334,51 @@ $pages->paginate($page_url_params);
 
         </div>
     </div>
+
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $(document).on( "click", ".btn-ajax", function(e) {
+                e.preventDefault();
+
+                var _this = $(this);
+                var fb = $(this).data('fb');
+                var cluster = $(this).data('cluster');
+
+                $(this).hide();
+                $(this).next('.loading').show();
+
+                $.ajax({ 
+                    type: "POST",
+                    url: lis_script_vars.ajaxurl,
+                    data: {
+                        action: 'lis_show_more_clusters',
+                        lang: '<?php echo $lang_dir; ?>',
+                        site_lang: '<?php echo $site_language; ?>',
+                        query: '<?php echo $query; ?>',
+                        filter: '<?php echo $filter; ?>',
+                        uf: '<?php echo $user_filter; ?>',
+                        cluster: cluster,
+                        fb: fb
+                    },
+                    success: function(response){
+                        var html = $.parseHTML( response );
+                        _this.parent().siblings('.filter-list').replaceWith( response );
+                        _this.data('fb', fb+10);
+                        _this.next('.loading').hide();
+
+                        var len = $(html).find(".cat-item").length;
+                        var mod = parseInt(len % 10);
+
+                        if ( mod ) {
+                            _this.remove();
+                        } else {
+                            _this.show();
+                        }
+                    },
+                    error: function(error){ console.log(error) }
+                });
+            });
+        });
+    </script>
+
 <?php get_footer();?>
