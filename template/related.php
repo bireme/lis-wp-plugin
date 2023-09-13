@@ -27,6 +27,10 @@
                 <ul>
                 <?php
                     if ( array_key_exists('document', $docs) ) {
+                        if ( array_key_exists('id', $docs['document']) ) {
+                            $docs['document'] = array($docs['document']);
+                        }
+
                         foreach ( $docs['document'] as $similar ) {
                             ?>
                             <li class="cat-item">
@@ -60,5 +64,13 @@
             </div>
             <?php
         }
+    } else {
+        ?>
+        <div class="">
+            <ul>
+                <?php echo '<li>' . __('No related documents', 'lis') . '</li>'; ?>
+            </ul>
+        </div>
+        <?php
     }
 ?>
