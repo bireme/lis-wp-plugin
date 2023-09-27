@@ -130,7 +130,7 @@ function lis_page_admin() {
                     <tr valign="top">
                         <th scope="row"><?php _e('Sidebar order', 'lis');?>:</th>
                         <?php
-                            $available_filters = 'Subjects;Thematic area';
+                            $available_filters = 'Subjects;Thematic area;Language';
                             $available_filter_list = explode(';', $available_filters);
                             if(!isset($lis_config['available_filter'])){
                                 $order = $available_filter_list;

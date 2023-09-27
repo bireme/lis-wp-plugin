@@ -23,6 +23,7 @@ if ($response){
     $total = $response_json->diaServerResponse[0]->response->numFound;
     $start = $response_json->diaServerResponse[0]->response->start;
     $resource_list = $response_json->diaServerResponse[0]->response->docs;
+    $language_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->language;
     $descriptor_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->descriptor_filter;
     $thematic_area_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->thematic_area_display;
 }
@@ -70,6 +71,29 @@ if ($response){
                 <li class="cat-item">
                     <a href='<?php echo $filter_link; ?>'><?php lis_print_lang_value($ta[0], $site_lang); ?></a>
                     <span class="cat-item-count"><?php echo $ta[1] ?></span>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+<?php endif; ?>
+
+<?php if($cluster == 'language'): ?>
+    <?php if($language_list): ?>
+        <ul class="filter-list">
+            <?php foreach ( $language_list as $language ) : ?>
+                <?php
+                    $filter_link = '?';
+                    if ($query != ''){
+                        $filter_link .= 'q=' . $query . '&';
+                    }
+                    $filter_link .= 'filter=language:"' . $language[0] . '"';
+                    if ($user_filter != ''){
+                        $filter_link .= ' AND ' . $user_filter ;
+                    }
+                ?>
+                <li class="cat-item">
+                    <a href='<?php echo $filter_link; ?>'><?php lis_print_lang_value($language[0], $site_lang); ?></a>
+                    <span class="cat-item-count"><?php echo $language[1] ?></span>
                 </li>
             <?php endforeach; ?>
         </ul>

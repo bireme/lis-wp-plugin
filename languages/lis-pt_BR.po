@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LIS WP Plugin 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/lis\n"
-"POT-Creation-Date: 2023-09-12 18:31-0300\n"
-"PO-Revision-Date: 2023-09-12 18:31-0300\n"
+"POT-Creation-Date: 2023-09-27 16:19-0300\n"
+"PO-Revision-Date: 2023-09-27 16:19-0300\n"
 "Last-Translator: Vinicius Andrade <vinicius.andrade@bireme.org>\n"
 "Language-Team: BIREME <reddes@gmail.com>\n"
 "Language: pt_BR\n"
@@ -36,7 +36,7 @@ msgstr "LIS"
 msgid "LIS sidebar"
 msgstr "LIS área de destaques"
 
-#: lis.php:252
+#: lis.php:251
 msgid "Settings"
 msgstr "LIS Configurações"
 
@@ -224,74 +224,80 @@ msgstr "Selecionados"
 msgid "Save Changes"
 msgstr "Salvar alterações"
 
-#: template/lis-home.php:64 template/lis-resource.php:46
+#: template/lis-home.php:65 template/lis-resource.php:46
 #: template/lis-suggest-site-details.php:35 template/lis-suggest-site.php:17
 msgid "Home"
 msgstr "Ínicio"
 
-#: template/lis-home.php:66 template/lis-home.php:68
+#: template/lis-home.php:67 template/lis-home.php:69
 #: template/lis-resource.php:47 template/lis-suggest-site-details.php:36
 #: template/lis-suggest-site.php:18 template/rss.php:49
 msgid "Health Information Locator"
 msgstr "Localizador de Informação em Saúde"
 
-#: template/lis-home.php:69
+#: template/lis-home.php:70
 msgid "Search result"
 msgstr "Resultado de pesquisa"
 
-#: template/lis-home.php:77 template/lis-home.php:228
+#: template/lis-home.php:78 template/lis-home.php:260
 msgid "No results found"
 msgstr "Nenhum resultado encontrado"
 
-#: template/lis-home.php:81 template/lis-home.php:243
+#: template/lis-home.php:82 template/lis-home.php:275
 msgid "Resources found"
 msgstr "Recursos encontrados"
 
-#: template/lis-home.php:83 template/lis-home.php:245
+#: template/lis-home.php:84 template/lis-home.php:277
 msgid "Total of resources"
 msgstr "Total de recursos"
 
-#: template/lis-home.php:100
+#: template/lis-home.php:101
 msgid "See more details"
 msgstr "Ver mais detalhes"
 
-#: template/lis-home.php:105 template/lis-resource.php:85
+#: template/lis-home.php:106 template/lis-resource.php:85
 msgid "Resource added in"
 msgstr "Recurso adicionado em"
 
-#: template/lis-home.php:112 template/lis-resource.php:99
+#: template/lis-home.php:113 template/lis-resource.php:99
 msgid "Available languages"
 msgstr "Idiomas disponíveis"
 
-#: template/lis-home.php:140 template/lis-home.php:141
-#: template/lis-home.php:232 template/lis-home.php:233
-#: template/lis-home.php:250 template/lis-home.php:251
+#: template/lis-home.php:141 template/lis-home.php:142
+#: template/lis-home.php:264 template/lis-home.php:265
+#: template/lis-home.php:282 template/lis-home.php:283
 #: template/lis-resource.php:267 template/lis-resource.php:268
 msgid "Search"
 msgstr "Pesquisa"
 
-#: template/lis-home.php:145 template/lis-home.php:265
+#: template/lis-home.php:146 template/lis-home.php:297
 #: template/lis-resource.php:272 template/lis-suggest-site-details.php:37
 #: template/lis-suggest-site-details.php:42 template/lis-suggest-site.php:19
 #: template/lis-suggest-site.php:24
 msgid "Suggest a site"
 msgstr "Sugira um site"
 
-#: template/lis-home.php:157 template/lis-home.php:275
+#: template/lis-home.php:158 template/lis-home.php:307
 msgid "Subjects"
 msgstr "Assuntos"
 
-#: template/lis-home.php:180 template/lis-home.php:211
+#: template/lis-home.php:181 template/lis-home.php:212
+#: template/lis-home.php:243
 msgid "show more"
 msgstr "mostrar mais"
 
-#: template/lis-home.php:181 template/lis-home.php:212
+#: template/lis-home.php:182 template/lis-home.php:213
+#: template/lis-home.php:244
 msgid "loading"
 msgstr "carregando"
 
-#: template/lis-home.php:189 template/lis-home.php:302
+#: template/lis-home.php:190 template/lis-home.php:333
 msgid "Thematic area"
 msgstr "Área Temática"
+
+#: template/lis-home.php:221 template/lis-home.php:358
+msgid "Language"
+msgstr "Idioma"
 
 #: template/lis-resource.php:48
 msgid "Resource"
@@ -390,7 +396,7 @@ msgstr "Palavras-chave"
 msgid "Abstract"
 msgstr "Resumo"
 
-#: template/related.php:56 template/similar.php:41
+#: template/related.php:60 template/related.php:71 template/similar.php:45
 msgid "No related documents"
 msgstr "Nenhum documento relacionado encontrado"
 

@@ -45,6 +45,7 @@ if ($response){
     $total = $response_json->diaServerResponse[0]->response->numFound;
     $start = $response_json->diaServerResponse[0]->response->start;
     $resource_list = $response_json->diaServerResponse[0]->response->docs;
+    $language_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->language;
     $descriptor_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->descriptor_filter;
     $thematic_area_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->thematic_area_display;
 }
@@ -189,7 +190,7 @@ $pages->paginate($page_url_params);
                             <h1 class="h1-header"><?php _e('Thematic area','lis'); ?></h1>
                         </header>
                         <ul class="filter-list">
-                        <?php foreach ( $thematic_area_list as $ta) { ?>
+                        <?php foreach ( $thematic_area_list as $ta ) { ?>
                             <?php
                                 $filter_link = '?';
                                 if ($query != ''){
@@ -209,6 +210,37 @@ $pages->paginate($page_url_params);
                         <?php if ( count($thematic_area_list) == 20 ) : ?>
                         <div class="show-more text-center">
                             <a href="javascript:void(0)" class="btn-ajax" data-fb="30" data-cluster="thematic_area_display"><?php _e('show more','lis'); ?></a>
+                            <a href="javascript:void(0)" class="loading"><?php _e('loading','lis'); ?>...</a>
+                        </div>
+                        <?php endif; ?>
+                     </section>
+                <?php endif; ?>
+                <?php if ( $value == 'Language' ) : ?>
+                    <section class="row-fluid marginbottom25 widget_categories">
+                        <header class="row-fluid border-bottom marginbottom15">
+                            <h1 class="h1-header"><?php _e('Language','lis'); ?></h1>
+                        </header>
+                        <ul class="filter-list">
+                        <?php foreach ( $language_list as $language ) { ?>
+                            <?php
+                                $filter_link = '?';
+                                if ($query != ''){
+                                    $filter_link .= 'q=' . $query . '&';
+                                }
+                                $filter_link .= 'filter=language:"' . $language[0] . '"';
+                                if ($user_filter != ''){
+                                    $filter_link .= ' AND ' . $user_filter ;
+                                }
+                            ?>
+                            <li class="cat-item">
+                                <a href='<?php echo $filter_link; ?>'><?php lis_print_lang_value($language[0], $site_language); ?></a>
+                                <span class="cat-item-count"><?php echo $language[1] ?></span>
+                            </li>
+                        <?php } ?>
+                        </ul>
+                        <?php if ( count($thematic_area_list) == 20 ) : ?>
+                        <div class="show-more text-center">
+                            <a href="javascript:void(0)" class="btn-ajax" data-fb="30" data-cluster="language"><?php _e('show more','lis'); ?></a>
                             <a href="javascript:void(0)" class="loading"><?php _e('loading','lis'); ?>...</a>
                         </div>
                         <?php endif; ?>
@@ -275,7 +307,7 @@ $pages->paginate($page_url_params);
                                     <h1 class="h1-header"><?php _e('Subjects','lis'); ?></h1>
                                 </header>
                                 <ul class="col3">
-                                    <?php foreach ( $descriptor_list as $descriptor) { ?>
+                                    <?php foreach ( $descriptor_list as $descriptor ) { ?>
                                         <?php
                                             $filter_link = '?';
                                             if ($query != ''){
@@ -301,7 +333,7 @@ $pages->paginate($page_url_params);
                                     <h1 class="h1-header"><?php _e('Thematic area','lis'); ?></h1>
                                 </header>
                                 <ul class="col3">
-                                <?php foreach ( $thematic_area_list as $ta) { ?>
+                                <?php foreach ( $thematic_area_list as $ta ) { ?>
                                     <?php
                                         $filter_link = '?';
                                         if ($query != ''){
@@ -315,6 +347,31 @@ $pages->paginate($page_url_params);
                                     <li class="cat-item">
                                         <a href='<?php echo $filter_link; ?>'><?php lis_print_lang_value($ta[0], $site_language); ?></a>
                                         <span class="cat-item-count"><?php echo $ta[1] ?></span>
+                                    </li>
+                                <?php } ?>
+                                </ul>
+                             </section>
+                        <?php endif; ?>
+                        <?php if ( $value == 'Language' ) : ?>
+                            <section class="row-fluid marginbottom25 widget_categories">
+                                <header class="row-fluid border-bottom marginbottom15">
+                                    <h1 class="h1-header"><?php _e('Language','lis'); ?></h1>
+                                </header>
+                                <ul class="col3">
+                                <?php foreach ( $language_list as $language ) { ?>
+                                    <?php
+                                        $filter_link = '?';
+                                        if ($query != ''){
+                                            $filter_link .= 'q=' . $query . '&';
+                                        }
+                                        $filter_link .= 'filter=language:"' . $language[0] . '"';
+                                        if ($user_filter != ''){
+                                            $filter_link .= ' AND ' . $user_filter ;
+                                        }
+                                    ?>
+                                    <li class="cat-item">
+                                        <a href='<?php echo $filter_link; ?>'><?php lis_print_lang_value($language[0], $site_language); ?></a>
+                                        <span class="cat-item-count"><?php echo $language[1] ?></span>
                                     </li>
                                 <?php } ?>
                                 </ul>
