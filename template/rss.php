@@ -8,6 +8,7 @@ $lis_initial_filter = $lis_config['initial_filter'];
 $site_language = strtolower(get_bloginfo('language'));
 
 $query = ( isset($_GET['s']) ? sanitize_text_field($_GET['s']) : sanitize_text_field($_GET['q']) );
+$query = stripslashes( trim($query) );
 $sanitize_user_filter = sanitize_text_field($_GET['filter']);
 $user_filter = stripslashes($sanitize_text_field);
 $page = ( isset($_GET['pg']) ? sanitize_text_field($_GET['pg']) : 1 );
