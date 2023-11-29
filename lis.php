@@ -245,6 +245,7 @@ if(!class_exists('LIS_Plugin')) {
             register_setting('lis-settings-group', 'lis_config');
             wp_enqueue_style ('lis_config' ,  LIS_PLUGIN_URL . 'template/css/admin.css');
             wp_enqueue_script('lis_config' ,  LIS_PLUGIN_URL . 'template/js/jquery-ui.js');
+            wp_enqueue_script('jquery-ui-sortable');
         }
 
         function settings_link($links) {
