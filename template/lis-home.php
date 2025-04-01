@@ -408,8 +408,8 @@ $pages->paginate($page_url_params);
                     url: lis_script_vars.ajaxurl,
                     data: {
                         action: 'lis_show_more_clusters',
-                        lang: '<?php echo $lang_dir; ?>',
-                        site_lang: '<?php echo $site_language; ?>',
+                        lang: '<?php echo esc_url_raw($$lang_dir); ?>',
+                        site_lang: '<?php echo esc_url_raw($site_language); ?>',
                         query: '<?php echo $query; ?>',
                         filter: '<?php echo $filter; ?>',
                         uf: '<?php echo $user_filter; ?>',
