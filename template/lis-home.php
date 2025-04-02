@@ -410,9 +410,9 @@ $pages->paginate($page_url_params);
                         action: 'lis_show_more_clusters',
                         lang: '<?php echo esc_url_raw($$lang_dir); ?>',
                         site_lang: '<?php echo esc_url_raw($site_language); ?>',
-                        query: '<?php echo $query; ?>',
-                        filter: '<?php echo $filter; ?>',
-                        uf: '<?php echo $user_filter; ?>',
+                        query: '<?php echo  esc_url_raw($query); ?>',
+                        filter: '<?php echo  esc_url_raw($filter); ?>',
+                        uf: '<?php echo  esc_url_raw($user_filter); ?>',
                         cluster: cluster,
                         fb: fb
                     },
