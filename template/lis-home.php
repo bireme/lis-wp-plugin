@@ -13,10 +13,14 @@ $site_language = strtolower(get_bloginfo('language'));
 $lang_dir = substr($site_language,0,2);
 
 // set query using default param q (query) or s (wordpress search) or newexpr (metaiah)
-$query = sanitize_text_field($_GET['s'] . $_GET['q'] . $_GET['newexpr']);
+$s = isset($_GET['s']) ? sanitize_text_field($_GET['s']) : '';
+$q = isset($_GET['q']) ? sanitize_text_field($_GET['q']) : '';
+$e = isset($_GET['newexpr']) ? sanitize_text_field($_GET['newexpr']) : '';
+
+$query = sanitize_text_field($s . $q . $e);
 $query = stripslashes( trim($query) );
 
-$sanitize_user_filter = sanitize_text_field($_GET['filter']);
+$sanitize_user_filter = isset($_GET['filter']) ? sanitize_text_field($_GET['filter']) : '';
 $user_filter = stripslashes($sanitize_user_filter);
 $page = ( isset($_GET['pg']) ? sanitize_text_field($_GET['pg']) : 1 );
 $total = 0;
@@ -120,7 +124,7 @@ $pages->paginate($page_url_params);
                                         <i class="ico-tags"> </i>
                                             <?php
                                                 $descriptors = (array)$resource->descriptor;
-                                                $keywords = (array)$resource->keyword;
+                                                $keywords = isset($resource->keyword) ? $resource->keyword : [];
                                             ?>
                                             <?php echo implode(", ", array_merge( $descriptors, $keywords) ); ?>
                                       </div>

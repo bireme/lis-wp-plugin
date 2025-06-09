@@ -35,7 +35,6 @@ if ($response){
 }
 
 //print_r($related_list);
-
 ?>
 
 <?php get_header('lis'); ?>
@@ -60,7 +59,7 @@ if ($response){
 
                     <p class="row-fluid margintop05">
                         <?php foreach($resource->link as $link): ?>
-                            <a href="<?php echo $link; ?>"><?php echo $link; ?></a><br/>
+                            <a href="<?php echo $link; ?>" style= "  word-break: break-word; overflow-wrap: anywhere; white-space: normal; display: inline-block;"><?php echo $link; ?></a><br/>
                         <?php endforeach; ?>
                     </p>
 
@@ -68,12 +67,15 @@ if ($response){
                         <?php echo $resource->abstract; ?>
                     </p>
 
+                    <?php if (isset($resource->author)): ?>
                     <?php if ($resource->author): ?>
                         <span class="row-fluid margintop05">
                             <span class="conteudo-loop-data-tit"><?php _e('Author(s)','lis'); ?>:</span>
                             <?php echo implode(", ", $resource->author); ?>
                         </span>
                     <?php endif; ?>
+                    <?php endif; ?>
+
 
                     <span class="row-fluid margintop05">
                         <span class="conteudo-loop-data-tit"><?php _e('Originator(s)','lis'); ?>:</span>
@@ -87,12 +89,15 @@ if ($response){
                         </div>
                     <?php endif; ?>
 
+                    <?php if (isset($resource->objective)): ?>
                     <?php if ($resource->objective): ?>
                         <span class="row-fluid margintop05">
                             <span class="conteudo-loop-data-tit"><?php _e('Objective','lis'); ?>:</span>
                             <?php echo $resource->objective; ?>
                         </span>
                     <?php endif; ?>
+                    <?php endif; ?>
+
 
                     <?php if ($resource->source_language_display): ?>
                         <div id="conteudo-loop-idiomas" class="row-fluid">
@@ -106,7 +111,7 @@ if ($response){
                             <i class="ico-tags"> </i>
                                 <?php
                                     $descriptors = (array)$resource->descriptor;
-                                    $keywords = (array)$resource->keyword;
+                                    $keywords = isset($resource->keyword) ? $resource->keyword : [];
                                 ?>
                                 <?php echo implode(", ", array_merge( $descriptors, $keywords) ); ?>
                           </div>
@@ -264,7 +269,7 @@ $url = LIS_PLUGIN_URL.'template/related.php?query='.$related_query.'&sources='.$
             <section class="header-search">
                 <?php if ($lis_config['show_form']) : ?>
                     <form role="search" method="get" id="searchform" action="<?php echo real_site_url($lis_plugin_slug); ?>">
-                        <input value='<?php echo $query ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'lis'); ?>...">
+                        <input value="<?php echo isset($query) ? esc_attr($query) : ''; ?>" name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'lis'); ?>...">
                         <input id="searchsubmit" value="<?php _e('Search', 'lis'); ?>" type="submit">
                     </form>
                 <?php endif; ?>
