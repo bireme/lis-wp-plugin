@@ -4,11 +4,11 @@ Plugin Name: LIS
 Plugin URI: http://reddes.bvsalud.org/projects/lis/
 Description: Create a Health Information Locator Site
 Author: BIREME/OPAS/OMS
-Version: 0.2
+Version: 1.4
 Author URI: http://reddes.bvsalud.org/
 */
 
-define('LIS_VERSION', '0.4' );
+define('LIS_VERSION', '1.4' );
 
 define('LIS_SYMBOLIC_LINK', false );
 define('LIS_PLUGIN_DIRNAME', 'lis-page' );
