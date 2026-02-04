@@ -5,7 +5,7 @@ ini_set('display_errors', '0');
 $lang = $_POST['lang'];
 $site_lang = $_POST['site_lang'];
 $query = stripslashes($_POST['query']);
-$filter = stripslashes(sanitize_text_field($_POST['filter']));
+$filter = stripslashes(sanitize_text_field(esc_url_raw($_POST['filter'])));
 $user_filter = stripslashes($_POST['uf']);
 $fb = $_POST['fb'];
 $cluster = sanitize_text_field($_POST['cluster']);

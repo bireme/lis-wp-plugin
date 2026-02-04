@@ -57,16 +57,66 @@ if ($response){
                         <div class="star" data-score="1"></div>
                     </div>
 
+    <?php function gerarImagemTableau($url) {
+    $parsed = parse_url($url);
+    $path = trim($parsed['path'], '/');
+    $partes = explode('/', $path);
+
+    // Esperado: app/profile/{perfil}/viz/{projeto}/{visualizacao}
+    if (count($partes) < 6 || $partes[3] !== 'viz') {
+        return null; // formato inesperado
+    }
+
+    $projeto = $partes[4];
+    $visualizacao = $partes[5];
+    $prefixo = substr($projeto, 0, 2);
+
+    return "https://public.tableau.com/static/images/{$prefixo}/{$projeto}/{$visualizacao}/1_rss.png";
+}
+
+function temTableauNoLink($url) {
+    return strpos($url, 'public.tableau.com') !== false;
+}
+?><script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+
                     <p class="row-fluid margintop05">
                         <?php foreach($resource->link as $link): ?>
                             <a href="<?php echo $link; ?>" style= "  word-break: break-word; overflow-wrap: anywhere; white-space: normal; display: inline-block;"><?php echo $link; ?></a><br/>
+                            <BR>
+                        <?php
+                        
+                    $saida = gerarImagemTableau($link);
+                    ?>
+
+
+                        
                         <?php endforeach; ?>
                     </p>
 
                     <p class="row-fluid">
                         <?php echo $resource->abstract; ?>
                     </p>
+                    <BR>
+                          <style>
+#sidebar{width:1050px; float:left;}
+#conteudo{width:1050px; float:left; margin-bottom: 20px}
+.conteudo-loop{width:1050px; }
+                        </style>
+                    <?php
+                    if (temTableauNoLink($saida)) { ?>
 
+
+                        <div class='tableauPlaceholder' id='viz1769085678237' style='position: relative'><BR><noscript>
+                        <a href='#'>
+                        <img alt='Estratégias de Promoção da Vacinação Infantil - Mapa de EvidênciasDECIT/SCTIE/MS; BIREME/OPAS/OMS ' 
+                        src='<?=$saida;?>' style='border: none' /></a>
+                        </noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='vacinas-pt/evidence-map' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='<?=$saida;?>' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='pt-BR' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1769085678237');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1050px';vizElement.style.height='1227px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+                        
+                    <BR>
+                        <?php } ?>
+                    
+                    
                     <?php if (isset($resource->author)): ?>
                     <?php if ($resource->author): ?>
                         <span class="row-fluid margintop05">
@@ -89,6 +139,13 @@ if ($response){
                         </div>
                     <?php endif; ?>
 
+                    <?php if ($resource->source_language_display): ?>
+                        <div id="conteudo-loop-idiomas" class="row-fluid">
+                           <span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','lis'); ?>:</span>
+                           <?php lis_print_lang_value($resource->source_language_display, $site_language); ?>
+                        </div>
+                    <?php endif; ?>
+
                     <?php if (isset($resource->objective)): ?>
                     <?php if ($resource->objective): ?>
                         <span class="row-fluid margintop05">
@@ -96,14 +153,6 @@ if ($response){
                             <?php echo $resource->objective; ?>
                         </span>
                     <?php endif; ?>
-                    <?php endif; ?>
-
-
-                    <?php if ($resource->source_language_display): ?>
-                        <div id="conteudo-loop-idiomas" class="row-fluid">
-                           <span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','lis'); ?>:</span>
-                           <?php lis_print_lang_value($resource->source_language_display, $site_language); ?>
-                        </div>
                     <?php endif; ?>
 
                     <?php if ($resource->descriptor || $resource->keyword ) : ?>
@@ -120,17 +169,58 @@ if ($response){
                     <footer class="row-fluid margintop05">
                         <ul class="conteudo-loop-icons">
                             <li class="conteudo-loop-icons-li">
-                                <i class="ico-compartilhar"></i>
-                                <!-- AddThis Button BEGIN -->
-                                <a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=300&amp;pubid=<?php echo $lis_addthis_id; ?>"><?php _e('Share','lis'); ?></a>
-                                <script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
-                                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=<?php echo $lis_addthis_id; ?>"></script>
-                                <!-- AddThis Button END -->
-                                <!--
-                                <a href="#">
-                                    <?php _e('Share','lis'); ?>
-                                </a>
-                                -->
+                                <!------------------------------------------------->
+                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<?php
+$urlcompartilhamento = real_site_url($direve_plugin_slug) . 'resource/?id=' . $resource->django_id;
+//$urlcompartilhamento = rawurlencode($urlcompartilhamento);
+?>
+
+<?php
+
+$url = $urlcompartilhamento ?? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+// Encode seguro: remove encode anterior (se houver) e aplica rawurlencode uma vez
+function li_safe_encode($u){ return rawurlencode(rawurldecode($u)); }
+$enc = li_safe_encode($url);
+
+// Endpoints
+$li_primary = "https://www.linkedin.com/sharing/share-offsite/?url={$enc}";
+$li_fallback = "https://www.linkedin.com/shareArticle?mini=true&url={$enc}";
+
+?>
+
+<a class="addthis_button"><?php _e('Share','lis'); ?>:</a>
+
+<!-- Facebook -->
+<a class="badge facebook"
+   href="https://www.facebook.com/sharer/sharer.php?u=<?=urlencode($urlcompartilhamento)?>&quote=<?=urlencode('Confira isso!')?>"
+   target="_blank" rel="noopener noreferrer">
+  <i class="fa-brands fa-facebook-f"></i>
+</a>
+
+<!-- X (Twitter) -->
+<a class="badge x"
+   href="https://twitter.com/intent/tweet?url=<?=urlencode($urlcompartilhamento)?>&text=<?=urlencode('Confira isso!')?>"
+   target="_blank" rel="noopener noreferrer">
+  <i class="fa-brands fa-x-twitter"></i>
+</a>
+
+<!-- WhatsApp (funciona no mobile e desktop web) -->
+<a class="badge whatsapp"
+   href="https://wa.me/?text=<?=urlencode('Confira isso: '.$urlcompartilhamento)?>"
+   target="_blank" rel="noopener noreferrer">
+  <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+</a>
+
+<a class="badge copy" 
+   href="javascript:void(0);"
+   onclick="navigator.clipboard.writeText(window.location.href).then(()=>alert('Link da página copiado!'))">
+  <i class="fa-regular fa-copy"></i>
+</a>
+                    <!-- -->
+
                             </li>
 
                             <li class="conteudo-loop-icons-li">
@@ -169,14 +259,15 @@ if ($response){
 
                             <li class="conteudo-loop-icons-li">
                                 <span class="reportar-erro-open">
-                                    <i class="ico-reportar"></i>
+                                    <i class="fa-solid fa-triangle-exclamation"></i>
                                     <?php _e('Report error','lis'); ?>
                                 </span>
 
                                 <div class="reportar-erro">
                                     <div class="erro-form">
-                                        <form action="<?php echo $lis_service_url ?>report-error" id="reportErrorForm">
-                                            <input type="hidden" name="resource_id" value="<?php echo $resource_id; ?>"/>
+                                        <form action="https://fi-admin.bvsalud.org/report-error" id="reportErrorForm">
+                                            <input type="hidden" name="resource_type" value="event"/>
+                                            <input type="hidden" name="resource_id" value="<?php echo $event_id; ?>"/>
                                             <div class="reportar-erro-close">[X]</div>
                                             <span class="reportar-erro-tit"><?php _e('Reason','lis'); ?></span>
 
@@ -200,12 +291,12 @@ if ($response){
                                             </div>
 
                                             <div class="row-fluid border-bottom2"></div>
-
+<!--
                                             <span class="reportar-erro-tit margintop05"><?php _e('New Link (Optional)','lis'); ?></span>
                                             <div class="row-fluid margintop05">
                                                 <textarea name="new_link" id="txtUrl" class="reportar-erro-area" cols="20" rows="2"></textarea>
                                             </div>
-
+                    -->
                                             <div class="row-fluid border-bottom2"></div>
 
                                             <div class="row-fluid margintop05">
@@ -223,7 +314,6 @@ if ($response){
                                         </div>
                                     </div>
                                 </div>
-
                             </li>
                         </ul>
                     </footer>
@@ -246,6 +336,7 @@ if ($response){
                     <?php endif; ?>
                 </article>
             </div>
+            <!--
             <div class="row-fluid">
                 <header class="row-fluid border-bottom marginbottom15">
                     <h1 class="h1-header"><?php _e('More related','lis'); ?></h1>
@@ -256,14 +347,15 @@ if ($response){
                 <div id="async" class="related-docs">
 
                 </div>
-            </div>
+            </div>-->
 <?php
 $sources = ( $lis_config['extra_filter_db'] ) ? $lis_config['extra_filter_db'] : '';
 $url = LIS_PLUGIN_URL.'template/related.php?query='.$related_query.'&sources='.$sources.'&lang='.$lang_dir;
 ?>
+<!--
 <script type="text/javascript">
     show_related("<?php echo $url; ?>");
-</script>
+</script>-->
         </section>
         <aside id="sidebar">
             <section class="header-search">
@@ -284,7 +376,7 @@ $url = LIS_PLUGIN_URL.'template/related.php?query='.$related_query.'&sources='.$
             </ul>
             </section>
 <?php
-$url = LIS_PLUGIN_URL.'template/similar.php?query='.$similar_query.'&lang='.$lang_dir;
+$url = LIS_PLUGIN_URL.'template/similar.php?query='.$similar_query.'&lang='.$lang_dir . '&slug=' . $lis_plugin_slug;
 ?>
 <script type="text/javascript">
     show_similar("<?php echo $url; ?>");
