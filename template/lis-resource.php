@@ -100,8 +100,9 @@ function temTableauNoLink($url) {
                     <BR>
                           <style>
 #sidebar{width:1050px; float:left;}
-#conteudo{width:1050px; float:left; margin-bottom: 20px}
-.conteudo-loop{width:1050px; }
+#conteudo{width:1050px; float:left; margin-bottom: 20px; max-width: 100%;}
+.conteudo-loop{width:1050px; max-width: 100%;}
+.tableauPlaceholder{  max-width: 100%;}
                         </style>
                     <?php
                     if (temTableauNoLink($saida)) { ?>
