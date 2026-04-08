@@ -88,7 +88,7 @@ function retornaNomeTableau($url) {
     $visualizacao = $partes[5];
     $prefixo = substr($projeto, 0, 2);
 
-    return $prefixo.'/'.$projeto;
+    return $projeto.'/evidence-map';
 }
 
 function temTableauNoLink($url) {
