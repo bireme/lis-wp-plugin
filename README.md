@@ -25,7 +25,6 @@ Go to `Settings` in the administration panel (dashboard) and click on the newly 
 * `Filter query` is optional and defines the strategy (a term or expression) to act as a filter for record displaying. For further information on how to fill in this field, please access: [How to create a Filter Query on LIS](http://wiki.bireme.org/en/index.php/How_to_create_a_Filter_Query_for_LIS)
 * `Search form` is optional and defines a flag to control the display of the search box in the `LIS` homepage;
 * `Disqus shortname` is optional. If used, it requires a code for the integration with the associated comments service  [Disqus](http://disqus.com/). Notice this requires previous registration within the comments service;
-* `AddThis profile ID` is optional and is provided to allow the integration with sharing tools services [AddThis](http://www.addthis.com/). Notice this requires previous registration within the sharing tools service;
 * `Google Analytics code` is optional and allows the integration of website analytics services provided by Google. Notice this requires previous registration in Google.
 
 ## Translations of this document
